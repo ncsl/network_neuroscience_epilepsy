@@ -29,8 +29,6 @@ all = [sr; snr; fr; fnr];
 % Locations of the means in a Gaussian distribution, for example. 
 % Weighting fn is a 2-D Gaussian vector.
 % Fit and test the data.
-
-% These four means correspond to the four data types:
 % hopkins temporal lobe
 % hopkins occipital
 % cleveland temporal
@@ -39,9 +37,7 @@ mu_type = [-250, -25; ...
            -100, -100; ...
            -270, -80; ... %-120,-70;...%-100, -100;...%-340,-140;...%-145, -20;...
             130, -60]; %130, -50];
-   
-% mf = multiplying factor
-% exponential decay, compensating for the fact that the normal dist. isn't 
+    
 mf1 = 2e-2; mf2 = 2.5*mf1; mf3 = 4*mf2; mf4 = 1e-3*mf3;                    % exponential multiplying factors
 ax_mf1 = [1,1]; ax_mf2 = [0.2,1]; ax_mf3 = [1,8]; ax_mf4 = [1,1];          % elliptical axes' multiplying factors
 
@@ -54,18 +50,15 @@ else
     mu = mu_type(data_type,:);
 end
 
-% defining quadrants in the pc space
 x1 = min(all(:,1)):mu(1); x2 = mu(1):max(all(:,1));
 y1 = min(all(:,2)):mu(2); y2 = mu(2):max(all(:,2));
 
-% tmp variables contain the x,y coords of the grid
 [X1, Y1] = meshgrid(x1,y1); tmp1 = [X1(:) Y1(:)]; 
 [X2, Y2] = meshgrid(x2,y1); tmp2 = [X2(:) Y2(:)]; 
 [X3, Y3] = meshgrid(x2,y2); tmp3 = [X3(:) Y3(:)]; 
 [X4, Y4] = meshgrid(x1,y2); tmp4 = [X4(:) Y4(:)]; 
 
 %% Function 1 for SR
-% https://en.wikipedia.org/wiki/Multivariate_normal_distribution
 cov_mat_inv1 = cov_mat^-1;
 cov_mat_inv1(1,1) = ax_mf1(1)*cov_mat_inv1(1,1);
 cov_mat_inv1(2,2) = ax_mf1(2)*cov_mat_inv1(2,2);
@@ -101,26 +94,7 @@ for i = 1:length(Z4)
     Z4(i) = exp(-mf4*(tmp4(i,:) - mu)*cov_mat_inv4*(tmp4(i,:) - mu)');
 end
 
-%%%%%%%%%%
 
-% visualize the first Gaussian
-
-for i=1: length(X1)
-    for j = 1:length(Y1)
-        
-    Ztemp1(i,j) = (exp(-mf1*([X1(i), Y1(j)] - [-250 , -25])*...
-        cov_mat_inv1*([X1(i), Y1(j)] - [-250 , -25])'));
- 
-    end
-end
-
-figure(1)
-clf
-mesh(Ztemp1)
-
-keyboard
-
-%%%%%%%%%%%
 
 % Calculates the weights for each electrode and outputs it.
 
@@ -133,17 +107,16 @@ eval([sprintf('%s', test_patient_id), '=struct([]);']);
 
 e_count = 0;
 E_gauss = zeros(patient_info.(test_patient_id).events.ttl_electrodes, patient_info.(test_patient_id).events.nevents);
+E_gauss_sri= E_gauss;
 
 for k = 1:patient_info.(test_patient_id).events.nevents
-    % coordinates in pc space for this electrode for event k
     tmp1 = test_pc((e_count+1):(e_count + patient_info.(test_patient_id).events.ttl_electrodes), :);
-    
-    % now, to which grid points are they closest?
-    
+  
     sr_mu = tmp1(:,1) <=  mu(1) & tmp1(:,2) <= mu(2);
     mu1 = repmat(mu, size(tmp1(sr_mu,:),1),1);
     E_gauss(sr_mu, k) = diag(exp(-mf1*(tmp1(sr_mu,:) - mu1)*...
         cov_mat_inv1*(tmp1(sr_mu,:) - mu1)'));
+    
     
     fr_mu = tmp1(:,1) >=  mu(1) & tmp1(:,2) <= mu(2);
     mu2 = repmat(mu, size(tmp1(fr_mu,:),1),1);
@@ -155,20 +128,28 @@ for k = 1:patient_info.(test_patient_id).events.nevents
     E_gauss(snr_mu, k) = diag(exp(-mf3*(tmp1(snr_mu,:) - mu3)*...
         cov_mat_inv3*(tmp1(snr_mu,:) - mu3)'));
     
-    % each quadrant has a guassian distribution
     fnr_mu = tmp1(:,1) <=  mu(1) & tmp1(:,2) >= mu(2);
     mu4 = repmat(mu, size(tmp1(fnr_mu,:),1),1);
     E_gauss(fnr_mu, k) = diag(exp(-mf4*(tmp1(fnr_mu,:) - mu4)*...
         cov_mat_inv4*(tmp1(fnr_mu,:) - mu4)'));
 
     e_count = e_count + patient_info.(test_patient_id).events.ttl_electrodes;
+    
+        
+    for jj=1:length(tmp1)
+        E_gauss_sri(jj, k) = compute_weight(tmp1(jj,:),mu(1,:),cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
+    end
+
+   
     clear tmp1
 end
 
-% Averages the gaussian scores for each quadrant across all seizure events.
-% TODO: Average might not make sense if there is high variability.
-% This weighting function is a combination of the four gaussians.
-% gaussian*heaviside + gaussian*heaviside
+% figure(1)
+% clf
+% plot(E_gauss(:,1));
+% hold on
+% plot(E_gauss_sri(:,1))
+
 E_Weights = sum(E_gauss,2)/patient_info.(test_patient_id).events.nevents;
 
 tmp2 = zeros(size(E_Weights));

@@ -10,7 +10,7 @@ list_of_patients = {'PY04N007';'PY04N012';'PY04N013';'PY04N015';'PY05N005';'PY11
                     'PY12N005';'PY12N008';'PY12N010';'PY12N012';'PY13N003';'PY13N011';'PY14N004';...
                     'PY14N005'};
 
-eztrack_home = [getenv('HOME') '/dev/eztrack'];
+eztrack_home = [getenv('HOME') '/dev/eztrack/tools'];
 data_path = [eztrack_home '/data'];
 heatmap_path = [eztrack_home '/output/heatmap'];
 fsv_path = [eztrack_home '/output/fsv'];

@@ -1,3 +1,4 @@
+clear;
 home = getenv('HOME');
 fsv_path = [home '/dev/eztrack/tools/output/fsv'];
 f_info = load([home '/dev/eztrack/tools/data/patient_info.mat']);
