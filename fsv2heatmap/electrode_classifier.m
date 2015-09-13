@@ -58,7 +58,12 @@ y1 = min(all(:,2)):mu(2); y2 = mu(2):max(all(:,2));
 [X3, Y3] = meshgrid(x2,y2); tmp3 = [X3(:) Y3(:)]; 
 [X4, Y4] = meshgrid(x1,y2); tmp4 = [X4(:) Y4(:)]; 
 
+% 
+% quadrants = quadrants_from(X1, Y1, X2, Y2, X3, Y3, X4, Y4);
+% keyboard
+
 %% Function 1 for SR
+% Compute the https://en.wikipedia.org/wiki/Multivariate_normal_distribution
 cov_mat_inv1 = cov_mat^-1;
 cov_mat_inv1(1,1) = ax_mf1(1)*cov_mat_inv1(1,1);
 cov_mat_inv1(2,2) = ax_mf1(2)*cov_mat_inv1(2,2);
@@ -94,10 +99,7 @@ for i = 1:length(Z4)
     Z4(i) = exp(-mf4*(tmp4(i,:) - mu)*cov_mat_inv4*(tmp4(i,:) - mu)');
 end
 
-
-
 % Calculates the weights for each electrode and outputs it.
-
 Z = [Z1;Z2;Z3;Z4];
 clr_ind = linspace(min(Z), max(Z), number_heatmap_colors + 1);
 
@@ -117,7 +119,6 @@ for k = 1:patient_info.(test_patient_id).events.nevents
     E_gauss(sr_mu, k) = diag(exp(-mf1*(tmp1(sr_mu,:) - mu1)*...
         cov_mat_inv1*(tmp1(sr_mu,:) - mu1)'));
     
-    
     fr_mu = tmp1(:,1) >=  mu(1) & tmp1(:,2) <= mu(2);
     mu2 = repmat(mu, size(tmp1(fr_mu,:),1),1);
     E_gauss(fr_mu, k) = diag(exp(-mf2*(tmp1(fr_mu,:) - mu2)*...
@@ -135,12 +136,12 @@ for k = 1:patient_info.(test_patient_id).events.nevents
 
     e_count = e_count + patient_info.(test_patient_id).events.ttl_electrodes;
     
-        
+    % Potential simplification from Sri.
+    % Needs verification, since output changes the weights and ranks of the electrode labels.
     for jj=1:length(tmp1)
         E_gauss_sri(jj, k) = compute_weight(tmp1(jj,:),mu(1,:),cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
     end
 
-   
     clear tmp1
 end
 

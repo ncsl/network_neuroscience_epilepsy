@@ -1,4 +1,4 @@
-function weight = compute_weight(point,mu,cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
+function weight = compute_weight(point,mu,cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4)
 
 %This functions takes in a 2D PC point of an electrode.the mean of the patient type (e.g. temporal lobe) 
 %and outputs the heatmap weight
