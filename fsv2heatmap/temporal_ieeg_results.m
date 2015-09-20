@@ -13,14 +13,19 @@ list_of_patients = {'PY04N007';'PY04N012';'PY04N013';'PY04N015';'PY05N005';'PY11
 eztrack_home = [getenv('HOME') '/dev/eztrack/tools'];
 data_path = [eztrack_home '/data'];
 heatmap_path = [eztrack_home '/output/heatmap'];
+heatmap_filename = sprintf('%s_%s_CV_results_%s.mat', eeg_flag, lobe, date);
+heatmap_file = fullfile(heatmap_path, heatmap_filename);
 fsv_path = [eztrack_home '/output/fsv'];
 
 patient_info = load([data_path '/patient_info.mat']);
 
 heatmap = fsv2heatmap(fsv_path, list_of_patients, patient_type, number_heatmap_colors, patient_info);
 
-save(fullfile(heatmap_path, ...
-              sprintf('%s_%s_CV_results_%s.mat', eeg_flag, lobe, date)), ...
-              '-struct', 'heatmap');
+% temporarily keep saving to the mat file until we convert the existing files.
+save(heatmap_file, '-struct', 'heatmap');
+
+csv_filename = sprintf('%s_%s_CV_results_%s.csv', eeg_flag, lobe, date);
+csv_file = fullfile(heatmap_path, csv_filename);
+heatmap_to_csv(heatmap_file, csv_file);
 
 end
