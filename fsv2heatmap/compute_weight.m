@@ -28,12 +28,12 @@ h3x = heaviside(point(1)-center(1));
 h3y = heaviside(point(2)-center(2));
 
 h4x = heaviside(center(1)-point(1));
-h4y = heaviside(point(1)-center(2));
+h4y = heaviside(point(2)-center(2));
 
 %compute weight of point
 weight = exp(-mf1*(point-mu)*cov_mat_inv1*(point-mu)')*h1x*h1y + ...
-        exp(-mf2*(point-mu)*cov_mat_inv2*(point-mu)')*h2x*h2y + ...
-        exp(-mf3*(point-mu)*cov_mat_inv3*(point-mu)')*h3x*h3y + ...
-        exp(-mf4*(point-mu)*cov_mat_inv4*(point-mu)')*h4x*h4y;
+         exp(-mf2*(point-mu)*cov_mat_inv2*(point-mu)')*h2x*h2y + ...
+         exp(-mf3*(point-mu)*cov_mat_inv3*(point-mu)')*h3x*h3y + ...
+         exp(-mf4*(point-mu)*cov_mat_inv4*(point-mu)')*h4x*h4y;
 
 
