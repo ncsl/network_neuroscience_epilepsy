@@ -1,4 +1,4 @@
-function electrodes = electrode_classifier(data_type, test_element, patient_info, points, number_heatmap_colors)
+function classified_electrodes = electrode_classifier(data_type, test_element, patient_info, points, number_heatmap_colors)
 %-------------------------------------------------------------------------------------------
 %
 % Description: Creates electrode weights and heat maps for the given list of patients.
@@ -18,12 +18,15 @@ function electrodes = electrode_classifier(data_type, test_element, patient_info
 
 patients = fieldnames(patient_info);
 test_patient_id = patients{test_element};
+test = patient_info.(test_patient_id);
 
 sr = points.SR.all_PC;
 snr = points.SNR.all_PC;
 fr = points.FR.all_PC;
 fnr = points.FNR.all_PC;
 all = [sr; snr; fr; fnr];
+
+test_pc = points.TEST.all_PC;
 
 % Centers of the weighting function: "Parameters we found by testing after a couple of iterations."
 % Locations of the means in a Gaussian distribution, for example. 
@@ -117,16 +120,16 @@ cov_mat_inv = cat(3, cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
 Z = [Z1;Z2;Z3;Z4];
 clr_ind = linspace(min(Z), max(Z), number_heatmap_colors + 1);
 
-test_pc = points.TEST.all_PC;
-
 eval([sprintf('%s', test_patient_id), '=struct([]);']);
 
 e_count = 0;
-E_gauss = zeros(patient_info.(test_patient_id).events.ttl_electrodes, patient_info.(test_patient_id).events.nevents);
+num_electrodes = test.events.ttl_electrodes;
+num_seizures = test.events.nevents;
+E_gauss = zeros(num_electrodes, num_seizures);
 
-for k = 1:patient_info.(test_patient_id).events.nevents
-    tmp1 = test_pc((e_count+1):(e_count + patient_info.(test_patient_id).events.ttl_electrodes), :);
-    e_count = e_count + patient_info.(test_patient_id).events.ttl_electrodes;
+for k = 1:num_seizures
+    tmp1 = test_pc((e_count+1):(e_count + num_electrodes), :);
+    e_count = e_count + num_electrodes;
     
     for jj=1:length(tmp1)
         E_gauss(jj, k) = compute_weight(tmp1(jj,:), origin, mf, cov_mat_inv);
@@ -134,7 +137,7 @@ for k = 1:patient_info.(test_patient_id).events.nevents
     clear tmp1
 end
 
-E_Weights = sum(E_gauss,2)/patient_info.(test_patient_id).events.nevents;
+E_Weights = sum(E_gauss,2)/num_seizures;
 
 tmp2 = zeros(size(E_Weights));
 for i = 1:number_heatmap_colors
@@ -145,23 +148,23 @@ tmp2(E_Weights == clr_ind(end)) = 1; %#ok<NASGU>
 
 [~, ind] = sort(E_Weights, 'descend'); %#ok<ASGLU>
 
-for k = 1:patient_info.(test_patient_id).events.nevents
+for k = 1:num_seizures
     eval([sprintf('%s(1).E_gauss%d', test_patient_id, k), '= E_gauss(ind, k);']);
 end
 
 % TODO: Replace these dynamic expressions with a Map
 eval([sprintf('%s(1).E_Weights', test_patient_id), '= E_Weights(ind);']);
 eval([sprintf('%s(1).E_HeatCodes', test_patient_id), '= tmp2(ind);']);
-eval([sprintf('%s(1).E_labels', test_patient_id), '= patient_info.(test_patient_id).labels.values(ind).'';']);
+eval([sprintf('%s(1).E_labels', test_patient_id), '= test.labels.values(ind).'';']);
 
-tmp4 = patient_info.(test_patient_id).labels.values(:);
-R_E_labels = repmat({''}, patient_info.(test_patient_id).events.ttl_electrodes,1);
-R_E_labels(patient_info.(test_patient_id).events.RR_electrodes) = tmp4(patient_info.(test_patient_id).events.RR_electrodes); %#ok<NASGU>
+tmp4 = test.labels.values(:);
+R_E_labels = repmat({''}, num_electrodes,1);
+R_E_labels(test.events.RR_electrodes) = tmp4(test.events.RR_electrodes); %#ok<NASGU>
 eval([sprintf('%s(1).R_E_labels', test_patient_id), '= R_E_labels(ind);']);
 
-tmp5 = cellstr(upper(patient_info.(test_patient_id).type.outcome)); %#ok<NASGU>
+tmp5 = cellstr(upper(test.type.outcome)); %#ok<NASGU>
 eval([sprintf('%s(1).Outcome', test_patient_id), '= tmp5;']);
 
-electrodes = eval(sprintf('%s', test_patient_id));
+classified_electrodes = eval(sprintf('%s', test_patient_id));
 
 end
