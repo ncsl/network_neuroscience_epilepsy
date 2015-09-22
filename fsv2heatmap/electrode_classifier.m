@@ -38,7 +38,13 @@ mu_type = [-250, -25; ...
            -270, -80; ... %-120,-70;...%-100, -100;...%-340,-140;...%-145, -20;...
             130, -60]; %130, -50];
     
-mf1 = 2e-2; mf2 = 2.5*mf1; mf3 = 4*mf2; mf4 = 1e-3*mf3;                    % exponential multiplying factors
+% exponential multiplying factors
+mf1 = 2e-2; 
+mf2 = 2.5*mf1; 
+mf3 = 4*mf2; 
+mf4 = 1e-3*mf3;
+mf = [mf1 mf2 mf3 mf4];
+
 ax_mf1 = [1,1]; ax_mf2 = [0.2,1]; ax_mf3 = [1,8]; ax_mf4 = [1,1];          % elliptical axes' multiplying factors
 
 if data_type <= 3
@@ -69,34 +75,34 @@ cov_mat_inv1(1,1) = ax_mf1(1)*cov_mat_inv1(1,1);
 cov_mat_inv1(2,2) = ax_mf1(2)*cov_mat_inv1(2,2);
 Z1 = zeros(size(tmp1,1),1);
 for i = 1:length(Z1)
-    Z1(i) = exp(-mf1*(tmp1(i,:) - origin)*cov_mat_inv1*(tmp1(i,:) - origin)');
+    Z1(i) = exp(-mf(1)*(tmp1(i,:) - origin)*cov_mat_inv1*(tmp1(i,:) - origin)');
 end
 
 %% Function 2 for FR
 cov_mat_inv2 = cov_mat_inv1;
 cov_mat_inv2(1,1) = ax_mf2(1)*cov_mat_inv2(1,1);
-cov_mat_inv2(2,2) = ax_mf2(2)*mf1*cov_mat_inv2(2,2)/mf2;
+cov_mat_inv2(2,2) = ax_mf2(2)*mf(1)*cov_mat_inv2(2,2)/mf(2);
 Z2 = zeros(size(tmp2,1),1);
 for i = 1:length(Z2)
-    Z2(i) = exp(-mf2*(tmp2(i,:) - origin)*cov_mat_inv2*(tmp2(i,:) - origin)');
+    Z2(i) = exp(-mf(2)*(tmp2(i,:) - origin)*cov_mat_inv2*(tmp2(i,:) - origin)');
 end
 
 %% Function 3 for SNR
 cov_mat_inv3 = cov_mat_inv2;
-cov_mat_inv3(1,1) = ax_mf3(1)*mf2*cov_mat_inv3(1,1)/mf3;
+cov_mat_inv3(1,1) = ax_mf3(1)*mf(2)*cov_mat_inv3(1,1)/mf(3);
 cov_mat_inv3(2,2) = ax_mf3(2)*cov_mat_inv3(2,2);
 Z3 = zeros(size(tmp3,1),1);
 for i = 1:length(Z3)
-    Z3(i) = exp(-mf3*(tmp3(i,:) - origin)*cov_mat_inv3*(tmp3(i,:) - origin)');
+    Z3(i) = exp(-mf(3)*(tmp3(i,:) - origin)*cov_mat_inv3*(tmp3(i,:) - origin)');
 end
 
 %% Function 4 FNR
 cov_mat_inv4 = cov_mat_inv3;
-cov_mat_inv4(1,1) = ax_mf4(1)*mf1*cov_mat_inv1(1,1)/mf4;
-cov_mat_inv4(2,2) = ax_mf4(2)*mf3*cov_mat_inv3(2,2)/mf4;
+cov_mat_inv4(1,1) = ax_mf4(1)*mf(1)*cov_mat_inv1(1,1)/mf(4);
+cov_mat_inv4(2,2) = ax_mf4(2)*mf(3)*cov_mat_inv3(2,2)/mf(4);
 Z4 = zeros(size(tmp4,1),1);
 for i = 1:length(Z4)
-    Z4(i) = exp(-mf4*(tmp4(i,:) - origin)*cov_mat_inv4*(tmp4(i,:) - origin)');
+    Z4(i) = exp(-mf(4)*(tmp4(i,:) - origin)*cov_mat_inv4*(tmp4(i,:) - origin)');
 end
 
 % Calculates the weights for each electrode and outputs it.
@@ -115,7 +121,7 @@ for k = 1:patient_info.(test_patient_id).events.nevents
     e_count = e_count + patient_info.(test_patient_id).events.ttl_electrodes;
     
     for jj=1:length(tmp1)
-        E_gauss(jj, k) = compute_weight(tmp1(jj,:), origin, cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
+        E_gauss(jj, k) = compute_weight(tmp1(jj,:), origin, mf, cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
     end
     clear tmp1
 end
