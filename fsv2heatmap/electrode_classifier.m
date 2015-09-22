@@ -39,30 +39,36 @@ mu_type = [-250, -25; ...
             130, -60]; %130, -50];
     
 % exponential multiplying factors
-mf1 = 2e-2; 
-mf2 = 2.5*mf1; 
-mf3 = 4*mf2; 
+mf1 = 2e-2;
+mf2 = 2.5*mf1;
+mf3 = 4*mf2;
 mf4 = 1e-3*mf3;
 mf = [mf1 mf2 mf3 mf4];
 
-ax_mf1 = [1,1]; ax_mf2 = [0.2,1]; ax_mf3 = [1,8]; ax_mf4 = [1,1];          % elliptical axes' multiplying factors
+% elliptical axes' multiplying factors
+ax_mf1 = [1,1];
+ax_mf2 = [0.2,1];
+ax_mf3 = [1,8];
+ax_mf4 = [1,1];
 
-if data_type <= 3
-    cov_mat = cov(all);
-    origin = mu_type(data_type,:);
-else
+if data_type > 3
+    % TODO: What was different about Cleveland occipital data to require this?
     all(:,2) = -all(:,2);
-    cov_mat = cov(all);
-    origin = mu_type(data_type,:);
 end
 
-x1 = min(all(:,1)):origin(1); x2 = origin(1):max(all(:,1));
-y1 = min(all(:,2)):origin(2); y2 = origin(2):max(all(:,2));
+cov_mat = cov(all);
+origin = mu_type(data_type,:);
 
-[X1, Y1] = meshgrid(x1,y1); tmp1 = [X1(:) Y1(:)]; 
-[X2, Y2] = meshgrid(x2,y1); tmp2 = [X2(:) Y2(:)]; 
-[X3, Y3] = meshgrid(x2,y2); tmp3 = [X3(:) Y3(:)]; 
-[X4, Y4] = meshgrid(x1,y2); tmp4 = [X4(:) Y4(:)]; 
+% Set up the four quadrants
+x1 = min(all(:,1)):origin(1);
+x2 = origin(1):max(all(:,1));
+y1 = min(all(:,2)):origin(2);
+y2 = origin(2):max(all(:,2));
+
+[X1, Y1] = meshgrid(x1,y1); tmp1 = [X1(:) Y1(:)];
+[X2, Y2] = meshgrid(x2,y1); tmp2 = [X2(:) Y2(:)];
+[X3, Y3] = meshgrid(x2,y2); tmp3 = [X3(:) Y3(:)];
+[X4, Y4] = meshgrid(x1,y2); tmp4 = [X4(:) Y4(:)];
 
 % 
 % quadrants = quadrants_from(X1, Y1, X2, Y2, X3, Y3, X4, Y4);
