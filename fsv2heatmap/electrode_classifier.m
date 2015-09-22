@@ -105,6 +105,8 @@ for i = 1:length(Z4)
     Z4(i) = exp(-mf(4)*(tmp4(i,:) - origin)*cov_mat_inv4*(tmp4(i,:) - origin)');
 end
 
+cov_mat_inv = cat(3, cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
+
 % Calculates the weights for each electrode and outputs it.
 Z = [Z1;Z2;Z3;Z4];
 clr_ind = linspace(min(Z), max(Z), number_heatmap_colors + 1);
@@ -121,7 +123,7 @@ for k = 1:patient_info.(test_patient_id).events.nevents
     e_count = e_count + patient_info.(test_patient_id).events.ttl_electrodes;
     
     for jj=1:length(tmp1)
-        E_gauss(jj, k) = compute_weight(tmp1(jj,:), origin, mf, cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
+        E_gauss(jj, k) = compute_weight(tmp1(jj,:), origin, mf, cov_mat_inv);
     end
     clear tmp1
 end
