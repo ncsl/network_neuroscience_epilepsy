@@ -157,14 +157,6 @@ eval([sprintf('%s(1).E_Weights', test_patient_id), '= E_Weights(ind);']);
 eval([sprintf('%s(1).E_HeatCodes', test_patient_id), '= tmp2(ind);']);
 eval([sprintf('%s(1).E_labels', test_patient_id), '= test.labels.values(ind).'';']);
 
-tmp4 = test.labels.values(:);
-R_E_labels = repmat({''}, num_electrodes,1);
-R_E_labels(test.events.RR_electrodes) = tmp4(test.events.RR_electrodes); %#ok<NASGU>
-eval([sprintf('%s(1).R_E_labels', test_patient_id), '= R_E_labels(ind);']);
-
-tmp5 = cellstr(upper(test.type.outcome)); %#ok<NASGU>
-eval([sprintf('%s(1).Outcome', test_patient_id), '= tmp5;']);
-
 classified_electrodes = eval(sprintf('%s', test_patient_id));
 
 end
