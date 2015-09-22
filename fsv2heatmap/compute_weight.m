@@ -9,15 +9,7 @@ center = [-250, -25];
 %hard coded scale factors
 mf1 = 2e-2; mf2 = 2.5*mf1; mf3 = 4*mf2; mf4 = 1e-3*mf3; 
 
-%hard coded covariances - can compute from data as done in electrode
-%classifier
-% cov_mat_inv1 = 1.0e-03 * [0.0887   -0.0000 ; -0.0000    0.2782];
-% cov_mat_inv2 = 1.0e-03 *[ 0.0177   -0.0000 ; -0.0000    0.1113];
-% cov_mat_inv3 = 1.0e-03 *[ 0.0044   -0.0000;  -0.0000    0.8903];
-% cov_mat_inv4 = 1.0e-03 *[ 0.0089   -0.0000 ; -0.0000    0.8903];
-
-%heavyside functions evaluated at point to determine which quadrant point
-%lies in
+%heavyside functions evaluated at point to determine which quadrant point lies in
 h1x = heaviside(center(1)-point(1));
 h1y = heaviside(center(2)-point(2));
 

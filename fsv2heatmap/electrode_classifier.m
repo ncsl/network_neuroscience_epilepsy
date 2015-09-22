@@ -109,47 +109,17 @@ eval([sprintf('%s', test_patient_id), '=struct([]);']);
 
 e_count = 0;
 E_gauss = zeros(patient_info.(test_patient_id).events.ttl_electrodes, patient_info.(test_patient_id).events.nevents);
-E_gauss_sri= E_gauss;
 
 for k = 1:patient_info.(test_patient_id).events.nevents
     tmp1 = test_pc((e_count+1):(e_count + patient_info.(test_patient_id).events.ttl_electrodes), :);
-  
-    sr_mu = tmp1(:,1) <=  mu(1) & tmp1(:,2) <= mu(2);
-    mu1 = repmat(mu, size(tmp1(sr_mu,:),1),1);
-    E_gauss(sr_mu, k) = diag(exp(-mf1*(tmp1(sr_mu,:) - mu1)*...
-        cov_mat_inv1*(tmp1(sr_mu,:) - mu1)'));
-    
-    fr_mu = tmp1(:,1) >=  mu(1) & tmp1(:,2) <= mu(2);
-    mu2 = repmat(mu, size(tmp1(fr_mu,:),1),1);
-    E_gauss(fr_mu, k) = diag(exp(-mf2*(tmp1(fr_mu,:) - mu2)*...
-        cov_mat_inv2*(tmp1(fr_mu,:) - mu2)'));
-    
-    snr_mu = tmp1(:,1) >=  mu(1) & tmp1(:,2) >= mu(2);
-    mu3 = repmat(mu, size(tmp1(snr_mu,:),1),1);
-    E_gauss(snr_mu, k) = diag(exp(-mf3*(tmp1(snr_mu,:) - mu3)*...
-        cov_mat_inv3*(tmp1(snr_mu,:) - mu3)'));
-    
-    fnr_mu = tmp1(:,1) <=  mu(1) & tmp1(:,2) >= mu(2);
-    mu4 = repmat(mu, size(tmp1(fnr_mu,:),1),1);
-    E_gauss(fnr_mu, k) = diag(exp(-mf4*(tmp1(fnr_mu,:) - mu4)*...
-        cov_mat_inv4*(tmp1(fnr_mu,:) - mu4)'));
-
     e_count = e_count + patient_info.(test_patient_id).events.ttl_electrodes;
     
-    % Potential simplification from Sri.
-    % Needs verification, since output changes the weights and ranks of the electrode labels.
     for jj=1:length(tmp1)
-        E_gauss_sri(jj, k) = compute_weight(tmp1(jj,:),mu(1,:),cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
+        E_gauss(jj, k) = compute_weight(tmp1(jj,:),mu(1,:),cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
     end
 
     clear tmp1
 end
-
-% figure(1)
-% clf
-% plot(E_gauss(:,1));
-% hold on
-% plot(E_gauss_sri(:,1))
 
 E_Weights = sum(E_gauss,2)/patient_info.(test_patient_id).events.nevents;
 

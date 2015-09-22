@@ -1,9 +1,8 @@
 # EZTrack
 
-EZTrack is organized as a data processing toolchain to produce electrode weights and heatmap scores
-from EDF or MEF files.
+EZTrack produces electrode weights and heatmap scores from EEG signals in EDF or MEF files.
 
-The code is organized as follows:
+The code is organized as a data processing toolchain:
 
 ## data
 

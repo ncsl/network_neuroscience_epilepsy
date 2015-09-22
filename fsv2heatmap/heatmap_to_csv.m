@@ -1,7 +1,5 @@
-function heatmaps_to_csv(heatmaps, output_path, output_filename)
+function heatmap_to_csv(heatmaps, csv_file)
 % Save EZTrack heatmap struct as CSV.
-
-csv_file = [output_path output_filename '.csv'];
 
 file_id = fopen(csv_file, 'w');
 header = {'patient_id', 'label', 'weight', 'heatmap_color'};
