@@ -43,15 +43,15 @@ ax_mf1 = [1,1]; ax_mf2 = [0.2,1]; ax_mf3 = [1,8]; ax_mf4 = [1,1];          % ell
 
 if data_type <= 3
     cov_mat = cov(all);
-    mu = mu_type(data_type,:);    
+    origin = mu_type(data_type,:);
 else
     all(:,2) = -all(:,2);
     cov_mat = cov(all);
-    mu = mu_type(data_type,:);
+    origin = mu_type(data_type,:);
 end
 
-x1 = min(all(:,1)):mu(1); x2 = mu(1):max(all(:,1));
-y1 = min(all(:,2)):mu(2); y2 = mu(2):max(all(:,2));
+x1 = min(all(:,1)):origin(1); x2 = origin(1):max(all(:,1));
+y1 = min(all(:,2)):origin(2); y2 = origin(2):max(all(:,2));
 
 [X1, Y1] = meshgrid(x1,y1); tmp1 = [X1(:) Y1(:)]; 
 [X2, Y2] = meshgrid(x2,y1); tmp2 = [X2(:) Y2(:)]; 
@@ -69,7 +69,7 @@ cov_mat_inv1(1,1) = ax_mf1(1)*cov_mat_inv1(1,1);
 cov_mat_inv1(2,2) = ax_mf1(2)*cov_mat_inv1(2,2);
 Z1 = zeros(size(tmp1,1),1);
 for i = 1:length(Z1)
-    Z1(i) = exp(-mf1*(tmp1(i,:) - mu)*cov_mat_inv1*(tmp1(i,:) - mu)');
+    Z1(i) = exp(-mf1*(tmp1(i,:) - origin)*cov_mat_inv1*(tmp1(i,:) - origin)');
 end
 
 %% Function 2 for FR
@@ -78,7 +78,7 @@ cov_mat_inv2(1,1) = ax_mf2(1)*cov_mat_inv2(1,1);
 cov_mat_inv2(2,2) = ax_mf2(2)*mf1*cov_mat_inv2(2,2)/mf2;
 Z2 = zeros(size(tmp2,1),1);
 for i = 1:length(Z2)
-    Z2(i) = exp(-mf2*(tmp2(i,:) - mu)*cov_mat_inv2*(tmp2(i,:) - mu)');
+    Z2(i) = exp(-mf2*(tmp2(i,:) - origin)*cov_mat_inv2*(tmp2(i,:) - origin)');
 end
 
 %% Function 3 for SNR
@@ -87,7 +87,7 @@ cov_mat_inv3(1,1) = ax_mf3(1)*mf2*cov_mat_inv3(1,1)/mf3;
 cov_mat_inv3(2,2) = ax_mf3(2)*cov_mat_inv3(2,2);
 Z3 = zeros(size(tmp3,1),1);
 for i = 1:length(Z3)
-    Z3(i) = exp(-mf3*(tmp3(i,:) - mu)*cov_mat_inv3*(tmp3(i,:) - mu)');
+    Z3(i) = exp(-mf3*(tmp3(i,:) - origin)*cov_mat_inv3*(tmp3(i,:) - origin)');
 end
 
 %% Function 4 FNR
@@ -96,7 +96,7 @@ cov_mat_inv4(1,1) = ax_mf4(1)*mf1*cov_mat_inv1(1,1)/mf4;
 cov_mat_inv4(2,2) = ax_mf4(2)*mf3*cov_mat_inv3(2,2)/mf4;
 Z4 = zeros(size(tmp4,1),1);
 for i = 1:length(Z4)
-    Z4(i) = exp(-mf4*(tmp4(i,:) - mu)*cov_mat_inv4*(tmp4(i,:) - mu)');
+    Z4(i) = exp(-mf4*(tmp4(i,:) - origin)*cov_mat_inv4*(tmp4(i,:) - origin)');
 end
 
 % Calculates the weights for each electrode and outputs it.
@@ -115,9 +115,8 @@ for k = 1:patient_info.(test_patient_id).events.nevents
     e_count = e_count + patient_info.(test_patient_id).events.ttl_electrodes;
     
     for jj=1:length(tmp1)
-        E_gauss(jj, k) = compute_weight(tmp1(jj,:),mu(1,:),cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
+        E_gauss(jj, k) = compute_weight(tmp1(jj,:), origin, cov_mat_inv1, cov_mat_inv2, cov_mat_inv3, cov_mat_inv4);
     end
-
     clear tmp1
 end
 
@@ -125,8 +124,7 @@ E_Weights = sum(E_gauss,2)/patient_info.(test_patient_id).events.nevents;
 
 tmp2 = zeros(size(E_Weights));
 for i = 1:number_heatmap_colors
-    tmp3 = (E_Weights < clr_ind(i+1)) & ...
-        (E_Weights >= clr_ind(i));
+    tmp3 = (E_Weights < clr_ind(i+1)) & (E_Weights >= clr_ind(i));
     tmp2(tmp3) = (number_heatmap_colors - i) + 1;
 end
 tmp2(E_Weights == clr_ind(end)) = 1; %#ok<NASGU>
