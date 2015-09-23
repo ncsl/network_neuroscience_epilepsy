@@ -1,4 +1,4 @@
-function points = pcspace(fsv_path, patient_info, training_patient_indexes, test_patient_id)
+function points = pcspace(fsv_path, patient_info, training_patient_indexes, test_patient_index)
 
 %-----------------------------------------------------------------------------------
 %
@@ -22,7 +22,7 @@ function points = pcspace(fsv_path, patient_info, training_patient_indexes, test
 
 %% Variable initialization
 num_pat = numel(training_patient_indexes);
-test_index = find(training_patient_indexes == test_patient_id);
+test_index = find(training_patient_indexes == test_patient_index);
 
 patient_results = cell(1, num_pat);
 
@@ -43,7 +43,6 @@ for n = 1:num_pat
             fail_p_id = cat(2, fail_p_id, patient_results{n});
         end
     else
-        % TODO: Isn't this the same as the parameter that was passed in?
         test_p_id = patient_results{n};
     end
 end
@@ -66,71 +65,63 @@ number_of_points = 0;                                                      % cou
 
 pca_cent_flag = true;                                                      % true for centering in PCA
 
-
 %% Main loop
 % Scanning through each patient
 for n = 1:num_pat
     % TODO: patient_results{n} = patient_id
+    patient_id = patient_results{n};
+    patient = patient_info.(patient_id);
     
     % Load the file containing information about eigenvalues from crosspowers
-    f1 = load(fullfile(fsv_path, sprintf('fsv_pwr%s', patient_results{n}))); %#ok<NASGU>
+    f1 = load(fullfile(fsv_path, sprintf('fsv_pwr%s', patient_id))); %#ok<NASGU>
     
     % Extract non-resected electrodes into a seperate array
-    non_resected_electrodes = setdiff(1:patient_info.(patient_results{n}).events.ttl_electrodes, patient_info.(patient_results{n}).events.RR_electrodes);
+    non_resected_electrodes = setdiff(1:patient.events.ttl_electrodes, patient.events.RR_electrodes);
     
-    number_of_points = number_of_points + patient_info.(patient_results{n}).events.nevents * patient_info.(patient_results{n}).events.ttl_electrodes;
+    number_of_points = number_of_points + patient.events.nevents * patient.events.ttl_electrodes;
     
-    
-    for k = 1:patient_info.(patient_results{n}).events.nevents
+    for k = 1:patient.events.nevents
         
-        % Extracting the eigen centrality from file 
+        % Extract eigenvector centrality from file 
         cent = eval(sprintf('f1.snap%d_%s', k, freqband{2}));
         cent = abs(cent);
         cent(cent < 1*10^-10) = 0;
         
-
-        if  pre < patient_info.(patient_results{n}).events.start_marks(k) && ...
-            patient_info.(patient_results{n}).events.end_marks(k)+post < size(cent,2)
+        if  pre < patient.events.start_marks(k) && ...
+            patient.events.end_marks(k)+post < size(cent,2)
             
             % Extracting seizure duration and the flanks information
-            dur = patient_info.(patient_results{n}).events.start_marks(k):...
-                patient_info.(patient_results{n}).events.end_marks(k);                      % Seizure duration
-            dur1 = patient_info.(patient_results{n}).events.start_marks(k)-pre:...
-                patient_info.(patient_results{n}).events.start_marks(k)-1;                  % Pre-Seizure duration
-            dur2 = patient_info.(patient_results{n}).events.end_marks(k)+1:...
-                patient_info.(patient_results{n}).events.end_marks(k)+post;                 % Post-Seizure duration
+            dur = patient.events.start_marks(k):...
+                patient.events.end_marks(k);                      % Seizure duration
             
-            % Setting the flag
-            if length(dur) ~= max_dur
-                dur_flag = 1;
-                interval = linspace(1, length(dur), max_dur);
-            else
-                dur_flag = 0;
-            end
+            dur1 = patient.events.start_marks(k)-pre:...
+                patient.events.start_marks(k)-1;                  % Pre-Seizure duration
+            
+            dur2 = patient.events.end_marks(k)+1:...
+                patient.events.end_marks(k)+post;                 % Post-Seizure duration
             
             % Converting eigen vector centrality to rank centrality
             rankcent = ranking(cent(:, dur), 'ascend');
             flank1 = ranking(cent(:, dur1), 'ascend');
             flank2 = ranking(cent(:, dur2), 'ascend');
             
-            clear cent
-            
             %checking for any illegal entries in the electrode rank centrality matrix
-            if ~(isempty(find(rankcent > patient_info.(patient_results{n}).events.ttl_electrodes, 1))...
-                    || isempty(find(flank1 > patient_info.(patient_results{n}).events.ttl_electrodes, 1))...
-                    || isempty(find(flank2 > patient_info.(patient_results{n}).events.ttl_electrodes, 1))...
+            if ~(isempty(find(rankcent > patient.events.ttl_electrodes, 1))...
+                    || isempty(find(flank1 > patient.events.ttl_electrodes, 1))...
+                    || isempty(find(flank2 > patient.events.ttl_electrodes, 1))...
                     || isempty(find(rankcent < 1, 1))...
                     || isempty(find(flank1 < 1, 1))...
                     || isempty(find(flank2 < 1, 1)))
                 error('Error in rank centrality: Illegal entries in the matrix');
             end
             
-            %Normalization in length (#time points)
-            if dur_flag
+            % Normalization in length (#time points)
+            if length(dur) ~= max_dur
+                interval = linspace(1, length(dur), max_dur);
                 rankcent = interp1(1:length(dur), rankcent', interval, 'linear')';
             end
                         
-            if ~(isempty(find(rankcent > patient_info.(patient_results{n}).events.ttl_electrodes, 1)) || ...
+            if ~(isempty(find(rankcent > patient.events.ttl_electrodes, 1)) || ...
                  isempty(find(rankcent < 1, 1)))
                 error('Error in rankcentrality interpolation: Illegal matrix entries');
             end
@@ -139,12 +130,12 @@ for n = 1:num_pat
             rankcent = cat(2, flank1, rankcent, flank2);
             
             % Smoothing the rank signal with a sliding window of size 'window'
-            for etd = 1:patient_info.(patient_results{n}).events.ttl_electrodes
+            for etd = 1:patient.events.ttl_electrodes
                 rankcent(etd,:) = smooth(rankcent(etd,:), window, 'moving');
             end
             
             % Normalizing in y-axis
-            rankcent = rankcent./patient_info.(patient_results{n}).events.ttl_electrodes;
+            rankcent = rankcent./patient.events.ttl_electrodes;
             
             % TODO: rankcent should now only have values from 0 to 1
             
@@ -168,8 +159,8 @@ for n = 1:num_pat
             % TODO: Extract function
             %
             % Extracting the variables for CDF (10 dimensional feature vectors)
-            I = zeros(patient_info.(patient_results{n}).events.ttl_electrodes, length_cdf);
-            for i = 1:patient_info.(patient_results{n}).events.ttl_electrodes
+            I = zeros(patient.events.ttl_electrodes, length_cdf);
+            for i = 1:patient.events.ttl_electrodes
                 for j = 1:length_cdf
                     I(i,j) = find(ci(i, :) <= cdf(j), 1, 'last');
                 end
@@ -177,31 +168,29 @@ for n = 1:num_pat
             % I is now number of electrodes by length of cdf
             %----------------------------
             
-            % Classifying and seggregating electrodes into 4 groups
+            % Classifying and segregating electrodes into 4 groups
             %   1. Success and Resected (SR)
             %   2. Success and not Resected (SNR)
             %   3. Failure and Resected (FR)
             %   4. Failure and not Resected (FNR)
-            switch patient_results{n}
+            switch patient_id
                 case succ_p_id
-                    points.SR.rank = cat(1, points.SR.rank, rankcent(patient_info.(patient_results{n}).events.RR_electrodes, :));
-                    points.SR.cdfs = cat(1, points.SR.cdfs, I(patient_info.(patient_results{n}).events.RR_electrodes, :));
+                    points.SR.rank = cat(1, points.SR.rank, rankcent(patient.events.RR_electrodes, :));
+                    points.SR.cdfs = cat(1, points.SR.cdfs, I(patient.events.RR_electrodes, :));
                     points.SNR.rank = cat(1, points.SNR.rank, rankcent(non_resected_electrodes, :));
                     points.SNR.cdfs = cat(1, points.SNR.cdfs, I(non_resected_electrodes, :));
                 case fail_p_id
-                    points.FR.rank = cat(1, points.FR.rank, rankcent(patient_info.(patient_results{n}).events.RR_electrodes, :));
-                    points.FR.cdfs = cat(1, points.FR.cdfs, I(patient_info.(patient_results{n}).events.RR_electrodes, :));
+                    points.FR.rank = cat(1, points.FR.rank, rankcent(patient.events.RR_electrodes, :));
+                    points.FR.cdfs = cat(1, points.FR.cdfs, I(patient.events.RR_electrodes, :));
                     points.FNR.rank = cat(1, points.FNR.rank, rankcent(non_resected_electrodes, :));
                     points.FNR.cdfs = cat(1, points.FNR.cdfs, I(non_resected_electrodes, :));
                 case test_p_id
                     points.TEST.rank = cat(1, points.TEST.rank, rankcent);
                     points.TEST.cdfs = cat(1, points.TEST.cdfs, I);
-                    number_of_points = number_of_points - patient_info.(patient_results{n}).events.ttl_electrodes;
+                    number_of_points = number_of_points - patient.events.ttl_electrodes;
             end
-            clear rankcent
         end
     end
-    clear f1
 end
 
 %% Initialization for PCA
