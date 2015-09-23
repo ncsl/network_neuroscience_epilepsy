@@ -1,12 +1,11 @@
-function q = quadrant(x, y, origin, mf, cov_mat_inv)
-
-% Compute the https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+function q = quadrant(x, y, origin, mf, inv_cov_mat)
 
 [X, Y] = meshgrid(x,y);
 surface = [X(:) Y(:)];
 q = zeros(size(surface,1), 1);
 for i = 1:length(q)
-    q(i) = exp(-mf * (surface(i,:) - origin) * cov_mat_inv * (surface(i,:) - origin)');
+    % Compute the https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+    q(i) = exp(-mf * (surface(i,:) - origin) * inv_cov_mat * (surface(i,:) - origin)');
 end
 
 end

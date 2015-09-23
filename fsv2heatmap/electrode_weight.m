@@ -1,4 +1,4 @@
-function weight = compute_weight(point, origin, mf, cov_mat_inv)
+function weight = electrode_weight(point, origin, mf, cov_mat_inv)
 
 % This functions takes in a 2D PC point of an electrode.the mean of the patient type 
 % (e.g. temporal lobe) and outputs the heatmap weight.
