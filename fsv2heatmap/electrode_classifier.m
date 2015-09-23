@@ -113,45 +113,12 @@ x2 = origin(1):max(all(:,1));
 y1 = min(all(:,2)):origin(2);
 y2 = origin(2):max(all(:,2));
 
-[X1, Y1] = meshgrid(x1,y1);
-tmp1 = [X1(:) Y1(:)];
-[X2, Y2] = meshgrid(x2,y1);
-tmp2 = [X2(:) Y2(:)];
-[X3, Y3] = meshgrid(x2,y2);
-tmp3 = [X3(:) Y3(:)];
-[X4, Y4] = meshgrid(x1,y2);
-tmp4 = [X4(:) Y4(:)];
+Z1 = quadrant(x1, y1, origin, mf(1), cov_mat_inv(:,:,1)); % SR
+Z2 = quadrant(x2, y1, origin, mf(2), cov_mat_inv(:,:,2)); % FR
+Z3 = quadrant(x2, y2, origin, mf(3), cov_mat_inv(:,:,3)); % SNR
+Z4 = quadrant(x1, y2, origin, mf(4), cov_mat_inv(:,:,4)); % FNR
 
-% quadrants = quadrants_from(X1, Y1, X2, Y2, X3, Y3, X4, Y4);
-% keyboard
-
-% Computes the https://en.wikipedia.org/wiki/Multivariate_normal_distribution
-
-% SR
-Z1 = zeros(size(tmp1,1),1);
-for i = 1:length(Z1)
-    Z1(i) = exp(-mf(1)*(tmp1(i,:) - origin)*cov_mat_inv1*(tmp1(i,:) - origin)');
-end
-
-% FR
-Z2 = zeros(size(tmp2,1),1);
-for i = 1:length(Z2)
-    Z2(i) = exp(-mf(2)*(tmp2(i,:) - origin)*cov_mat_inv2*(tmp2(i,:) - origin)');
-end
-
-% SNR
-Z3 = zeros(size(tmp3,1),1);
-for i = 1:length(Z3)
-    Z3(i) = exp(-mf(3)*(tmp3(i,:) - origin)*cov_mat_inv3*(tmp3(i,:) - origin)');
-end
-
-% FNR
-Z4 = zeros(size(tmp4,1),1);
-for i = 1:length(Z4)
-    Z4(i) = exp(-mf(4)*(tmp4(i,:) - origin)*cov_mat_inv4*(tmp4(i,:) - origin)');
-end
-
-Z = [Z1;Z2;Z3;Z4];
+Z = [Z1; Z2; Z3; Z4];
 clr_ind = linspace(min(Z), max(Z), number_heatmap_colors + 1);
 
 heatcodes = zeros(size(E_Weights));
@@ -162,9 +129,8 @@ end
 heatcodes(E_Weights == clr_ind(end)) = 1;
 %% end
 
-[~, index_descending] = sort(E_Weights, 'descend');
-
 classified_electrodes = struct('E_Weights', []);
+[~, index_descending] = sort(E_Weights, 'descend');
 [classified_electrodes.E_Weights(1:length(E_Weights))] = deal(E_Weights(index_descending));
 [classified_electrodes.E_HeatCodes(1:length(heatcodes))] = deal(heatcodes(index_descending));
 classified_electrodes.E_labels = test.labels.values(index_descending);
