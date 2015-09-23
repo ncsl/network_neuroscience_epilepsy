@@ -18,6 +18,8 @@ temporal:
 	cd $(PROJECT_HOME)/fsv2heatmap && \
 		$(matlab_jvm) "csv_file = temporal_ieeg_results; display(csv_file); exit" > $(temporal_out)
 
+test: tests
+
 tests: test-classifier test-fsv2heatmap
 
 test-classifier:
