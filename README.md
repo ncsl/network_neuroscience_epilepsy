@@ -3,9 +3,17 @@
 EZTrack produces electrode weights and heatmap scores from EEG signals in EDF or MEF files.
 
 
-## Running
+## Getting Started
 
-Check the `makefile` for available targets to run EZTrack in development mode.
+`source .env`
+
+`make all`
+
+## Development
+
+After making changes to the code, run the tests to ensure things are still working:
+
+`make test`
 
 
 ## Structure
