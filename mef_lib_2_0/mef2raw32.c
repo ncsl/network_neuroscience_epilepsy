@@ -1,25 +1,13 @@
 /*
 
- *  mef2raw32.c
- *
-
  Program to read mef format file (v.2) and save data as raw 32bit integers
  Reads entire input file, decodes, and then saves entire output file.
-
- Multiscale electrophysiology format example program
-
 
  To compile for a 64-bit intel system: (options will vary depending on your particular compiler and platform)
  Intel Compiler: icc mef2raw32.c mef_lib.c endian_functions.c AES_encryption.c RED_decode.c RED_encode.c crc_32.c -o mef2raw -fast -m64
  GCC: gcc mef2raw32.c mef_lib.c endian_functions.c AES_encryption.c RED_decode.c RED_encode.c crc_32.c -o mef2raw -O3 -arch x86_64
 
- For 32-bit systems write over size_types.h with size_types_32.h before compiling. You will also need to change
- compiler flags.
-
- This software is made freely available under the GNU public license: http://www.gnu.org/licenses/gpl-3.0.txt
-
- Thanks to all who acknowledge the Mayo Systems Electrophysiology Laboratory, Rochester, MN
- in academic publications of their work facilitated by this software.
+ For 32-bit systems write over size_types.h with size_types_32.h before compiling. You will also need to change compiler flags.
 
  */
 

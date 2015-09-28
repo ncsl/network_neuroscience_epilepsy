@@ -1,19 +1,9 @@
 /*
-    read_mef_header.c
+  read mef format file header (v.2) and display output
 
- Program to read mef format file header (v.2) and display output
-
- Multiscale electrophysiology format example program
-
-
- To compile for a 64-bit intel system: (options will vary depending on your particular compiler and platform)
- Intel Compiler: icc read_mef_header.c mef_lib.c endian_functions.c AES_encryption.c RED_encode.c crc_32.c -o rmh -fast -m64
- GCC: gcc read_mef_header.c mef_lib.c endian_functions.c AES_encryption.c RED_encode.c crc_32.c -o rmh -O3 -arch x86_64
-
- This software is made freely available under the GNU public license: http://www.gnu.org/licenses/gpl-3.0.txt
-
- Thanks to all who acknowledge the Mayo Systems Electrophysiology Laboratory, Rochester, MN
- in academic publications of their work facilitated by this software.
+  To compile for a 64-bit intel system: (options will vary depending on your particular compiler and platform)
+  Intel Compiler: icc read_mef_header.c mef_lib.c endian_functions.c AES_encryption.c RED_encode.c crc_32.c -o rmh -fast -m64
+  GCC: gcc read_mef_header.c mef_lib.c endian_functions.c AES_encryption.c RED_encode.c crc_32.c -o rmh -O3 -arch x86_64
 
 */
 
