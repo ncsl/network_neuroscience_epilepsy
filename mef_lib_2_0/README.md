@@ -1,7 +1,15 @@
-mef_lib_2_0
-===========
+# Multiscale Electrophysiology Format version 2.0
 
-Multiscale Electrophysiology Format version 2.0
+## Usage
+
+`make`
+
+`mef2txt /path.mef` => /path.txt
+
+/path.txt will contain an int on each line.
+
+
+## License
 
 Copyright 2012, Mayo Foundation, Rochester MN. All rights reserved
 Written by Ben Brinkmann, Matt Stead, and Dan Crepeau
@@ -17,6 +25,9 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+
+## Acknowledgements
 
 Thanks to all who acknowledge the Mayo Systems Electrophysiology Laboratory, Rochester, MN
 in academic publications of their work facilitated by this software. (http://mayoresearch.mayo.edu/mayo/research/msel/)
