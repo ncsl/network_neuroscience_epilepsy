@@ -1,15 +1,12 @@
-targets = anon_mef check_mef edf2mef mef2ascii mef2raw32 read_mef_header
-cc = gcc -o bin/$* $*.c mef_lib.c -I . -m64 -O3 -arch x86_64
+CC = gcc
+CFLAGS = -Wall -Wextra -Wshadow -Wformat-nonliteral -Wformat-security -m64 -O3 -arch x86_64
+LDLIBS = -lm
 
-.PHONY: $(targets)
+programs = anon_mef check_mef edf2mef mef2ascii mef2raw32 read_mef_header
 
-all: $(targets:%=build-%)
+all: $(programs)
 
-bin:
-	mkdir bin
-
-build-%: bin
-	$(cc)
+$(programs): mef_lib.o
 
 clean:
-	rm -rf bin
+	$(RM) *.o $(programs)

@@ -1,3 +1,4 @@
+*.o
 anon_mef
 check_mef
 edf2mef
