@@ -181,7 +181,7 @@ int main (int argc, const char * argv[]) {
   fprintf(stdout, "\n\nWriting file %s: %ld entries \n", outFileName, entryCounter);
 
   // Write the ints to the file as text
-  for (n=0;n<entryCounter;n++) num += fprintf (fp, "%d\n", data[n]);
+  for (n=0;n<entryCounter;n++) num += fprintf (fp, "%f\n", (data[n] * header.voltage_conversion_factor));
 
   fclose(fp); fclose(out_fp);
   free(data); data = NULL;
