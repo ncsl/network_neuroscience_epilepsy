@@ -48,10 +48,10 @@ patient_file_names = {patient_files.name};
 % TODO: If we're going to filter channels, this fn takes a parameter 'included_chn' to do so.
 
 for i = 1:length(patient_file_names)
-    svd_decomposition([patient_file_path '/adj_pwr'], patient_file_names{i}, num_channels);
+    svd_decomposition([patient_file_path '/adj_pwr'], patient_file_names{i}, num_channels, [1:4 7:89]);
 end
 
-% svdVectorPath = sprintf('%s%s%s/adj_pwr/svd_vectors', home, eegHome, patient);
+svd_vector_path = sprintf('%s%s%s/adj_pwr/svd_vectors', home, eegHome, patient);
 % svdVectorFile = 'svd_l_pwr_PY12N008_07_21_2012_14-05-48_640sec_gamma.dat';
 
 % extraction_vectors(svdVectorPath, svdVectorFile, nChannels);

@@ -168,17 +168,18 @@ for k=1:length(position)
         if ~exist(sprintf('%s/svd_vectors', pathval), 'dir')
             mkdir(sprintf('%s', pathval), 'svd_vectors');
         end
+
         fid2 = fopen(sprintf('%s/svd_vectors/svd_l_%s',pathval,listfile(position(k)).name(5:end)),'ab');
         fwrite(fid2,U(:),'single');
         fclose(fid2);
 
         % TODO: Only the vectors are used later, not the values.
-        if ~exist(sprintf('%s/svd_values', pathval), 'dir')
-            mkdir(sprintf('%s', pathval), 'svd_values');
-        end
-        fid2 = fopen(sprintf('%s/svd_values/svd_v_%s',pathval,listfile(position(k)).name(5:end)),'ab');
-        fwrite(fid2,diag(S),'single');
-        fclose(fid2);
+%         if ~exist(sprintf('%s/svd_values', pathval), 'dir')
+%             mkdir(sprintf('%s', pathval), 'svd_values');
+%         end
+%         fid2 = fopen(sprintf('%s/svd_values/svd_v_%s',pathval,listfile(position(k)).name(5:end)),'ab');
+%         fwrite(fid2,diag(S),'single');
+%         fclose(fid2);
 
         % step 6: update the pointer
         lastbyte = lastbyte+ndata*nbytes;

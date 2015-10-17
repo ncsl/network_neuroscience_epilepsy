@@ -12,7 +12,7 @@ for k = 1:num_seizures
     end
 end
 
+% TODO: modify for heatmap / event. Return the gaussian matrix, let the client decide whether to average.
 weights = sum(gaussian,2) / num_seizures;
 
 end
-

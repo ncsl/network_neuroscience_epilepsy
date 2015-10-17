@@ -35,3 +35,10 @@ temporal:
 
 test-fsv2heatmap: temporal
 	diff `grep $(PROJECT_HOME) $(temporal_out)` $(heatmap_output)/$(reference_heatmap).csv
+
+
+go: test-eeg2fsv
+
+test-eeg2fsv:
+	ls $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr | xargs -I% cmp $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr/% \
+		"$$HOME/Desktop/EZTrack Reference Data/PY12N008/adj_pwr/%"
