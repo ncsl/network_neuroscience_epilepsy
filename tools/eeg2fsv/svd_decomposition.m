@@ -62,13 +62,14 @@ end
 
 % extract the list of files stored in the directory
 listfile = dir(pathval);
+[~,basename,~] = fileparts(filename);
 
 % find the files whose name begins with "adj_" and contains "filename"
 locations = false(size(listfile));
 for i=1:length(locations)
     locations(i) = (~isempty(strfind(listfile(i).name,'adj_')) &&...
                     ~isempty(strfind(listfile(i).name,'.dat')) &&...
-                    ~isempty(strfind(listfile(i).name,filename)));
+                    ~isempty(strfind(listfile(i).name,basename)));
 end
 
 if (sum(locations)==0)
@@ -102,11 +103,6 @@ position = find(locations==true);
 % number of bytes per number (it corresponds to the type "float")
 nbytes = 4;
 
-% open the log file
-if ~exist(sprintf('%s/svd_log', pathval), 'dir')
-    mkdir(sprintf('%s', pathval), 'svd_log');
-end
-fid0 = fopen(sprintf('%s/svd_log/%s_log.dat',pathval,filename),'a');
 %--------------------------------------------------------------------------
 
 
@@ -123,87 +119,77 @@ for k=1:length(position)
     fseek(fid,0,'eof');
     lengthfile = ftell(fid);
     if (lengthfile==-1)
-        fclose(fid); clear fid
-        error('Error: file %s not open correctly',listfile(position(k)).name); 
-    else
-        
-        % set the pointer to the beginning of the file
-        fseek(fid,0,'bof');
-        
-        % initialize the pointer to the last accessed byte in the file
-        lastbyte = 0;
-        
-        % extract sequentially every matrix stored in the file
-        while (lastbyte<lengthfile)
-            
-            % step 1: extract the 1-D array correspondent to the current
-            %         matrix
-            ndata = num_channels*(num_channels+1)/2;
-            fseek(fid,lastbyte,'bof');
-            data =fread(fid,ndata,'single');
-            data(isnan(data)) = 0;
-
-            % step 2: reshape the 1-D array into a 2-D array
-            A = diag(data(1:num_channels));
-            pointer = num_channels;
-            for j=1:num_channels-1
-                A(j,j+1:num_channels) = data(pointer+1:pointer+num_channels-j);
-                A(j+1:num_channels,j) = A(j,j+1:num_channels)';
-                pointer = pointer+num_channels-j;
-            end
-            
-            % step 3: remove the rows and columns associated with the
-            %         channels not carrying information
-            A = A(included_chn,included_chn);
-
-            % step 4: singular value decomposition
-            A(isnan(A)) = 0;
-            if (sum(sum(abs(A)))>0)
-                [U,S,~] = svd(A);
-% % %                 [U,S,V] = svd(A);
-            else
-                U = eye(size(A,1));
-% % %                 V = eye(size(A,2));
-                S = zeros(size(A));
-            end                
-            
-            % step 5: save singular values and vectors in a *.dat file.
-            %         Note that the singular vectors are stored by column
-            %         (from the first to the last). Decrescent order is
-            %         also used for the singular values.
-            
-            if ~exist(sprintf('%s/svd_vectors', pathval), 'dir')
-                mkdir(sprintf('%s', pathval), 'svd_vectors');
-            end
-            fid2 = fopen(sprintf('%s/svd_vectors/svd_l_%s',pathval,listfile(position(k)).name(5:end)),'ab');
-            fwrite(fid2,U(:),'single');
-            fclose(fid2);
-            
-            % TODO: Only the vectors are used later, not the values.
-            if ~exist(sprintf('%s/svd_values', pathval), 'dir')
-                mkdir(sprintf('%s', pathval), 'svd_values');
-            end
-            fid2 = fopen(sprintf('%s/svd_values/svd_v_%s',pathval,listfile(position(k)).name(5:end)),'ab');
-            fwrite(fid2,diag(S),'single');
-            fclose(fid2);
-
-            % step 6: update the pointer
-            lastbyte = lastbyte+ndata*nbytes;
-            clear A U S V data pointer j ndata
-        end
-        
-        % close the current file
         fclose(fid);
-        clear fid lastbyte
+        error('Error: file %s not open correctly', listfile(position(k)).name); 
     end
-    fprintf(fid0,'file %s - svd completed\n',listfile(position(k)).name);
-    clear lengthfile
+        
+    % set the pointer to the beginning of the file
+    fseek(fid,0,'bof');
+
+    % initialize the pointer to the last accessed byte in the file
+    lastbyte = 0;
+
+    % extract sequentially every matrix stored in the file
+    while (lastbyte<lengthfile)
+
+        % step 1: extract the 1-D array correspondent to the current matrix
+        ndata = num_channels*(num_channels+1)/2;
+        fseek(fid,lastbyte,'bof');
+        data =fread(fid,ndata,'single');
+        data(isnan(data)) = 0;
+
+        % step 2: reshape the 1-D array into a 2-D array
+        A = diag(data(1:num_channels));
+        pointer = num_channels;
+        for j=1:num_channels-1
+            A(j,j+1:num_channels) = data(pointer+1:pointer+num_channels-j);
+            A(j+1:num_channels,j) = A(j,j+1:num_channels)';
+            pointer = pointer+num_channels-j;
+        end
+
+        % step 3: remove the rows and columns associated with the
+        %         channels not carrying information
+        A = A(included_chn,included_chn);
+
+        % step 4: singular value decomposition
+        A(isnan(A)) = 0;
+        if (sum(sum(abs(A)))>0)
+            [U,S,~] = svd(A);
+        else
+            U = eye(size(A,1));
+            S = zeros(size(A));
+        end                
+
+        % step 5: save singular values and vectors in a *.dat file.
+        %         Note that the singular vectors are stored by column
+        %         (from the first to the last). Decrescent order is
+        %         also used for the singular values.
+
+        if ~exist(sprintf('%s/svd_vectors', pathval), 'dir')
+            mkdir(sprintf('%s', pathval), 'svd_vectors');
+        end
+        fid2 = fopen(sprintf('%s/svd_vectors/svd_l_%s',pathval,listfile(position(k)).name(5:end)),'ab');
+        fwrite(fid2,U(:),'single');
+        fclose(fid2);
+
+        % TODO: Only the vectors are used later, not the values.
+        if ~exist(sprintf('%s/svd_values', pathval), 'dir')
+            mkdir(sprintf('%s', pathval), 'svd_values');
+        end
+        fid2 = fopen(sprintf('%s/svd_values/svd_v_%s',pathval,listfile(position(k)).name(5:end)),'ab');
+        fwrite(fid2,diag(S),'single');
+        fclose(fid2);
+
+        % step 6: update the pointer
+        lastbyte = lastbyte+ndata*nbytes;
+    end
+
+    % close the current file
+    fclose(fid);
+
+    display(sprintf('file %s - svd completed\n', listfile(position(k)).name));
 end
 
-% save the CPU time required for the computation in the log file and close
-% the log file
-t = toc;
-fprintf(fid0,'cpu time used: %f\n',t);
-fclose(fid0);
+display(sprintf('cpu time used: %f\n',toc));
 
 end

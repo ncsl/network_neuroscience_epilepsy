@@ -36,18 +36,20 @@ patient_file_names = {patient_files.name};
 %------------------------------------------------------------------------------
 % 1. Compute adjacency matrix sequence
 % - matrices are stored into 1-D arrays
-parpool;
-parfor i = 1:length(patient_file_names)
-    power_coherence(patient_file_path, patient_file_names{i}, num_channels, frequency, sample_to_access);
-end
-delete(gcp('nocreate'));
+% parpool;
+% parfor i = 1:length(patient_file_names)
+%     power_coherence(patient_file_path, patient_file_names{i}, num_channels, frequency, sample_to_access);
+% end
+% delete(gcp('nocreate'));
 
 %------------------------------------------------------------------------------
 
 % 2. Compute ranked-Eigenvector Centrality (rEVC) sequence
 % TODO: If we're going to filter channels, this fn takes a parameter 'included_chn' to do so.
-% svd_decomposition([pathval '/adj_pwr'], patientFile, nChannels);
 
+for i = 1:length(patient_file_names)
+    svd_decomposition([patient_file_path '/adj_pwr'], patient_file_names{i}, num_channels);
+end
 
 % svdVectorPath = sprintf('%s%s%s/adj_pwr/svd_vectors', home, eegHome, patient);
 % svdVectorFile = 'svd_l_pwr_PY12N008_07_21_2012_14-05-48_640sec_gamma.dat';
