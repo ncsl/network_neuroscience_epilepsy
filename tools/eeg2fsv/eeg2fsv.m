@@ -41,21 +41,19 @@ patient_file_names = {patient_files.name};
 %     power_coherence(patient_file_path, patient_file_names{i}, num_channels, frequency, sample_to_access);
 % end
 % delete(gcp('nocreate'));
-
+%
 %------------------------------------------------------------------------------
 
 % 2. Compute ranked-Eigenvector Centrality (rEVC) sequence
-% TODO: If we're going to filter channels, this fn takes a parameter 'included_chn' to do so.
-
 for i = 1:length(patient_file_names)
-    svd_decomposition([patient_file_path '/adj_pwr'], patient_file_names{i}, num_channels, [1:4 7:89]);
+    svd_decomposition([patient_file_path 'adj_pwr'], patient_file_names{i}, num_channels, [1:4 7:89]);
 end
 
-svd_vector_path = sprintf('%s%s%s/adj_pwr/svd_vectors', home, eegHome, patient);
-% svdVectorFile = 'svd_l_pwr_PY12N008_07_21_2012_14-05-48_640sec_gamma.dat';
+svd_vector_path = [patient_file_path 'adj_pwr/svd_vectors'];
 
-% extraction_vectors(svdVectorPath, svdVectorFile, nChannels);
+extract_vectors(patient_id, svd_vector_path, 87);
 
+% saves the output to ['.../svd_vector_path/fsv_pwr' patient_id] as a struct with snapx_gamma
 
 % TODO: Quick test: Check that all signs are the same in each column
 % There are also cases of extremely small values that should be zero.

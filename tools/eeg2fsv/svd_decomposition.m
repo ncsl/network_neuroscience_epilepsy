@@ -169,7 +169,7 @@ for k=1:length(position)
             mkdir(sprintf('%s', pathval), 'svd_vectors');
         end
 
-        fid2 = fopen(sprintf('%s/svd_vectors/svd_l_%s',pathval,listfile(position(k)).name(5:end)),'ab');
+        fid2 = fopen(sprintf('%s/svd_vectors/svd_l_%s', pathval, listfile(position(k)).name(5:end)), 'ab');
         fwrite(fid2,U(:),'single');
         fclose(fid2);
 
@@ -182,7 +182,7 @@ for k=1:length(position)
 %         fclose(fid2);
 
         % step 6: update the pointer
-        lastbyte = lastbyte+ndata*nbytes;
+        lastbyte = lastbyte + ndata*nbytes;
     end
 
     % close the current file
