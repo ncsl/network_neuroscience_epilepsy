@@ -7,11 +7,17 @@ matlab_jvm := $(matlab_exe) -nodesktop -nosplash -r
 heatmap_output    := $(PROJECT_HOME)/output/heatmap
 reference_heatmap := iEEG_temporal_CV_results_20-Sep-2015
 temporal_out 			:= /tmp/eztrack-temporal
+eeg2fsv_out			  := $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr/
+reference 			  := $(PROJECT_HOME)/data/reference
 
 all: check-deps reference-heatmap-csv tests
 
-.SILENT: *check-matlab
-check-deps: *check-matlab
+.SILENT: *check-matlab *check-reference-data
+check-deps: *check-matlab *check-reference-data
+
+*check-reference-data:
+	[[ -d $(reference) ]] || \
+		{ echo "EZTrack reference data not found at $(reference); please check the Getting Started section in the README" ; exit 1 ; }
 
 *check-matlab:
 	[[ ! -z "`which $(matlab_exe)`" ]] || \
@@ -23,7 +29,7 @@ reference-heatmap-csv:
 
 test: tests
 
-tests: check-deps test-classifier test-fsv2heatmap
+tests: check-deps test-classifier test-fsv2heatmap test-eeg2fsv
 
 test-classifier:
 	cd $(PROJECT_HOME)/tests/fsv2heatmap && \
@@ -36,9 +42,11 @@ temporal:
 test-fsv2heatmap: temporal
 	diff `grep $(PROJECT_HOME) $(temporal_out)` $(heatmap_output)/$(reference_heatmap).csv
 
-
-go: test-eeg2fsv
-
 test-eeg2fsv:
-	ls $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr | xargs -I% cmp $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr/% \
-		"$$HOME/Desktop/EZTrack Reference Data/PY12N008/adj_pwr/%"
+	rm -rf $(eeg2fsv_out)
+
+	cd $(PROJECT_HOME)/tests/eeg2fsv && \
+		$(matlab_jvm) "eeg2fsv_test; exit"
+
+	cd $(eeg2fsv_out) && \
+		ls *.dat | xargs -I% cmp % "$(reference)/PY12N008/adj_pwr/%"

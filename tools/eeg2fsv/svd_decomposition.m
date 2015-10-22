@@ -109,7 +109,7 @@ nbytes = 4;
 %--------------------------------------------------------------------------
 % main loop
 %--------------------------------------------------------------------------
-tic
+
 % for each valid file...
 for k=1:length(position)
     
@@ -154,16 +154,14 @@ for k=1:length(position)
         % step 4: singular value decomposition
         A(isnan(A)) = 0;
         if (sum(sum(abs(A)))>0)
-            [U,S,~] = svd(A);
+            [U,~,~] = svd(A);
         else
             U = eye(size(A,1));
-            S = zeros(size(A));
         end                
 
-        % step 5: save singular values and vectors in a *.dat file.
+        % step 5: save singular vectors in a *.dat file.
         %         Note that the singular vectors are stored by column
-        %         (from the first to the last). Decrescent order is
-        %         also used for the singular values.
+        %         (from first to last...descending order).
 
         if ~exist(sprintf('%s/svd_vectors', pathval), 'dir')
             mkdir(sprintf('%s', pathval), 'svd_vectors');
@@ -172,14 +170,6 @@ for k=1:length(position)
         fid2 = fopen(sprintf('%s/svd_vectors/svd_l_%s', pathval, listfile(position(k)).name(5:end)), 'ab');
         fwrite(fid2,U(:),'single');
         fclose(fid2);
-
-        % TODO: Only the vectors are used later, not the values.
-%         if ~exist(sprintf('%s/svd_values', pathval), 'dir')
-%             mkdir(sprintf('%s', pathval), 'svd_values');
-%         end
-%         fid2 = fopen(sprintf('%s/svd_values/svd_v_%s',pathval,listfile(position(k)).name(5:end)),'ab');
-%         fwrite(fid2,diag(S),'single');
-%         fclose(fid2);
 
         % step 6: update the pointer
         lastbyte = lastbyte + ndata*nbytes;
@@ -190,7 +180,5 @@ for k=1:length(position)
 
     display(sprintf('file %s - svd completed\n', listfile(position(k)).name));
 end
-
-display(sprintf('cpu time used: %f\n',toc));
 
 end
