@@ -1,27 +1,30 @@
-home = getenv('HOME');
-eegHome = '/dev/eztrack/tools/data/edf';
-patient = 'PY13N003';
-file = '/PY13N003_02_12_2013_00-25-39_701sec.edf';
-eegPath = [home eegHome patient file];
+function edf2eeg(edf_path, output_path)
 
-% TODO: Verify that the file exists.
+% TODO: Verify that edf_path exists.
 
-[header, data] = edfread(eegPath);
+[path,name,ext] = fileparts(edf_path);
 
-% data = single(data);
-% elec_labels = hdr.label;
-% time = hdr.starttime;
-% date = hdr.startdate;
-% mat_path = [hd_path pat '/'];
-% save([mat_path file_s '.mat'],'data','elec_labels','time','date','-v7.3')
-% %delete_edf_command = sprintf(['rm' file_path]);
-% if exist([hd_path pat '/' file_s '.mat'],'file') == 2
-%     %if exist([hd_path pat '/' regexprep(files(i).name),'.edf','.mat'],'file') == 1
-%     %s = system(delete_edf_command);
-%     delete(file_path)
-%     display([[hd_path pat '/' file_s '.mat'] ' has been created.'])
-% else
-%     display('.mat file doesnt exist. EDF not deleted.')
-% 
-% end
+tic
+display(sprintf('Converting %s', edf_path));
+[header, data] = edfread(edf_path);
 
+eeg = single(data);
+labels = header.label;
+time = header.starttime;
+date = header.startdate;
+
+warning('off','MATLAB:MKDIR:DirectoryExists');
+mkdir(output_path);
+
+display(sprintf('Writing labels and eeg as csv to %s', output_path));
+labels_file = [output_path '/' name '_labels.csv'];
+labels_table = cell2table(labels','VariableNames',{'label'});
+writetable(labels_table, labels_file);
+
+eeg_file = [output_path '/' name '_eeg.csv'];
+csvwrite(eeg_file, eeg);
+display(sprintf('Converted edf file in %fs\n', toc));
+
+% EZTrack originally required .mat files in eeg2fsv...
+% save([output_path name '.mat'],'eeg','labels','time','date','-v7.3');
+end

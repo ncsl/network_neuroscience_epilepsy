@@ -29,7 +29,7 @@ reference-heatmap-csv:
 
 test: tests
 
-tests: check-deps test-classifier test-fsv2heatmap test-eeg2fsv
+tests: check-deps test-classifier test-fsv2heatmap test-eeg2fsv test-edf2eeg
 
 test-classifier:
 	cd $(PROJECT_HOME)/tests/fsv2heatmap && \
@@ -50,3 +50,7 @@ test-eeg2fsv:
 
 	cd $(eeg2fsv_out) && \
 		ls *.dat | xargs -I% cmp % "$(reference)/PY12N008/adj_pwr/%"
+
+test-edf2eeg:
+	cd $(PROJECT_HOME)/tests/edf2eeg && \
+		$(matlab) "edf2eeg_test; exit"
