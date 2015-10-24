@@ -29,7 +29,11 @@ reference-heatmap-csv:
 
 test: tests
 
-tests: check-deps test-classifier test-fsv2heatmap test-eeg2fsv test-edf2eeg
+tests: check-deps test-classifier pipeline
+
+pipeline: test-edf2eeg test-eeg2fsv copy-fsv-output test-fsv2heatmap revert-fsv-output
+
+demo: pipeline
 
 test-classifier:
 	cd $(PROJECT_HOME)/tests/fsv2heatmap && \
@@ -50,6 +54,13 @@ test-eeg2fsv:
 
 	cd $(eeg2fsv_out) && \
 		ls *.dat | xargs -I% cmp % "$(reference)/PY12N008/adj_pwr/%"
+
+copy-fsv-output:
+	cp $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr/svd_vectors/fsv_pwrPY12N008.mat \
+		 $(PROJECT_HOME)/output/fsv
+
+revert-fsv-output:
+	git co $(PROJECT_HOME)/output/fsv
 
 test-edf2eeg:
 	cd $(PROJECT_HOME)/tests/edf2eeg && \
