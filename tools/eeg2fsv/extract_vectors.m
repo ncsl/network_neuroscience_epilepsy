@@ -5,9 +5,12 @@ listing = dir([svd_vector_path '/*gamma.dat']);
 
 for i = 1:length(listing)
     tmp = read_svd_matrix(sprintf('%s/%s',svd_vector_path, listing(i).name), nchmax);
+    
     data = zeros(size(tmp,2), size(tmp,1));
-    for q=1:size(tmp,1), data(:,q) = tmp(q,:,1)'; end
-
+    for q=1:size(tmp,1)
+        data(:,q) = tmp(q,:,1)'; 
+    end
+    
     % store the extracted vectors into a struct
     eval([sprintf('snap%d_gamma', i), ' = data;']);
 
