@@ -3,8 +3,8 @@ function eeg2fsv(working_directory, patient_id, frequency, num_channels, include
 patient_file_path = [working_directory '/' patient_id '/'];
 
 % mef2eeg/edf2eeg output files will be stored in files with the pattern 
-% '.../PY12N008/PY12N008_07_21_2012_14-05-48_640sec.mat'...
-patient_files = dir([patient_file_path patient_id '*.mat']);
+% '.../PY12N008/PY12N008_07_21_2012_14-05-48_640sec'...
+patient_files = dir([patient_file_path patient_id '*_eeg.csv']);
 patient_file_names = {patient_files.name};
 
 % 1. Compute adjacency matrix sequence, stored into 1-D arrays

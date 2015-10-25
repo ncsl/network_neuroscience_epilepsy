@@ -70,8 +70,15 @@ if (isempty(filename) || ~ischar(filename) || ~exist(eeg_filename,'file'))
 end
 
 % check if the file is corrupted and extract the length of the file (in number of bytes)
-eeg_file = load(eeg_filename);
-file_length = length(eeg_file.eeg);
+% eeg_file = load(eeg_filename);
+eeg_file = csvread(eeg_filename);
+
+% Given a file with 89 rows (channels) and 640000 columns (signals),
+% eeg_file is now a 56960000x1 vector that we need to reshape.
+cols = length(eeg_file) / num_channels;
+eeg = reshape(eeg_file,cols,num_channels)';
+
+file_length = length(eeg);
 if (file_length == 0)
     error('Error: File missing eeg data'); 
 end
@@ -172,7 +179,7 @@ while (sample_to_access < limit)
     % step 1: extract the data and apply the notch filter. Note that column
     %         #i in the extracted matrix is filled by data samples from the
     %         recording channel #i.
-    tmpdata = eeg_file.eeg(:, (lastwindow - tmpwindow) + 1:lastwindow + nsamples );
+    tmpdata = eeg(:, (lastwindow - tmpwindow) + 1:lastwindow + nsamples );
     tmpdata = filtfilt(numnotch,dennotch,tmpdata');
     data = tmpdata(tmpwindow + 1:end,:);
     

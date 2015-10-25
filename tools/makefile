@@ -29,7 +29,9 @@ reference-heatmap-csv:
 
 test: tests
 
-tests: check-deps test-classifier pipeline
+smoke: check-deps test-classifier
+
+tests: smoke pipeline
 
 pipeline: test-edf2eeg test-eeg2fsv copy-fsv-output test-fsv2heatmap revert-fsv-output
 
@@ -52,8 +54,10 @@ test-eeg2fsv:
 	cd $(PROJECT_HOME)/tests/eeg2fsv && \
 		$(matlab_jvm) "eeg2fsv_test; exit"
 
+foo:
 	cd $(eeg2fsv_out) && \
-		ls *.dat | xargs -I% cmp % "$(reference)/PY12N008/adj_pwr/%"
+	cmp adj_pwr_PY12N008_07_21_2012_14-05-48_640sec_eeg_gamma.dat \
+			$(reference)/PY12N008/adj_pwr/adj_pwr_PY12N008_07_21_2012_14-05-48_640sec_gamma.dat
 
 copy-fsv-output:
 	cp $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr/svd_vectors/fsv_pwrPY12N008.mat \
