@@ -1,16 +1,12 @@
-function eeg2fsv(working_directory, patient_id, frequency, num_channels, included_channels, sample_to_access)
+function eeg2fsv(patient_files, patient_file_path, patient_id, frequency, num_channels, included_channels, sample_to_access)
 
-patient_file_path = [working_directory '/' patient_id '/'];
-
-% mef2eeg/edf2eeg output files will be stored in files with the pattern 
-% '.../PY12N008/PY12N008_07_21_2012_14-05-48_640sec.mat'...
-patient_files = dir([patient_file_path patient_id '*.mat']);
-patient_file_names = {patient_files.name};
+patient_file_names = keys(patient_files);
 
 % 1. Compute adjacency matrix sequence, stored into 1-D arrays
 parpool;
 parfor i = 1:length(patient_file_names)
-    power_coherence(patient_file_path, patient_file_names{i}, num_channels, frequency, sample_to_access);
+    num_values = patient_files(patient_file_names{i});
+    power_coherence(patient_file_path, patient_file_names{i}, num_values, num_channels, frequency, sample_to_access);
 end
 delete(gcp('nocreate'));
 

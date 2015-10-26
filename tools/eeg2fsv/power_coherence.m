@@ -1,4 +1,4 @@
-function power_coherence(pathval, filename, num_channels, fs, sample_to_access)
+function power_coherence(pathval, filename, num_values, num_channels, fs, sample_to_access)
 
 % Description: This function computes the cross-power among iEEG recordings from
 %              independent channels. Power spectra are evaluated in
@@ -70,8 +70,12 @@ if (isempty(filename) || ~ischar(filename) || ~exist(eeg_filename,'file'))
 end
 
 % check if the file is corrupted and extract the length of the file (in number of bytes)
-eeg_file = load(eeg_filename);
-file_length = length(eeg_file.eeg);
+eeg_file = dlmread(eeg_filename,',',[0 0 (num_values-1) (num_channels-1)]);
+
+% csv file is organized with channels in columns, so take the transpose.
+eeg = eeg_file';
+
+file_length = length(eeg);
 if (file_length == 0)
     error('Error: File missing eeg data'); 
 end
@@ -172,7 +176,7 @@ while (sample_to_access < limit)
     % step 1: extract the data and apply the notch filter. Note that column
     %         #i in the extracted matrix is filled by data samples from the
     %         recording channel #i.
-    tmpdata = eeg_file.eeg(:, (lastwindow - tmpwindow) + 1:lastwindow + nsamples );
+    tmpdata = eeg(:, (lastwindow - tmpwindow) + 1:lastwindow + nsamples );
     tmpdata = filtfilt(numnotch,dennotch,tmpdata');
     data = tmpdata(tmpwindow + 1:end,:);
     
