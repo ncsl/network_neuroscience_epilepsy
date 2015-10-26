@@ -1,4 +1,4 @@
-function power_coherence(pathval, filename, num_channels, fs, sample_to_access)
+function power_coherence(pathval, filename, num_values, num_channels, fs, sample_to_access)
 
 % Description: This function computes the cross-power among iEEG recordings from
 %              independent channels. Power spectra are evaluated in
@@ -70,13 +70,10 @@ if (isempty(filename) || ~ischar(filename) || ~exist(eeg_filename,'file'))
 end
 
 % check if the file is corrupted and extract the length of the file (in number of bytes)
-% eeg_file = load(eeg_filename);
-eeg_file = csvread(eeg_filename);
+eeg_file = dlmread(eeg_filename,',',[0 0 (num_values-1) (num_channels-1)]);
 
-% Given a file with 89 rows (channels) and 640000 columns (signals),
-% eeg_file is now a 56960000x1 vector that we need to reshape.
-cols = length(eeg_file) / num_channels;
-eeg = reshape(eeg_file,cols,num_channels)';
+% csv file is organized with channels in columns, so take the transpose.
+eeg = eeg_file';
 
 file_length = length(eeg);
 if (file_length == 0)
