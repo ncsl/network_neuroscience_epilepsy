@@ -17,12 +17,11 @@ warning('off','MATLAB:MKDIR:DirectoryExists');
 mkdir(output_path);
 
 display(sprintf('Writing labels and eeg as csv to %s', output_path));
-labels_file = [output_path '/' name '_labels.csv'];
-labels_table = cell2table(labels','VariableNames',{'label'});
-writetable(labels_table, labels_file);
+labels2csv(labels, [output_path '/' name '_labels.csv']);
 
 eeg_file = [output_path '/' name '_eeg.csv'];
-csvwrite(eeg_file, eeg);
+dlmwrite(eeg_file, eeg', 'delimiter', ',', 'precision', '%.7f');
+
 display(sprintf('Converted edf file in %fs\n', toc));
 
 % EZTrack originally required .mat files in eeg2fsv...
