@@ -5,7 +5,7 @@ matlab     := $(matlab_exe) -nodesktop -nosplash -nojvm -r
 matlab_jvm := $(matlab_exe) -nodesktop -nosplash -r
 
 heatmap_output    := $(PROJECT_HOME)/output/heatmap
-reference_heatmap := iEEG_temporal_CV_results_20-Sep-2015
+reference_heatmap := iEEG_temporal_CV_results_28-Aug-2015
 temporal_out 			:= /tmp/eztrack-temporal
 eeg2fsv_out			  := $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr/
 reference 			  := $(PROJECT_HOME)/data/reference
@@ -33,7 +33,8 @@ smoke: check-deps test-classifier
 
 tests: smoke pipeline
 
-pipeline: test-edf2eeg test-eeg2fsv copy-fsv-output test-fsv2heatmap revert-fsv-output
+# NB: Leaving edf2eeg out of the pipeline for performance reasons. EDF provided is too large to convert in a reasonable amount of time.
+pipeline: test-eeg2fsv copy-fsv-output test-fsv2heatmap revert-fsv-output
 
 demo: pipeline
 
@@ -53,11 +54,6 @@ test-eeg2fsv:
 
 	cd $(PROJECT_HOME)/tests/eeg2fsv && \
 		$(matlab_jvm) "eeg2fsv_test; exit"
-
-foo:
-	cd $(eeg2fsv_out) && \
-	cmp adj_pwr_PY12N008_07_21_2012_14-05-48_640sec_eeg_gamma.dat \
-			$(reference)/PY12N008/adj_pwr/adj_pwr_PY12N008_07_21_2012_14-05-48_640sec_gamma.dat
 
 copy-fsv-output:
 	cp $(PROJECT_HOME)/output/eeg/PY12N008/adj_pwr/svd_vectors/fsv_pwrPY12N008.mat \

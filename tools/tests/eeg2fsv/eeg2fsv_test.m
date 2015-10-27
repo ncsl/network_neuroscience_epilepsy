@@ -3,9 +3,6 @@ eeg_output = '/dev/eztrack/tools/output/eeg';
 
 patient_id = 'PY12N008';
 frequency = 1000;
-
-% nChannels depends on the patient
-% some of the hard-coded channels don't match this in the original impl.
 num_channels = 89;
 sample_to_access = 0;
 
@@ -23,6 +20,7 @@ files = {...
     'PY12N008_07_22_2012_13-15-41_737sec_eeg.csv',...
     'PY12N008_07_23_2012_08-41-30_729sec_eeg.csv'};
 
+% Sizes are based on the length of the recording in the filename and frequency.
 sizes = [640000, 672000, 737000, 729000];
 
 patient_files = containers.Map(files, sizes);
