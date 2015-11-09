@@ -1,15 +1,14 @@
 function csv_file = temporal_ieeg_results(test_patient_id)
-% temporal_ieeg_results('PY12N008')
+% e.g. temporal_ieeg_results('PY12N008')
 
 eztrack_home = [getenv('HOME') '/dev/eztrack/tools'];
 patient_info = load([eztrack_home '/data/patient_info.mat']);
 test_patient = patient_info.(test_patient_id);
+% TODO: Refactor electrode_classifier to take just the values it needs from test_patient
+%       instead of taking a struct.
 
 patient_type = 1; % corresponds to iEEG temporal patients
 number_heatmap_colors = 20;
-                  
-% patients in pro study but not used here: 'PY04N008'    'PY05N004'    'PY11N004'    'PY13N001'    'PY13N004'    'PY13N010'
-% TODO: What is the effect of adding these patients on the resulting heatmaps?
 
 points = load('/Users/bnorton/dev/eztrack/tools/output/heatmap/points.mat');
 results = cell(1,1);
