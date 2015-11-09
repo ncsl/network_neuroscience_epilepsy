@@ -10,13 +10,14 @@ matlab_exe="/Applications/MATLAB_R2014b.app/bin/matlab"
 matlab_jvm="$matlab_exe -nodesktop -nosplash -r"
 
 heatmap_output=$PROJECT_HOME/output/heatmap
-reference_heatmap=iEEG_temporal_CV_results_28-Aug-2015
 temporal_out=/tmp/eztrack-temporal
 reference=$PROJECT_HOME/data/reference
 
 patient_id=$1
 [[ ! -z "$patient_id" ]] || { echo "Usage: ./eztrack <patient_id (e.g. PY12N008)>" ; exit 1 ; }
+
 eeg2fsv_out=$PROJECT_HOME/output/eeg/$patient_id/adj_pwr
+reference_heatmap=${patient_id}_iEEG_temporal_results_28-Aug-2015.csv
 
 [[ ! -z "`which $matlab_exe`" ]] || \
     { echo "MATLAB not found at $matlab_exe; please check the Getting Started section in the README" ; exit 1 ; }
@@ -34,18 +35,19 @@ echo "TODO: mef_finder"
 printf "\n== Copying MEF files to local storage  ==\n"
 echo "TODO: mef_copy"
 
-printf "\n== Extracing signals... ==\n"
+printf "\n== Extracting signals... ==\n"
 echo "TODO: mef2eeg"
 
 printf "\n== eeg2fsv ==\n"
 rm -rf $eeg2fsv_out
+# TODO: Refactor to give eeg2fsv a simpler entry point with patient_id as a parameter.
 cd $PROJECT_HOME/tests/eeg2fsv && $matlab_jvm "eeg2fsv_test; exit"
 cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 
 # fsv2heatmap currently processes all fsv's for a particular lobe.
 printf "\n== fsv2heatmap ==\n"
 cd $PROJECT_HOME/fsv2heatmap && \
-    $matlab_jvm "csv_file = temporal_ieeg_results; display(csv_file); exit" > /tmp/eztrack-temporal
+    $matlab_jvm "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > /tmp/eztrack-temporal
 
 # TODO: Have fsv2heatmap save this output path to a different file.
 results=`tail -n 3 $temporal_out | head -n 1`
@@ -53,12 +55,10 @@ results=`tail -n 3 $temporal_out | head -n 1`
 # TODO: temporary tests for development
 git co $PROJECT_HOME/output/fsv
 echo "Validating fsv2heatmap results at $results"
-diff $results $heatmap_output/$reference_heatmap.csv
+diff $results $heatmap_output/$reference_heatmap
 printf "\tAll tests passed: Results match reference heatmap.\n"
 ### End of development testing.
 
-patient_results=$heatmap_output/`basename $results`-$patient_id.csv
-grep $patient_id $results > $patient_results
-printf "EZTrack finished: Results saved to\n$patient_results\n"
+printf "EZTrack finished: Results saved to\n$results\n"
 
 

@@ -1,7 +1,8 @@
 home = getenv('HOME');
 eeg_output = '/dev/eztrack/tools/output/eeg';
-
 patient_id = 'PY12N008';
+patient_file_path = [home eeg_output '/' patient_id '/'];
+
 frequency = 1000;
 num_channels = 89;
 sample_to_access = 0;
@@ -10,9 +11,6 @@ sample_to_access = 0;
 % The std of these channels is < 10...are they grounds or faulty channels?
 % TODO: See the channel filtering card for more information.
 included_channels = [1:4 7:89];
-
-patient_file_path = [home eeg_output '/' patient_id '/'];
-patient_files = dir([patient_file_path patient_id '*_eeg.csv']);
 
 files = {...
     'PY12N008_07_21_2012_14-05-48_640sec_eeg.csv',...
