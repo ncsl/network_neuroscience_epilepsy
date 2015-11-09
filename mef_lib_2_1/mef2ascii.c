@@ -109,19 +109,6 @@ int main (int argc, const char * argv[]) {
     return 1;
   }
 
-  //Assemble output filename
-  l = (int)strlen(argv[1]);
-  memcpy(path, argv[1], l-4);
-  path[l-4] = '\0';
-  sprintf(outFileName, "%s.raw32", path);
-
-  //open output file for writing
-  out_fp = fopen(outFileName, "w");
-  if (out_fp == NULL) {
-    fprintf(stderr, "Error opening file %s\n", outFileName);
-    return 1;
-  }
-
   fprintf(stdout, "\n\nReading file %s \n", argv[1]);
   start_block = 0;
 
@@ -155,12 +142,6 @@ int main (int argc, const char * argv[]) {
       entryCounter += RED_bk_hdr.sample_count;
     }
     start_block = end_block;
-
-    num = fwrite(data, sizeof(si4), entryCounter, out_fp);
-    if (num != entryCounter) {
-      fprintf(stderr, "Error writing file %s\n", argv[1]);
-      return 1;
-    }
   } //end while()
 
   free(in_data); in_data = NULL;
@@ -173,15 +154,15 @@ int main (int argc, const char * argv[]) {
   path[l-4] = '\0';
   sprintf(outFileName, "%s.txt", path);
 
-  fp = fopen(outFileName, "w");
-  if (fp == NULL) {
+  out_fp = fopen(outFileName, "w");
+  if (out_fp == NULL) {
     fprintf(stderr, "Error opening file %s\n", outFileName);
     return 1;
   }
   fprintf(stdout, "\n\nWriting file %s: %ld entries \n", outFileName, entryCounter);
 
   // Write the ints to the file as text
-  for (n=0;n<entryCounter;n++) num += fprintf (fp, "%f\n", (data[n] * header.voltage_conversion_factor));
+  for (n=0;n<entryCounter;n++) num += fprintf(out_fp, "%f\n", (data[n] * header.voltage_conversion_factor));
 
   fclose(fp); fclose(out_fp);
   free(data); data = NULL;
