@@ -1,4 +1,4 @@
-function classified_electrodes = electrode_classifier(data_type, test_element, patient_info, points, number_heatmap_colors)
+function classified_electrodes = electrode_classifier(data_type, test, points, number_heatmap_colors)
 %-------------------------------------------------------------------------------------------
 %
 % Description: Creates electrode weights and heat maps for the given list of patients.
@@ -62,9 +62,6 @@ end
 
 inv_cov_mat = inverse_covariance_matrix(all_points, ax_mf, mf);
 
-patients = fieldnames(patient_info);
-test_patient_id = patients{test_element};
-test = patient_info.(test_patient_id);
 num_electrodes = test.events.ttl_electrodes;
 num_seizures = test.events.nevents;
 

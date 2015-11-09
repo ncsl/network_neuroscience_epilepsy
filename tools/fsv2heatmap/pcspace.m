@@ -34,8 +34,8 @@ all_patient_ids = fieldnames(patient_info);
 
 % initialize success, fail, and test ids
 for n = 1:num_pat
-    % TODO: patient_results{n} = patient_id
     patient_results{n} = all_patient_ids{training_patient_indexes(n)};
+    % TODO: patient_id = patient_results{n};
     if n ~= test_index
         if strcmpi(patient_info.(patient_results{n}).type.outcome, 'success')
             succ_p_id = cat(2, succ_p_id, patient_results{n});
