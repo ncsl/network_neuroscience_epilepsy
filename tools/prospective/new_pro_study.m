@@ -8,18 +8,18 @@ f_vectors = cell(length(pro_p_id), 1);
 freqband = {'band', 'gamma'};                                              %frequecny band for cross power.
 fsv_path  = '/Users/bnorton/dev/eztrack/tools/output/fsv';
 f = load('/Users/bnorton/dev/eztrack/tools/data/infolabels.mat');
-f2 = load('/Users/bnorton/dev/eztrack/tools/data/infoevents.mat');
+event_info = load('/Users/bnorton/dev/eztrack/tools/data/infoevents.mat');
 
 count = 1;
-for n = find(ismember({f2.events(1:end).subject}, pro_p_id))
+for n = find(ismember({event_info.events(1:end).subject}, pro_p_id))
 
     f1 =load(fullfile(fsv_path, sprintf('fsv_pwr%s', pro_p_id{count})));
     
-    for k = 1:f2.events(n).nevents
+    for k = 1:event_info.events(n).nevents
         
-        dur = f2.events(n).start_marks(k):f2.events(n).end_marks(k);                           %Seizure activity duration
-        dur1 = f2.events(n).start_marks(k)-pre:f2.events(n).start_marks(k)-1;                  %Pre-Seizure activity duration
-        dur2 = f2.events(n).end_marks(k)+1:f2.events(n).end_marks(k)+post;                     %Post-Seizure activity duration
+        dur = event_info.events(n).start_marks(k):event_info.events(n).end_marks(k);                           %Seizure activity duration
+        dur1 = event_info.events(n).start_marks(k)-pre:event_info.events(n).start_marks(k)-1;                  %Pre-Seizure activity duration
+        dur2 = event_info.events(n).end_marks(k)+1:event_info.events(n).end_marks(k)+post;                     %Post-Seizure activity duration
         
         %setting the flag
         if length(dur) < max_dur
@@ -42,39 +42,35 @@ for n = find(ismember({f2.events(1:end).subject}, pro_p_id))
         
         %checking for any illegal entries in the electrode rankcentrality
         %matrix
-        if ~(isempty(find(rankcent > f2.events(n).ttl_electrodes, 1))...
-                || isempty(find(flank1 > f2.events(n).ttl_electrodes, 1))...
-                || isempty(find(flank2 > f2.events(n).ttl_electrodes, 1))...
+        if ~(isempty(find(rankcent > event_info.events(n).ttl_electrodes, 1))...
+                || isempty(find(flank1 > event_info.events(n).ttl_electrodes, 1))...
+                || isempty(find(flank2 > event_info.events(n).ttl_electrodes, 1))...
                 || isempty(find(rankcent < 1, 1))...
                 || isempty(find(flank1 < 1, 1))...
                 || isempty(find(flank2 < 1, 1)))
             error('Error in rank centrality: Illegal entries in the matrix');
         end
-        
-        
+
         %Normalization in length (#time points)
         if dur_flag
-            %rankcent = spline(1:length(dur), rankcent, interval);
             rankcent = interp1(1:length(dur), rankcent', interval, 'linear')';
         end
         
-        
-        if ~(isempty(find(rankcent > f2.events(n).ttl_electrodes, 1))...
+        if ~(isempty(find(rankcent > event_info.events(n).ttl_electrodes, 1))...
                 || isempty(find(rankcent < 1, 1)))
             error('Error in rankcentrality interpolation: Illegal matrix entries');
         end
         
-        %concatenating pre and post seizure activity to define the signal
-        %of interest
+        %concatenating pre and post seizure activity to define the signal of interest
         rankcent = cat(2, flank1, rankcent, flank2);
         
         %Smoothing the rank signal with a sliding window of size 21
-        for etd = 1:f2.events(n).ttl_electrodes
+        for etd = 1:event_info.events(n).ttl_electrodes
             rankcent(etd,:) = smooth(rankcent(etd,:), window, 'moving');
         end
         
         %Normalizing in y-axis
-        rankcent = rankcent./f2.events(n).ttl_electrodes;
+        rankcent = rankcent./event_info.events(n).ttl_electrodes;
         
         %Normalizing the area to 1 (defining a pdf)
         ci = cumtrapz(rankcent, 2);
@@ -88,8 +84,8 @@ for n = find(ismember({f2.events(1:end).subject}, pro_p_id))
         end
         
         %Extracting the variables for CDF (10 dimensional feature vectors)
-        I = zeros(f2.events(n).ttl_electrodes, length_cdf);
-        for i = 1:f2.events(n).ttl_electrodes
+        I = zeros(event_info.events(n).ttl_electrodes, length_cdf);
+        for i = 1:event_info.events(n).ttl_electrodes
             for j = 1:length_cdf
                 I(i,j) = find(ci(i, :) <= cdf(j), 1, 'last');
             end
@@ -114,14 +110,18 @@ all = [sr; snr; fr; fnr];
 
 cov_mat = cov(all);
 
-mu = [-100, -100];
-x1 = -400:mu(1); x2 = mu(1):400;
-y1 = -200:mu(2); y2 = mu(2):200;
+mu = [-250, -25];  % mu is the origin of the space...
+
+x1 = min(all_points(:,1)):mu(1);
+x2 = mu(1):max(all_points(:,1));
+y1 = min(all_points(:,2)):mu(2);
+y2 = mu(2):max(all_points(:,2));
 
 [X1, Y1] = meshgrid(x1,y1); tmp1 = [X1(:) Y1(:)]; mf1 = 2e-2;
-[X2, Y2] = meshgrid(x2,y1); tmp2 = [X2(:) Y2(:)]; mf2 = 5e-2;
-[X3, Y3] = meshgrid(x2,y2); tmp3 = [X3(:) Y3(:)]; mf3 = 20e-2;
-[X4, Y4] = meshgrid(x1,y2); tmp4 = [X4(:) Y4(:)]; mf4 = 2e-4;
+[X2, Y2] = meshgrid(x2,y1); tmp2 = [X2(:) Y2(:)]; mf2 = 2.5*mf1;
+[X3, Y3] = meshgrid(x2,y2); tmp3 = [X3(:) Y3(:)]; mf3 = 4*mf2;
+[X4, Y4] = meshgrid(x1,y2); tmp4 = [X4(:) Y4(:)]; mf4 = 1e-3*mf3;
+
 
 %% Function 1 for SR
 cov_mat_inv1 = cov_mat^-1;
@@ -134,7 +134,7 @@ end
 %% Function 2 for FR
 cov_mat_inv2 = cov_mat_inv1;
 cov_mat_inv2(2,2) = mf1*cov_mat_inv2(2,2)/mf2;
-cov_mat_inv2(1,1) = 0.2*cov_mat_inv2(1,1);
+
 Z2 = zeros(size(tmp2,1),1);
 for i = 1:length(Z2)
     Z2(i) = exp(-mf2*(tmp2(i,:) - mu)*cov_mat_inv2*(tmp2(i,:) - mu)');
@@ -145,7 +145,7 @@ end
 
 cov_mat_inv3 = cov_mat_inv2;
 cov_mat_inv3(1,1) = mf2*cov_mat_inv3(1,1)/mf3;
-cov_mat_inv3(2,2) = 8e0*cov_mat_inv3(2,2);
+cov_mat_inv3(2,2) = cov_mat_inv3(2,2);
 Z3 = zeros(size(tmp3,1),1);
 for i = 1:length(Z3)
     Z3(i) = exp(-mf3*(tmp3(i,:) - mu)*cov_mat_inv3*(tmp3(i,:) - mu)');
@@ -172,19 +172,18 @@ if exist(sprintf('%s.mat', output_filename), 'file')
     delete(sprintf('%s.mat', output_filename));
 end
 
-
 count = 1;
-for n = find(ismember({f2.events(1:end).subject}, pro_p_id))
+for n = find(ismember({event_info.events(1:end).subject}, pro_p_id))
     tmp = f_vectors{count} - repmat(avg, [size(f_vectors{count}, 1), 1]);
     tmp = tmp*a(:, [1 2]);
 
     eval([sprintf('%s', pro_p_id{count}), '=struct([]);']);
     
     e_count = 0;
-    E_gauss = zeros(f2.events(n).ttl_electrodes, f2.events(n).nevents);
+    E_gauss = zeros(event_info.events(n).ttl_electrodes, event_info.events(n).nevents);
 
-    for k = 1:f2.events(n).nevents
-        tmp1 = tmp((e_count+1):(e_count + f2.events(n).ttl_electrodes), :);
+    for k = 1:event_info.events(n).nevents
+        tmp1 = tmp((e_count+1):(e_count + event_info.events(n).ttl_electrodes), :);
         
         sr_mu = tmp1(:,1) <=  mu(1) & tmp1(:,2) <= mu(2);
         mu1 = repmat(mu, size(tmp1(sr_mu,:),1),1);
@@ -205,22 +204,21 @@ for n = find(ismember({f2.events(1:end).subject}, pro_p_id))
         mu4 = repmat(mu, size(tmp1(fnr_mu,:),1),1);
         E_gauss(fnr_mu, k) = diag(exp(-mf4*(tmp1(fnr_mu,:) - mu4)*...
             cov_mat_inv4*(tmp1(fnr_mu,:) - mu4)'));
-        e_count = e_count + f2.events(n).ttl_electrodes;
+        e_count = e_count + event_info.events(n).ttl_electrodes;
     end
     
-    E_Weights = sum(E_gauss,2)/f2.events(n).nevents;
+    E_Weights = sum(E_gauss,2)/event_info.events(n).nevents;
 
-    tmp2 = zeros(f2.events(n).ttl_electrodes, 1);
+    tmp2 = zeros(event_info.events(n).ttl_electrodes, 1);
     for i = 1:num_clrs_hm
-        tmp3 = (E_Weights < clr_ind(i+1)) & ...
-            (E_Weights >= clr_ind(i));
+        tmp3 = (E_Weights < clr_ind(i+1)) & (E_Weights >= clr_ind(i));
         tmp2(tmp3) = (num_clrs_hm - i) + 1;
     end
     tmp2(E_Weights == clr_ind(end)) = 1; %#ok<NASGU>
 
     [~, ind] = sort(E_Weights, 'descend');
 
-    for k = 1:f2.events(n).nevents
+    for k = 1:event_info.events(n).nevents
         eval([sprintf('%s(1).E_gauss%d', pro_p_id{count}, k), '= E_gauss(ind, k);']);
     end
 
@@ -239,4 +237,4 @@ for n = find(ismember({f2.events(1:end).subject}, pro_p_id))
     count = count + 1;
 end
 
-display('done');
+display('done: now convert mat to csv...');

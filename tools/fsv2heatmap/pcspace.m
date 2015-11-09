@@ -1,4 +1,4 @@
-function points = pcspace(fsv_path, patient_info, training_patient_indexes, test_patient_index)
+function points = pcspace(fsv_path, patient_info, reference_patient_indexes, test_patient_index)
 
 %-----------------------------------------------------------------------------------
 %
@@ -21,8 +21,8 @@ function points = pcspace(fsv_path, patient_info, training_patient_indexes, test
 %-----------------------------------------------------------------------------------
 
 %% Variable initialization
-num_pat = numel(training_patient_indexes);
-test_index = find(training_patient_indexes == test_patient_index);
+num_pat = numel(reference_patient_indexes);
+test_index = find(reference_patient_indexes == test_patient_index);
 
 patient_results = cell(1, num_pat);
 
@@ -34,7 +34,7 @@ all_patient_ids = fieldnames(patient_info);
 
 % initialize success, fail, and test ids
 for n = 1:num_pat
-    patient_results{n} = all_patient_ids{training_patient_indexes(n)};
+    patient_results{n} = all_patient_ids{reference_patient_indexes(n)};
     % TODO: patient_id = patient_results{n};
     if n ~= test_index
         if strcmpi(patient_info.(patient_results{n}).type.outcome, 'success')
@@ -68,7 +68,6 @@ pca_cent_flag = true;                                                      % tru
 %% Main loop
 % Scanning through each patient
 for n = 1:num_pat
-    % TODO: patient_results{n} = patient_id
     patient_id = patient_results{n};
     patient = patient_info.(patient_id);
     

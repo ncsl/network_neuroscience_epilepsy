@@ -21,22 +21,17 @@ clearvars -except pca_cent_flag
 close all
 
 %% Variable initialization
-p_id = {'PY04N007', 'PY04N008', 'PY04N012', 'PY04N013', 'PY04N015',...
-    'PY05N004', 'PY05N005', 'PY11N003', 'PY11N004', 'PY11N006',...
-    'PY12N005', 'PY12N008', 'PY12N010', 'PY12N012', 'PY13N001',...
-    'PY13N003', 'PY13N004', 'PY13N010', 'PY13N011','PY14N004',...
-    'PY14N005'};
+p_id = {'PY04N007', 'PY04N012', 'PY04N013', 'PY04N015',...
+        'PY05N005', 'PY11N003', 'PY11N006',...
+        'PY12N005', 'PY12N010', 'PY12N012',...
+        'PY13N003', 'PY13N011', 'PY14N004', 'PY14N005'};
 
-reference_patients = {'PY04N007';'PY04N012';'PY04N013';'PY04N015';'PY05N005';'PY11N003';'PY11N006';...
-                      'PY12N005';'PY12N008';'PY12N010';'PY12N012';'PY13N003';'PY13N011';'PY14N004';...
-                      'PY14N005'};
+%patient number/id in successful cases
+succ_p_id = {'PY04N013', 'PY11N006', 'PY12N005', 'PY12N010',...
+             'PY13N003', 'PY13N011', 'PY14N004', 'PY14N005'};
 
-succ_p_id = {'PY04N008', 'PY04N013', 'PY05N004', 'PY11N006', 'PY12N005',...
-    'PY12N010', 'PY13N003', 'PY13N010', 'PY13N011', 'PY14N004',...
-    'PY14N005'};                                                           %patient number/id in successful cases
-
-fail_p_id = {'PY04N007', 'PY04N012', 'PY04N015',  'PY05N005', 'PY11N003',...
-    'PY11N004', 'PY12N008', 'PY12N012', 'PY13N001', 'PY13N004'};           %patient number/id in failed cases
+%patient number/id in failed cases
+fail_p_id = {'PY04N007', 'PY04N012', 'PY04N015',  'PY05N005', 'PY11N003', 'PY12N012'};
 
 pre = 60;                                                                  %window (in s) before onset of a seizure
 post = 60;                                                                 %window (in s) after end of a seizure
@@ -75,8 +70,10 @@ end                                                                        %true
 
 %%
 
-%Findng the maximum seizure duration in a given set for normalization in time
-for n = [1,3,4,5,7,8,10,11,12,13,14,16,19,20,21]                           % PY13N010 is not being considered
+%Find the maximum seizure duration in a given set for normalization in time
+% These correspond to labels(n).subject
+ids = [1,3,4,5,7,8,10,11,13,14,16,19,20,21];
+for n = ids                           
     for k = 1:event_info.events(n).nevents
         seiz_dur = (event_info.events(n).end_marks(k) - event_info.events(n).start_marks(k)) + 1;
         
@@ -90,8 +87,9 @@ end
 
 %% Main loop
 
-for n = [1,3,4,5,7,8,10,11,12,13,14,16,18,19,20,21]
+for n = ids
     
+    display(sprintf('here is %s', p_id{n}));
     %%%For hopkins' patients data
     
     %load the file containing information about eigenvalues from crosspowers
