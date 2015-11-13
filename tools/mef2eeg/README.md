@@ -31,8 +31,15 @@ Uncompress the channel readings to 32-bit ascii ints (`mef_lib`)
 
 ## downsample
 
-`downsample`     -> Start with a simple 2kHz to 1kHz downsample: `awk 'NR % 2 == 0' file > newfile`.
-                    NB: Should move to http://www.mathworks.com/help/signal/ref/decimate.html in the future.
+`downsample`     -> Apply a simple 2kHz to 1kHz downsample: `awk 'NR % 2 == 0' file > newfile`.
+
+| file                        | kHz |   lines |         max |          min |       range |      mean |        std |      snr |
+|-----------------------------+-----+---------+-------------+--------------+-------------+-----------+------------+----------|
+| PY15N012_PTO4_0077.txt      |   2 | 7200000 | 2454.980469 | -2421.972656 | 4876.953125 | 56.723143 | 202.659581 | 0.279894 |
+| PY15N012_PTO4_0077_1khz.txt |   1 | 3600000 | 2447.363281 | -2421.972656 | 4869.335937 | 56.722267 | 202.659608 | 0.279889 |
+|                             |     |         |             |              |             |           |            |          |
+
+_NB: Should move to http://www.mathworks.com/help/signal/ref/decimate.html in the future._
 
 
 ## time_filter

@@ -208,12 +208,9 @@ fnrr = (frr(end) + 1): (frr(end) + no_signals(4));                         %numb
 
 %% CDFs PCA for all electrodes
 
-%X defines the data set for PCA, Rows of X contain the observations and
-%columns are the variables
-% TODO: X should be done once across all patients
-% I also need to know the patient id
-% Store this 'X': This is the model
-% Remove the values for this patient
+% X defines the data set for PCA
+% Rows of X contain the observations and columns are the variables
+
 % The model contains a weight function in a 2D space.
 % 2 x 10 matrix.
 % Test subject is a 10-D space. Place them in the PC space.
@@ -225,6 +222,23 @@ points.SR.all_PC = b(srr, 1:2);
 points.SNR.all_PC = b(snrr, 1:2);
 points.FR.all_PC = b(frr, 1:2);
 points.FNR.all_PC = b(fnrr, 1:2);
+
+%% Plotting 2D PC space
+
+figure
+hold on
+scatter(points.SR.all_PC(:,1),  points.SR.all_PC(:,2),  'g+');
+scatter(points.SNR.all_PC(:,1), points.SNR.all_PC(:,2), 'g.');
+scatter(points.FR.all_PC(:,1),  points.FR.all_PC(:,2),  'k+');
+scatter(points.FNR.all_PC(:,1), points.FNR.all_PC(:,2), 'k.');
+xlabel('First principal component'), ylabel('Second principal component');
+title('PC space projection'), axis('tight')
+grid on
+axis([-700 700 -400 400])
+set(gca,'xtick',-700:100:700)
+set(gca,'ytick',-400:50:400)
+legend('Success & R', 'Success & NR', 'Failure & R', 'Failure & NR');
+hold off
 
 avg = mean(X);
 points.TEST.all_PC = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1]))*a(:, [1 2]);

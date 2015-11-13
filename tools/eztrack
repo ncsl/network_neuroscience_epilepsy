@@ -16,7 +16,6 @@ reference=$PROJECT_HOME/data/reference
 patient_id=$1
 [[ ! -z "$patient_id" ]] || { echo "Usage: ./eztrack <patient_id (e.g. PY12N008)>" ; exit 1 ; }
 
-eeg2fsv_out=$PROJECT_HOME/output/eeg/$patient_id/adj_pwr
 reference_heatmap=${patient_id}_iEEG_temporal_results_28-Aug-2015.csv
 
 [[ ! -z "`which $matlab_exe`" ]] || \
@@ -35,13 +34,31 @@ echo "TODO: mef_finder"
 printf "\n== Copying MEF files to local storage  ==\n"
 echo "TODO: mef_copy"
 
-printf "\n== Extracting signals... ==\n"
-echo "TODO: mef2eeg"
+printf "\n== mef2eeg ==\n"
+
+rm -f $PROJECT_HOME/data/mef/$patient_id/*.txt
+printf "\n== mef2ascii ==\n"
+ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2ascii
+printf "\n== downsample ==\n"
+ls $PROJECT_HOME/data/mef/$patient_id/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
+
+exit 0
+
+
+# These parameters are known after mef2eeg.
+num_channels=89
+included_channels="[1:4 7:89]"
+sizes="[640000, 672000, 737000, 729000]" # this can be taken right out of the stats file.
 
 printf "\n== eeg2fsv ==\n"
+eeg2fsv_out=$PROJECT_HOME/output/eeg/$patient_id/adj_pwr
+patient_file_path="$HOME/dev/eztrack/tools/output/eeg/$patient_id/"
+
 rm -rf $eeg2fsv_out
-# TODO: Refactor to give eeg2fsv a simpler entry point with patient_id as a parameter.
-cd $PROJECT_HOME/tests/eeg2fsv && $matlab_jvm "eeg2fsv_test; exit"
+cd $PROJECT_HOME/eeg2fsv && \
+    $matlab_jvm "eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes); exit"
+
+# Copy results to output dir used in fsv2heatmap computation.
 cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 
 # fsv2heatmap currently processes all fsv's for a particular lobe.
@@ -59,6 +76,4 @@ diff $results $heatmap_output/$reference_heatmap
 printf "\tAll tests passed: Results match reference heatmap.\n"
 ### End of development testing.
 
-printf "EZTrack finished: Results saved to\n$results\n"
-
-
+printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\n"

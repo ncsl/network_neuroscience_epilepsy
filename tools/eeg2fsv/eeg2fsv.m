@@ -1,6 +1,16 @@
-function eeg2fsv(patient_files, patient_file_path, patient_id, frequency, num_channels, included_channels, sample_to_access)
+function eeg2fsv(patient_file_path, patient_id, num_channels, included_channels, file_sizes)
 
-patient_file_names = keys(patient_files);
+sample_to_access = 0;
+frequency = 1000;
+
+% Find files to process
+f = dir([patient_file_path '*eeg.csv']);
+patient_file_names = cell(1,4);
+for i=(1:length(f))
+    patient_file_names{i} = f(i).name;
+end
+
+patient_files = containers.Map(patient_file_names, file_sizes);
 
 % 1. Compute adjacency matrix sequence, stored into 1-D arrays
 parpool;
