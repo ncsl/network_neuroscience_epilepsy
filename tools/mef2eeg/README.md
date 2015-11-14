@@ -24,7 +24,7 @@ Test EZTrack after we have the required label and eeg files:
 
 Uncompress the channel readings to 32-bit ascii ints (`mef_lib`)
 
-`ls *.mef | xargs -n 1 -P 8 mef2ascii`
+`ls *.mef | xargs -n 1 -P 8 mef2ascii`cd ~/dev/clients/cognitect/pershing
 
 ...takes about 5 minutes for a one hour segment.
 
@@ -57,12 +57,20 @@ end_time
 
 ### Compute the position in the file based on the frequency
 
-start: onset - start_time
-end:   start + duration
+Timestamps in MEF are stored in Microsecond Coordinated Universal Time (UTC), which is a variation of standard Unix or Posix UTC time defined by the number of microseconds since midnight January 1, 1970, GMT. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2841504/)
 
-Then use head and tail to carve out this portion of the file.
+Using the times from http://www.epochconverter.com:
 
-Also see the notes and times in https://trello.com/c/RktHxAsU/61-time-filter
+recording_start_time = 1439842164810500 (Mon, 17 Aug 2015 20:09:24 GMT)
+seizure_onset_time   = 1439842617000000 (Mon, 17 Aug 2015 20:16:57 GMT)
+seizure_end_time     = 1439842917000000 (Mon, 17 Aug 2015 20:21:57 GMT)
+recording_end_time   = 1439845764810000 (Mon, 17 Aug 2015 21:09:24 GMT)
+
+signal_to_start = onset - start = 1439842617000000 - 1439842164810500 = 452189500 / 1000000 = 452
+start = signal_to_start * frequency = 452 * 1000 = 452000
+
+seizure_end_time - seizure_onset_time = 300000000 / 1000 = 300000
+
 
 
 ## channel_filter

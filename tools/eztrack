@@ -36,12 +36,13 @@ echo "TODO: mef_copy"
 
 printf "\n== mef2eeg ==\n"
 
-rm -f $PROJECT_HOME/data/mef/$patient_id/*.txt
+#rm -f $PROJECT_HOME/data/mef/$patient_id/*.txt
 printf "\n== mef2ascii ==\n"
-ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2ascii
+#ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2ascii
 printf "\n== downsample ==\n"
-ls $PROJECT_HOME/data/mef/$patient_id/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
-
+#ls $PROJECT_HOME/data/mef/$patient_id/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
+printf "\n== time_filter ==\n"
+ls $PROJECT_HOME/data/mef/$patient_id/*downsample.txt | xargs -I% -n 1 -P 8 mef2eeg/time_filter % 452001 300000
 exit 0
 
 

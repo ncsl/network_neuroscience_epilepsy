@@ -11,6 +11,8 @@ extension="${full_filename##*.}"
 filename="${full_filename%.*}"
 dir=$(dirname "$1")
 
+echo "downsampling $full_filename"
+
 # Downsample by 50%
 awk 'NR % 2 == 0' $1 > $dir/${filename}_downsample.$extension
 
