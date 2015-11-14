@@ -5,7 +5,7 @@ frequency = 1000;
 
 % Find files to process
 f = dir([patient_file_path '*eeg.csv']);
-patient_file_names = cell(1,4);
+patient_file_names = cell(1, length(f));
 for i=(1:length(f))
     patient_file_names{i} = f(i).name;
 end

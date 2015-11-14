@@ -9,8 +9,9 @@ temporal_patients = {'PY04N007';'PY04N012';'PY04N013';'PY04N015';'PY05N005';'PY1
                      'PY12N005';'PY12N008';'PY12N010';'PY12N012';'PY13N003';'PY13N011';'PY14N004';...
                      'PY14N005'};
 
-% Add the test_patient_id to the list if it's not already there:
-if (~any(find(ismember(temporal_patients,'PY'))))
+display('Adding the test_patient_id to the list if it is not already there...');
+if (~any(find(ismember(temporal_patients,test_patient_id))))
+    display('Adding...');
     temporal_patients{end+1,1} = test_patient_id;
 end
 
@@ -21,7 +22,7 @@ points = fsv2pcspace(temporal_patients, test_patient_id, patient_info, fsv_path)
 results = cell(1,1);
 test_patient = patient_info.(test_patient_id);
 % TODO: Refactor electrode_classifier to take just the values it needs from test_patient
-%       instead of taking a struct.
+%       instead of taking a struct to make it easier to get rid of the patient_info data structure.
 results.(test_patient_id) = electrode_classifier(patient_type, test_patient, points, number_heatmap_colors);
 
 heatmap_file = [eztrack_home '/output/heatmap/' test_patient_id '_iEEG_temporal_results_' date];

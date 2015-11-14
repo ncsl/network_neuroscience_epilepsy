@@ -47,11 +47,10 @@ for n = 1:num_pat
     end
 end
 
+display(sprintf('test_p_id: %s', test_p_id));
+
 pre = 60;                                                                  % window (in s) before onset of a seizure
 post = 60;                                                                 % window (in s) after end of a seizure
-
-freqband = {'beta', 'gamma'};                                              % frequency band for cross power
-
 window = 21;                                                               % smoothing window proportional to the length of the window, ~60%
 
 tmp = struct('rank',[], 'cdfs', [], 'all_PC', []);
@@ -76,13 +75,13 @@ for n = 1:num_pat
     
     % Extract non-resected electrodes into a seperate array
     non_resected_electrodes = setdiff(1:patient.events.ttl_electrodes, patient.events.RR_electrodes);
-    
+
     number_of_points = number_of_points + patient.events.nevents * patient.events.ttl_electrodes;
     
     for k = 1:patient.events.nevents
         
         % Extract eigenvector centrality from file 
-        cent = eval(sprintf('f1.snap%d_%s', k, freqband{2}));
+        cent = eval(sprintf('f1.snap%d_gamma', k));
         cent = abs(cent);
         cent(cent < 1*10^-10) = 0;
         
@@ -194,7 +193,7 @@ end
 
 %% Initialization for PCA
 no_signals = [size(points.SR.cdfs, 1), size(points.SNR.cdfs, 1),...
-    size(points.FR.cdfs, 1), size(points.FNR.cdfs, 1)];                    %total number of signals
+              size(points.FR.cdfs, 1), size(points.FNR.cdfs, 1)]; %total number of signals
 
 if ~(sum(no_signals) == number_of_points)
     error('Error in the total number of signals for analysis');
@@ -224,21 +223,21 @@ points.FR.all_PC = b(frr, 1:2);
 points.FNR.all_PC = b(fnrr, 1:2);
 
 %% Plotting 2D PC space
-
-figure
-hold on
-scatter(points.SR.all_PC(:,1),  points.SR.all_PC(:,2),  'g+');
-scatter(points.SNR.all_PC(:,1), points.SNR.all_PC(:,2), 'g.');
-scatter(points.FR.all_PC(:,1),  points.FR.all_PC(:,2),  'k+');
-scatter(points.FNR.all_PC(:,1), points.FNR.all_PC(:,2), 'k.');
-xlabel('First principal component'), ylabel('Second principal component');
-title('PC space projection'), axis('tight')
-grid on
-axis([-700 700 -400 400])
-set(gca,'xtick',-700:100:700)
-set(gca,'ytick',-400:50:400)
-legend('Success & R', 'Success & NR', 'Failure & R', 'Failure & NR');
-hold off
+% TODO: Move to a separate function. Also plot the test subject to look for the 'rainbow' shape.
+% figure
+% hold on
+% scatter(points.SR.all_PC(:,1),  points.SR.all_PC(:,2),  'g+');
+% scatter(points.SNR.all_PC(:,1), points.SNR.all_PC(:,2), 'g.');
+% scatter(points.FR.all_PC(:,1),  points.FR.all_PC(:,2),  'k+');
+% scatter(points.FNR.all_PC(:,1), points.FNR.all_PC(:,2), 'k.');
+% xlabel('First principal component'), ylabel('Second principal component');
+% title('PC space projection'), axis('tight')
+% grid on
+% axis([-700 700 -400 400])
+% set(gca,'xtick',-700:100:700)
+% set(gca,'ytick',-400:50:400)
+% legend('Success & R', 'Success & NR', 'Failure & R', 'Failure & NR');
+% hold off
 
 avg = mean(X);
 points.TEST.all_PC = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1]))*a(:, [1 2]);

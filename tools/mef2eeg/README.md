@@ -10,9 +10,9 @@ one hour.
                     NB: Should move to http://www.mathworks.com/help/signal/ref/decimate.html in the future.
 `time_filter`    -> extract only the rows we need; delete the original ascii.
 `channel_filter` -> extract headers and compute stats for each channel. Remove those without a high snr (or similar metric)
-`ascii2eeg`      -> `paste -d ',' *.txt > patient_id_077_eeg.csv`
+`signals2eeg`    -> `paste -d ',' *.txt > patient_id_077_eeg.csv`
                     `paste` combines files column-wise. Columns are electrodes, rows are signals.
-`labels`         -> create the patient_id_077_labels.csv file based on the same signals and order used in `ascii2eeg`.
+`signals2labels` -> create the patient_id_077_labels.csv file based on the same signals and order used in `ascii2eeg`.
 
 Test EZTrack after we have the required label and eeg files:
 
@@ -46,7 +46,7 @@ _NB: Should move to http://www.mathworks.com/help/signal/ref/decimate.html in th
 
 Decide which time-slice to take based on the inputs from the clinical notes.
 
-For 0.0.1, we're going to assume one seizure per hour.
+_For 0.0.1, assume one seizure per hour._
 
 ### Determine the seconds to save
 
@@ -68,9 +68,7 @@ recording_end_time   = 1439845764810000 (Mon, 17 Aug 2015 21:09:24 GMT)
 
 signal_to_start = onset - start = 1439842617000000 - 1439842164810500 = 452189500 / 1000000 = 452
 start = signal_to_start * frequency = 452 * 1000 = 452000
-
 seizure_end_time - seizure_onset_time = 300000000 / 1000 = 300000
-
 
 
 ## channel_filter
@@ -90,12 +88,15 @@ tr '\n' ',' | sed '$s/,$//' \ # transform into a comma-delimited list, using sed
 > testing_header.txt
 ```
 
+TODO: It would be interesting to run this filter on the retrospective study data to see what the stats are of the channels that are known to provide good inputs.
+
+
 ## signals2eeg
 
 `signals2eeg`    -> `paste -d ',' *.txt > patient_id_077_eeg.csv`
                     `paste` combines files column-wise.
 
-## labels
+## signals2labels
 
 `labels`         -> create the patient_id_077_labels.csv file.
 

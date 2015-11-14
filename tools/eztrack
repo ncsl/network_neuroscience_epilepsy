@@ -24,34 +24,50 @@ reference_heatmap=${patient_id}_iEEG_temporal_results_28-Aug-2015.csv
 [[ -d $reference ]] || \
     { echo "EZTrack reference data not found at $reference; please check the Getting Started section in the README" ; exit 1 ; }
 
-# TODO: Map patient_id to $patient_id.csv saved to $PROJECT_HOME
 printf "\n== Validating $patient_id.csv  ==\n"
-echo "TODO: input validation"
+# "TODO: input validation: Map patient_id to $patient_id.csv saved to $PROJECT_HOME"
 
 printf "\n== Finding MEF files for $patient_id  ==\n"
-echo "TODO: mef_finder"
+# "TODO: mef_finder"
 
 printf "\n== Copying MEF files to local storage  ==\n"
-echo "TODO: mef_copy"
+# "TODO: mef_copy"
 
 printf "\n== mef2eeg ==\n"
 
-#rm -f $PROJECT_HOME/data/mef/$patient_id/*.txt
 printf "\n== mef2ascii ==\n"
-#ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2ascii
+rm -f $PROJECT_HOME/data/mef/$patient_id/*.txt
+ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2ascii
+
 printf "\n== downsample ==\n"
-#ls $PROJECT_HOME/data/mef/$patient_id/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
+ls $PROJECT_HOME/data/mef/$patient_id/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
+
 printf "\n== time_filter ==\n"
+# TODO: date_converter: Convert dates from input file into the time offsets for time_filter.
 ls $PROJECT_HOME/data/mef/$patient_id/*downsample.txt | xargs -I% -n 1 -P 8 mef2eeg/time_filter % 452001 300000
-exit 0
 
+printf "\n== channel_filter  ==\n"
+# channel_filter will output a list of files to be used in the analysis.
+# TODO: Modify the stats script to output a CSV entry for each file, then cat them together for easy comparison.
+# For now, just use a hard-coded filter of the LPT files.
+mv $PROJECT_HOME/data/mef/$patient_id/*LPT*downsample_window.txt $PROJECT_HOME/data/mef/$patient_id/channels/
 
-# These parameters are known after mef2eeg.
-num_channels=89
-included_channels="[1:4 7:89]"
-sizes="[640000, 672000, 737000, 729000]" # this can be taken right out of the stats file.
+printf "\n== signals2eeg ==\n"
+# TODO: Remove the hard-coded 077 from the file name
+paste -d ',' $PROJECT_HOME/data/mef/$patient_id/channels/*.txt > $PROJECT_HOME/data/mef/$patient_id/channels/${patient_id}_077_eeg.csv
+
+printf "\n== signals2labels ==\n"
+mkdir -p $PROJECT_HOME/output/eeg/$patient_id
+# TODO: extract label csv from the file names in .../channels.
+# For now, we're going to copy a reference file.
+cp $PROJECT_HOME/data/reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
+mv $PROJECT_HOME/data/mef/$patient_id/channels/*.csv $PROJECT_HOME/output/eeg/$patient_id
 
 printf "\n== eeg2fsv ==\n"
+num_channels=`ls $PROJECT_HOME/data/mef/$patient_id/channels/*.txt | wc -l | xargs`
+included_channels="[1:$num_channels]"    # PY12N008: "[1:4 7:89]". Convert the data to not require defining these gaps.
+# TODO: These sizes are the results of date_converter in time_filter.
+sizes="[300000]" # PY12N008: "[640000, 672000, 737000, 729000]"
 eeg2fsv_out=$PROJECT_HOME/output/eeg/$patient_id/adj_pwr
 patient_file_path="$HOME/dev/eztrack/tools/output/eeg/$patient_id/"
 
@@ -65,16 +81,18 @@ cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 # fsv2heatmap currently processes all fsv's for a particular lobe.
 printf "\n== fsv2heatmap ==\n"
 cd $PROJECT_HOME/fsv2heatmap && \
-    $matlab_jvm "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > /tmp/eztrack-temporal
+    $matlab_jvm "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > $temporal_out
 
 # TODO: Have fsv2heatmap save this output path to a different file.
 results=`tail -n 3 $temporal_out | head -n 1`
 
-# TODO: temporary tests for development
-git co $PROJECT_HOME/output/fsv
-echo "Validating fsv2heatmap results at $results"
-diff $results $heatmap_output/$reference_heatmap
-printf "\tAll tests passed: Results match reference heatmap.\n"
+# TODO: temporary tests for development with PY12N008
+#git co $PROJECT_HOME/output/fsv
+#echo "Validating fsv2heatmap results at $results"
+#diff $results $heatmap_output/$reference_heatmap
+#printf "\tAll tests passed: Results match reference heatmap.\n"
 ### End of development testing.
 
 printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\n"
+
+open $results

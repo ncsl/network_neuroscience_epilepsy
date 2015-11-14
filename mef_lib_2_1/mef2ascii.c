@@ -109,10 +109,10 @@ int main (int argc, const char * argv[]) {
     return 1;
   }
 
-  fprintf(stdout, "\n\nReading file %s \n", argv[1]);
+  //fprintf(stdout, "\n\nReading file %s \n", argv[1]);
   start_block = 0;
 
-  fprintf(stdout, "\nDecompressing and writing file %s: %ld entries \n", outFileName, header.number_of_samples);
+  //fprintf(stdout, "\nDecompressing and writing file %s: %ld entries \n", outFileName, header.number_of_samples);
 
   while( start_block < numBlocks ) {
     end_block = start_block + blocks_per_cycle;
@@ -146,7 +146,7 @@ int main (int argc, const char * argv[]) {
 
   free(in_data); in_data = NULL;
   free(diff_buffer); diff_buffer = NULL;
-  fprintf(stdout, "Decompression complete\n");
+  //fprintf(stdout, "Decompression complete\n");
 
   //Assemble output filename
   l = (int)strlen(argv[1]);
@@ -159,7 +159,7 @@ int main (int argc, const char * argv[]) {
     fprintf(stderr, "Error opening file %s\n", outFileName);
     return 1;
   }
-  fprintf(stdout, "\n\nWriting file %s: %ld entries \n", outFileName, entryCounter);
+  // fprintf(stdout, "\n\nWriting file %s: %ld entries \n", outFileName, entryCounter);
 
   // Write the ints to the file as text
   for (n=0;n<entryCounter;n++) num += fprintf(out_fp, "%f\n", (data[n] * header.voltage_conversion_factor));
