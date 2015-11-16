@@ -83,7 +83,7 @@ printf "\n== fsv2heatmap ==\n"
 cd $PROJECT_HOME/fsv2heatmap && \
     $matlab_jvm "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > $temporal_out
 
-# TODO: Have fsv2heatmap save this output path to a different file.
+# TODO: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
 
 # TODO: temporary tests for development with PY12N008
