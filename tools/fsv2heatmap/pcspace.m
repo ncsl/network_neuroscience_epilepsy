@@ -35,174 +35,23 @@ all_patient_ids = fieldnames(patient_info);
 % initialize success, fail, and test ids
 for n = 1:num_pat
     patient_results{n} = all_patient_ids{reference_patient_indexes(n)};
-    % TODO: patient_id = patient_results{n};
-    if n ~= test_index
-        if strcmpi(patient_info.(patient_results{n}).type.outcome, 'success')
-            succ_p_id = cat(2, succ_p_id, patient_results{n});
-        elseif strcmpi(patient_info.(patient_results{n}).type.outcome, 'failure')
-            fail_p_id = cat(2, fail_p_id, patient_results{n});
-        end
-    else
-        test_p_id = patient_results{n};
-    end
-end
-
-display(sprintf('test_p_id: %s', test_p_id));
-
-pre = 60;                                                                  % window (in s) before onset of a seizure
-post = 60;                                                                 % window (in s) after end of a seizure
-window = 21;                                                               % smoothing window proportional to the length of the window, ~60%
-
-tmp = struct('rank',[], 'cdfs', [], 'all_PC', []);
-points = struct('SR', tmp, 'SNR', tmp, 'FR', tmp, 'FNR', tmp, 'TEST', tmp);
-
-cdf = 0.1:0.1:1;                                                           % Domain of CDF: Used to create intervals
-length_cdf = length(cdf);
-
-max_dur = 500;                                                             % Maximum seizure duration set to 500 seconds for Hopkins
-number_of_points = 0;                                                      % counter for number of points in PC space
-
-pca_cent_flag = true;                                                      % true for centering in PCA
-
-%% Main loop
-% Scanning through each patient
-for n = 1:num_pat
     patient_id = patient_results{n};
-    patient = patient_info.(patient_id);
-    
-    % Load the file containing information about eigenvalues from crosspowers
-    f1 = load(fullfile(fsv_path, sprintf('fsv_pwr%s', patient_id))); %#ok<NASGU>
-    
-    % Extract non-resected electrodes into a seperate array
-    non_resected_electrodes = setdiff(1:patient.events.ttl_electrodes, patient.events.RR_electrodes);
-
-    number_of_points = number_of_points + patient.events.nevents * patient.events.ttl_electrodes;
-    
-    for k = 1:patient.events.nevents
-        
-        % Extract eigenvector centrality from file 
-        cent = eval(sprintf('f1.snap%d_gamma', k));
-        cent = abs(cent);
-        cent(cent < 1*10^-10) = 0;
-        
-        if  pre < patient.events.start_marks(k) && ...
-            patient.events.end_marks(k)+post < size(cent,2)
-            
-            % Extracting seizure duration and the flanks information
-            dur = patient.events.start_marks(k):...
-                patient.events.end_marks(k);                      % Seizure duration
-            
-            dur1 = patient.events.start_marks(k)-pre:...
-                patient.events.start_marks(k)-1;                  % Pre-Seizure duration
-            
-            dur2 = patient.events.end_marks(k)+1:...
-                patient.events.end_marks(k)+post;                 % Post-Seizure duration
-            
-            % Converting eigen vector centrality to rank centrality
-            rankcent = ranking(cent(:, dur), 'ascend');
-            flank1 = ranking(cent(:, dur1), 'ascend');
-            flank2 = ranking(cent(:, dur2), 'ascend');
-            
-            %checking for any illegal entries in the electrode rank centrality matrix
-            if ~(isempty(find(rankcent > patient.events.ttl_electrodes, 1))...
-                    || isempty(find(flank1 > patient.events.ttl_electrodes, 1))...
-                    || isempty(find(flank2 > patient.events.ttl_electrodes, 1))...
-                    || isempty(find(rankcent < 1, 1))...
-                    || isempty(find(flank1 < 1, 1))...
-                    || isempty(find(flank2 < 1, 1)))
-                error('Error in rank centrality: Illegal entries in the matrix');
-            end
-            
-            % Normalization in length (#time points)
-            if length(dur) ~= max_dur
-                interval = linspace(1, length(dur), max_dur);
-                rankcent = interp1(1:length(dur), rankcent', interval, 'linear')';
-            end
-                        
-            if ~(isempty(find(rankcent > patient.events.ttl_electrodes, 1)) || ...
-                 isempty(find(rankcent < 1, 1)))
-                error('Error in rankcentrality interpolation: Illegal matrix entries');
-            end
-            
-            % concatenating pre and post seizure activity to define the signal of interest
-            rankcent = cat(2, flank1, rankcent, flank2);
-            
-            % Smoothing the rank signal with a sliding window of size 'window'
-            for etd = 1:patient.events.ttl_electrodes
-                rankcent(etd,:) = smooth(rankcent(etd,:), window, 'moving');
-            end
-            
-            % Normalizing in y-axis
-            rankcent = rankcent./patient.events.ttl_electrodes;
-            
-            % TODO: rankcent should now only have values from 0 to 1
-            
-            %----------------------------
-            % TODO: Extract function
-            %
-            % Normalizing the area to 1 (defining a cdf)
-            % so that each row of rankcent integrates to one
-            ci = cumtrapz(rankcent, 2);
-            for i = 1:size(rankcent, 1)
-                rankcent(i, :) = rankcent(i, :)./ci(i, end);
-                ci(i, :) = ci(i, :)./ci(i, end);
-            end
-            
-            if ~(isempty(find(ci(:, end) ~= 1, 1)))
-                error('Error in area normalization: Illegal matrix entries');
-            end
-            %---------------------------
-            
-            %----------------------------
-            % TODO: Extract function
-            %
-            % Extracting the variables for CDF (10 dimensional feature vectors)
-            I = zeros(patient.events.ttl_electrodes, length_cdf);
-            for i = 1:patient.events.ttl_electrodes
-                for j = 1:length_cdf
-                    I(i,j) = find(ci(i, :) <= cdf(j), 1, 'last');
-                end
-            end
-            % I is now number of electrodes by length of cdf
-            %----------------------------
-            
-            % Classifying and segregating electrodes into 4 groups
-            %   1. Success and Resected (SR)
-            %   2. Success and not Resected (SNR)
-            %   3. Failure and Resected (FR)
-            %   4. Failure and not Resected (FNR)
-            switch patient_id
-                case succ_p_id
-                    points.SR.rank = cat(1, points.SR.rank, rankcent(patient.events.RR_electrodes, :));
-                    points.SR.cdfs = cat(1, points.SR.cdfs, I(patient.events.RR_electrodes, :));
-                    points.SNR.rank = cat(1, points.SNR.rank, rankcent(non_resected_electrodes, :));
-                    points.SNR.cdfs = cat(1, points.SNR.cdfs, I(non_resected_electrodes, :));
-                case fail_p_id
-                    points.FR.rank = cat(1, points.FR.rank, rankcent(patient.events.RR_electrodes, :));
-                    points.FR.cdfs = cat(1, points.FR.cdfs, I(patient.events.RR_electrodes, :));
-                    points.FNR.rank = cat(1, points.FNR.rank, rankcent(non_resected_electrodes, :));
-                    points.FNR.cdfs = cat(1, points.FNR.cdfs, I(non_resected_electrodes, :));
-                case test_p_id
-                    points.TEST.rank = cat(1, points.TEST.rank, rankcent);
-                    points.TEST.cdfs = cat(1, points.TEST.cdfs, I);
-                    number_of_points = number_of_points - patient.events.ttl_electrodes;
-            end
-        end
+    if n == test_index
+        test_p_id = patient_id;
+    elseif strcmpi(patient_info.(patient_id).type.outcome, 'success')
+        succ_p_id = cat(2, succ_p_id, patient_id);
+    elseif strcmpi(patient_info.(patient_id).type.outcome, 'failure')
+        fail_p_id = cat(2, fail_p_id, patient_id);
     end
 end
 
-%% Initialization for PCA
-no_signals = [size(points.SR.cdfs, 1), size(points.SNR.cdfs, 1),...
-              size(points.FR.cdfs, 1), size(points.FNR.cdfs, 1)]; %total number of signals
+points = cdfs(fsv_path, patient_results, patient_info, test_p_id, succ_p_id, fail_p_id);
 
-if ~(sum(no_signals) == number_of_points)
-    error('Error in the total number of signals for analysis');
-end
-
-srr = 1:no_signals(1);                                                     %number of S_RR signals
-snrr = (srr(end) + 1):(srr(end) + no_signals(2));                          %number of S_NRR signals
-frr = (snrr(end) + 1):(snrr(end) + no_signals(3));                         %number of F_RR signals
-fnrr = (frr(end) + 1): (frr(end) + no_signals(4));                         %number of F_NRR signals
+total_number_signals = [size(points.SR.cdfs, 1), size(points.SNR.cdfs, 1), size(points.FR.cdfs, 1), size(points.FNR.cdfs, 1)];
+srr = 1:total_number_signals(1);                                % number of S_RR signals
+snrr = (srr(end)  + 1):(srr(end)  + total_number_signals(2));   % number of S_NRR signals
+frr  = (snrr(end) + 1):(snrr(end) + total_number_signals(3));   % number of F_RR signals
+fnrr = (frr(end)  + 1):(frr(end)  + total_number_signals(4));   % number of F_NRR signals
 
 
 %% CDFs PCA for all electrodes
@@ -214,31 +63,16 @@ fnrr = (frr(end) + 1): (frr(end) + no_signals(4));                         %numb
 % 2 x 10 matrix.
 % Test subject is a 10-D space. Place them in the PC space.
 X = [points.SR.cdfs; points.SNR.cdfs; points.FR.cdfs; points.FNR.cdfs];
-% The second output, score, contains the coordinates of the original data in the new coordinate system defined by the principal components. The score matrix is the same size as the input data matrix
-[a, b, ~, ~, ~] = pca(X, 'Centered', pca_cent_flag);
+% The second output, score, contains the coordinates of the original data in the new coordinate system defined by the principal components. 
+% The score matrix is the same size as the input data matrix.
+[a, b, ~, ~, ~] = pca(X, 'Centered', true);
 
-points.SR.all_PC = b(srr, 1:2);
+points.SR.all_PC  = b(srr,  1:2);
 points.SNR.all_PC = b(snrr, 1:2);
-points.FR.all_PC = b(frr, 1:2);
+points.FR.all_PC  = b(frr,  1:2);
 points.FNR.all_PC = b(fnrr, 1:2);
 
-%% Plotting 2D PC space
-% TODO: Move to a separate function. Also plot the test subject to look for the 'rainbow' shape.
-% figure
-% hold on
-% scatter(points.SR.all_PC(:,1),  points.SR.all_PC(:,2),  'g+');
-% scatter(points.SNR.all_PC(:,1), points.SNR.all_PC(:,2), 'g.');
-% scatter(points.FR.all_PC(:,1),  points.FR.all_PC(:,2),  'k+');
-% scatter(points.FNR.all_PC(:,1), points.FNR.all_PC(:,2), 'k.');
-% xlabel('First principal component'), ylabel('Second principal component');
-% title('PC space projection'), axis('tight')
-% grid on
-% axis([-700 700 -400 400])
-% set(gca,'xtick',-700:100:700)
-% set(gca,'ytick',-400:50:400)
-% legend('Success & R', 'Success & NR', 'Failure & R', 'Failure & NR');
-% hold off
-
 avg = mean(X);
-points.TEST.all_PC = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1]))*a(:, [1 2]);
+points.TEST.all_PC = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1])) * a(:, [1 2]);
+
 end

@@ -16,8 +16,6 @@ reference=$PROJECT_HOME/data/reference
 patient_id=$1
 [[ ! -z "$patient_id" ]] || { echo "Usage: ./eztrack <patient_id (e.g. PY12N008)>" ; exit 1 ; }
 
-reference_heatmap=${patient_id}_iEEG_temporal_results_28-Aug-2015.csv
-
 [[ ! -z "`which $matlab_exe`" ]] || \
     { echo "MATLAB not found at $matlab_exe; please check the Getting Started section in the README" ; exit 1 ; }
 
@@ -78,7 +76,6 @@ cd $PROJECT_HOME/eeg2fsv && \
 # Copy results to output dir used in fsv2heatmap computation.
 cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 
-# fsv2heatmap currently processes all fsv's for a particular lobe.
 printf "\n== fsv2heatmap ==\n"
 cd $PROJECT_HOME/fsv2heatmap && \
     $matlab_jvm "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > $temporal_out
@@ -86,13 +83,4 @@ cd $PROJECT_HOME/fsv2heatmap && \
 # TODO: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
 
-# TODO: temporary tests for development with PY12N008
-#git co $PROJECT_HOME/output/fsv
-#echo "Validating fsv2heatmap results at $results"
-#diff $results $heatmap_output/$reference_heatmap
-#printf "\tAll tests passed: Results match reference heatmap.\n"
-### End of development testing.
-
 printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\n"
-
-open $results
