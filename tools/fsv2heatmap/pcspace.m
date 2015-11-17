@@ -48,7 +48,8 @@ end
 points = cdfs(fsv_path, patient_results, patient_info, test_p_id, succ_p_id, fail_p_id);
 
 total_number_signals = [size(points.SR.cdfs, 1), size(points.SNR.cdfs, 1), size(points.FR.cdfs, 1), size(points.FNR.cdfs, 1)];
-srr = 1:total_number_signals(1);                                % number of S_RR signals
+
+srr  = 1:total_number_signals(1);                               % number of S_RR signals
 snrr = (srr(end)  + 1):(srr(end)  + total_number_signals(2));   % number of S_NRR signals
 frr  = (snrr(end) + 1):(snrr(end) + total_number_signals(3));   % number of F_RR signals
 fnrr = (frr(end)  + 1):(frr(end)  + total_number_signals(4));   % number of F_NRR signals
