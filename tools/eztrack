@@ -36,12 +36,13 @@ printf "\n== mef2eeg ==\n"
 printf "\n== mef2ascii ==\n"
 rm -f $PROJECT_HOME/data/mef/$patient_id/*.txt
 ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2ascii
+# TODO: Extract mef headers here for use in time and channel filters
 
 printf "\n== downsample ==\n"
 ls $PROJECT_HOME/data/mef/$patient_id/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
 
 printf "\n== time_filter ==\n"
-# TODO: date_converter: Convert dates from input file into the time offsets for time_filter.
+# TODO: Take the writeup about date conversion logic from the Trello card and move it to the very first step.
 ls $PROJECT_HOME/data/mef/$patient_id/*downsample.txt | xargs -I% -n 1 -P 8 mef2eeg/time_filter % 452001 300000
 
 printf "\n== channel_filter  ==\n"
@@ -49,17 +50,15 @@ printf "\n== channel_filter  ==\n"
 # TODO: Modify the stats script to output a CSV entry for each file, then cat them together for easy comparison.
 # For now, just use a hard-coded filter of the LPT files.
 mv $PROJECT_HOME/data/mef/$patient_id/*LPT*downsample_window.txt $PROJECT_HOME/data/mef/$patient_id/channels/
-
-printf "\n== signals2eeg ==\n"
-# TODO: Remove the hard-coded 077 from the file name
-paste -d ',' $PROJECT_HOME/data/mef/$patient_id/channels/*.txt > $PROJECT_HOME/data/mef/$patient_id/channels/${patient_id}_077_eeg.csv
-
-printf "\n== signals2labels ==\n"
+# TODO: channel_filter will also output the list of labels to use in the analysis, i.e. labels.csv
+# For now, simply copy a static file.
 mkdir -p $PROJECT_HOME/output/eeg/$patient_id
-# TODO: extract label csv from the file names in .../channels.
-# For now, we're going to copy a reference file.
 cp $PROJECT_HOME/data/reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
 mv $PROJECT_HOME/data/mef/$patient_id/channels/*.csv $PROJECT_HOME/output/eeg/$patient_id
+
+printf "\n== signals2eeg ==\n"
+# TODO: Remove the hard-coded 077 from the file name. Extract the time-slice id from the original file in the signals2eeg script.
+paste -d ',' $PROJECT_HOME/data/mef/$patient_id/channels/*.txt > $PROJECT_HOME/data/mef/$patient_id/channels/${patient_id}_077_eeg.csv
 
 printf "\n== eeg2fsv ==\n"
 num_channels=`ls $PROJECT_HOME/data/mef/$patient_id/channels/*.txt | wc -l | xargs`

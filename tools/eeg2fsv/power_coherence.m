@@ -65,22 +65,10 @@ if (isempty(pathval) || ~ischar(pathval) || ~isdir(pathval))
 end
 
 eeg_filename = sprintf('%s/%s', pathval, filename);
-if (isempty(filename) || ~ischar(filename) || ~exist(eeg_filename,'file'))
-    error('Error: Could not open %s', eeg_filename);
-end
-
-% check if the file is corrupted and extract the length of the file (in number of bytes)
-eeg_file = dlmread(eeg_filename,',',[0 0 (num_values-1) (num_channels-1)]);
-
-% csv file is organized with channels in columns, so take the transpose.
-eeg = eeg_file';
-
+eeg = csv2eeg(pathval, filename, num_values, num_channels);
 file_length = length(eeg);
-if (file_length == 0)
-    error('Error: File missing eeg data'); 
-end
 
-% TODO: Remove the file if it exists.
+% TODO: Remove the adj_pwr directory if it exists.
 if ~exist(sprintf('%s/adj_pwr', pathval), 'dir')
     mkdir(sprintf('%s', pathval), 'adj_pwr');
 end
