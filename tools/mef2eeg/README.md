@@ -70,23 +70,15 @@ signal_to_start = onset - start = 1439842617000000 - 1439842164810500 = 45218950
 start = signal_to_start * frequency = 452 * 1000 = 452000
 seizure_end_time - seizure_onset_time = 300000000 / 1000 = 300000
 
+TODO: See the updated algo in the Trello card.
+
+## channel_stats
 
 ## channel_filter
 
 For each file, create the header, compute the stats, then cat the header and stats together as a `summary` file.
 More notes in https://trello.com/c/D1kLkg4U/60-channel-filter
 
-```
-fields="channel_name|maximum_data_value|minimum_data_value|number_of_samples|physical_channel_number|recording_end_time|recording_start_time|sampling_frequency|subject_id"
-headers=`echo $fields | sed 's/|/,/g'`
-
-read_mef_header PY15N012_LPT83_0077.mef | \ # read the mef header
-egrep $fields | \ # keep only the fields that interest us
-sort | \ # sort these fields to match the sort order in $fields
-cut -d " " -f 3 | \ # keep only the values in these x = y pairs
-tr '\n' ',' | sed '$s/,$//' \ # transform into a comma-delimited list, using sed to remove the trailing comma
-> testing_header.txt
-```
 
 TODO: It would be interesting to run this filter on the retrospective study data to see what the stats are of the channels that are known to provide good inputs.
 

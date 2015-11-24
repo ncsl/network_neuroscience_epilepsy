@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
+
+full_filename=$(basename "$1")
+extension="${full_filename##*.}"
+filename="${full_filename%.*}"
+dir=$(dirname "$1")
+
+mef_file=$1
+sample_file=$dir/${filename}_downsample_window.txt
+stats_file=$dir/${filename}_stats.csv
+
+# fields in alphabetic order:
+fields="channel_name|max |mean|min |number_of_eztrack_samples|physical_channel_number|range|snr|std|subject_id"
+headers=`echo $fields | sed 's/|/,/g'`
+echo $headers > $stats_file
+
+# Append the output of the stats tool to the mef header.
+# Keep only the fields that interest us.
+# Sort these fields to match the sort order in $fields.
+# Keep only the values in these x = y pairs.
+# Transform into CSV, using sed to remove the trailing comma.
+( read_mef_header $mef_file ; mef2eeg/stats $sample_file ) | \
+egrep $fields | \
+sort | \
+cut -d " " -f 3 | \
+tr '\n' ',' | sed '$s/,$//' \
+>> $stats_file

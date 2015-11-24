@@ -45,13 +45,22 @@ printf "\n== time_filter ==\n"
 # TODO: Take the writeup about date conversion logic from the Trello card and move it to the very first step.
 ls $PROJECT_HOME/data/mef/$patient_id/*downsample.txt | xargs -I% -n 1 -P 8 mef2eeg/time_filter % 452001 300000
 
+printf "\n== channel_stats ==\n"
+stats_file=$PROJECT_HOME/data/mef/$patient_id/channel_stats.csv
+# Compute statistics for all channels
+ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2eeg/channel_stats
+# Write the channel stats header by grabbing the first line of the first channel stat file
+ls $PROJECT_HOME/data/mef/$patient_id/*stats.csv | head -n 1 | xargs head -n 1 > $stats_file
+# Merge all channel stats into one CSV for analysis
+ls $PROJECT_HOME/data/mef/$patient_id/*stats.csv | xargs -n 1 tail -n 1 >> $stats_file
+printf "\nstats_file saved to: $stats_file\n"
+
 printf "\n== channel_filter  ==\n"
-# channel_filter will output a list of files to be used in the analysis.
-# TODO: Modify the stats script to output a CSV entry for each file, then cat them together for easy comparison.
-# For now, just use a hard-coded filter of the LPT files.
+# TODO: channel_filter will output a list of files to be used in the analysis.
+#       For now, just use a hard-coded filter of the LPT files.
 mv $PROJECT_HOME/data/mef/$patient_id/*LPT*downsample_window.txt $PROJECT_HOME/data/mef/$patient_id/channels/
-# TODO: channel_filter will also output the list of labels to use in the analysis, i.e. labels.csv
-# For now, simply copy a static file.
+# TODO: channel_filter will also output the csv list of labels to use in the analysis, i.e. labels.csv
+#       For now, simply copy a static file.
 mkdir -p $PROJECT_HOME/output/eeg/$patient_id
 cp $PROJECT_HOME/data/reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
 mv $PROJECT_HOME/data/mef/$patient_id/channels/*.csv $PROJECT_HOME/output/eeg/$patient_id

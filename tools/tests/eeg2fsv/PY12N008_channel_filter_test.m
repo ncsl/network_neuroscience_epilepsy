@@ -1,4 +1,4 @@
-function eeg = channel_filter_test()
+function eeg = PY12N008_channel_filter_test()
 
 home = getenv('HOME');
 output = '/dev/eztrack/tools/output';
@@ -15,6 +15,6 @@ size = 640000;
 included_channels = [1:4 7:89];
 
 eeg = csv2eeg(patient_file_path, 'PY12N008/PY12N008_640sec_eeg.csv', size, num_channels);
-isequal(640000, length(eeg(1,:)));
+isequal(size, length(eeg(1,:)));
 
 end
