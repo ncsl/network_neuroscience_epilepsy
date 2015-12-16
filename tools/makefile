@@ -11,6 +11,9 @@ eeg2fsv_out			  := $(PROJECT_HOME)/output/eeg/$(patient_id)/adj_pwr/
 reference 			  := $(PROJECT_HOME)/data/reference
 reference_heatmap := $(patient_id)_iEEG_temporal_results_28-Aug-2015.csv
 
+clean:
+	find $(PROJECT_HOME)/output -name adj_pwr | xargs rm -rf
+
 test: tests
 
 smoke: check-deps test-temporal-ieeg-results

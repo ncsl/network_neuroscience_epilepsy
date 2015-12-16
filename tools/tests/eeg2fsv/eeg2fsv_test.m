@@ -17,4 +17,4 @@ display(sprintf('computed fsv for %s in %fs\n', patient_id, toc));
 
 expected = load([home output '/fsv/fsv_pwr' patient_id '.mat']);
 actual = load([patient_file_path 'adj_pwr/svd_vectors/fsv_pwr' patient_id '.mat']);
-isequal(expected, actual);
+assert(isequal(expected, actual));
