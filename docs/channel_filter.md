@@ -1,26 +1,53 @@
 # Channel Filter Development
 
+Recall that the original edf files were deleted when they were processed to extract the eeg values and channel labels to .mat workspace files.
+As such, we have five sets of .mat files for patients that were included in the Hopkins retrospective study:
+
+    PY12N005
+    PY12N008
+    PY13N003
+    PY13N011
+    PY14N004
+
+The attached Excel doc contains the breakdown of the included and excluded channels for these patients.
+The 'channels from raw data' worksheet contains the list of all channel labels in the .mat files.
+The 'heatmap-8-28' worksheet contains the reference retrospective study heatmap that I've been using to validate the system. If a channel
+doesn't appear in this heatmap for a particular patient, it was filtered out either from the original EDF file or from the .mat file and is
+marked 'true' in the spreadsheet's 'excluded' column.
+
+The channels in the heatmap are the same as the channels included in the patient_info.mat file for that patient entry, e.g. PY12N008.labels,
+but there is no record of why these channels were omitted. The channel filter we create should match the filter used in the retrospective study
+exactly; if it differs, the changes must not substantially change the 'red hot' regions of the resulting heatmap.
+
+The EZTrack code now has unit tests for the new filter function in eztrack/tools/tests/eeg2fsv/channel_filter_tests.m. Each of these load an
+event from the above patient list and compares the result of the filter to the channel names in data/patient_info.mat, the database that
+contains the list of patient parameters used in the retrospective study.
+
 
 ## Getting Started
 
-```
-cd ~/dev
-git clone git@github.com:bobbyno/eztrack.git
-```
+• Update the EZTrack code from github:
 
-Download the dataset from Google Drive: https://drive.google.com/open?id=0B0brB8m4HLpANE9MbndxcUFLU2s
+    cd ~/dev/eztrack
+    # Stash any local changes you might have.
+    git stash
+    git pull origin master
 
-This dataset contains the signals and labels for four events from PY12N008. This dataset has been completely deidentified,
-including treatment dates. This data is not subject to HIPAA data handling restrictions, making dropbox a suitable alternative.
+• Download the eeg data from Google Drive: https://drive.google.com/open?id=0B0brB8m4HLpAb3hOaXh2empMUDg
 
-To extract the archive:
+This dataset has been completely deidentified, including treatment dates. As such, this data is not subject to HIPAA data handling restrictions.
 
-```
-cd ~/dev/eztrack/tools/output/eeg/
-mv ~/Downloads/PY12N008.bz2 !$
-cd !$
-tar -xjvf PY12N008.bz2
-```
+• Extract the archive. Assuming you saved to "~/Downloads"...
+
+    mv ~/Downloads/... ~/dev/eztrack/tools/data/channel_filter
+    tar -xjvf channel_filter_data.bz2
+
+• Open EZTrack in Matlab and ensure that 'tools' and its subfolders are on the path.
+
+• Run `channel_filter_tests` from the command window to see the failing unit test.
+
+• Add filter code to `tools/eeg2fsv/filter_channels.m` to make the tests pass.
+
 
 ## Data Description
 
@@ -37,11 +64,3 @@ There are 89 labels in the original dataset.
 
 As you can see from dev/eztrack/tools/data/patient_info.mat, only 87 channels were used in the retrospective study. Comparing the list
 in PY12N008.labels.values with the list in PY12N008_737sec_labels.csv, channels FTG7 and FTG8 are excluded.
-
-## Analysis
-
-Open the EZTrack project in Matlab. Open the `tools/tests/eeg2fsv` folder.
-
-In the Command Window, run `eeg = channel_filter_test`.
-
-

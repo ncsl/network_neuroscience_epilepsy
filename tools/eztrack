@@ -63,7 +63,6 @@ mv $PROJECT_HOME/data/mef/$patient_id/*LPT*downsample_window.txt $PROJECT_HOME/d
 #       For now, simply copy a static file.
 mkdir -p $PROJECT_HOME/output/eeg/$patient_id
 cp $PROJECT_HOME/data/reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
-mv $PROJECT_HOME/data/mef/$patient_id/channels/*.csv $PROJECT_HOME/output/eeg/$patient_id
 
 printf "\n== signals2eeg ==\n"
 # TODO: Remove the hard-coded 077 from the file name. Extract the time-slice id from the original file in the signals2eeg script.
@@ -90,5 +89,6 @@ cd $PROJECT_HOME/fsv2heatmap && \
 
 # TODO: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
+echo $results > /tmp/eztrack.out
 
-printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\n"
+printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\nThis path is also in /tmp/eztrack.out"
