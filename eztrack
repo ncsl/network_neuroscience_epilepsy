@@ -74,7 +74,7 @@ included_channels="[1:$num_channels]"    # PY12N008: "[1:4 7:89]". Convert the d
 # TODO: These sizes are the results of date_converter in time_filter.
 sizes="[300000]" # PY12N008: "[640000, 672000, 737000, 729000]"
 eeg2fsv_out=$PROJECT_HOME/output/eeg/$patient_id/adj_pwr
-patient_file_path="$HOME/dev/eztrack/tools/output/eeg/$patient_id/"
+patient_file_path="$HOME/dev/eztrack/output/eeg/$patient_id/"
 
 rm -rf $eeg2fsv_out
 cd $PROJECT_HOME/eeg2fsv && \
@@ -91,4 +91,4 @@ cd $PROJECT_HOME/fsv2heatmap && \
 results=`tail -n 3 $temporal_out | head -n 1`
 echo $results > /tmp/eztrack.out
 
-printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\nThis path is also in /tmp/eztrack.out"
+printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\nThis path is also in /tmp/eztrack.out\n"

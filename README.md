@@ -84,7 +84,3 @@ output from eeg2fsv
 .mat and .csv files containing electrode labels, weights, and heat map color codes.
 
 Example: `output/heatmap/iEEG_temporal_CV_results_04-Sep-2015.mat`
-
-
-
-

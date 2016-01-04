@@ -9,7 +9,7 @@
 
 
 patient = 'convert';
-path = [getenv('HOME') '/dev/eztrack/tools/data/reference/' patient '/'];
+path = [getenv('HOME') '/dev/eztrack/data/reference/' patient '/'];
 
 files = {'PY13N011_08_20_2013_13-18-23_658sec',...
          'PY14N004_05_11_2014_10-20-35_734sec'};

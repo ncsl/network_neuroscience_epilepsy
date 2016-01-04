@@ -1,7 +1,7 @@
 function channel_filter_test(patient_id, time, expected_size)
 
 home = getenv('HOME');
-output = '/dev/eztrack/tools/data/channel_filter/';
+output = '/dev/eztrack/data/channel_filter/';
 event = [patient_id '_' num2str(time) 'sec'];
 labels_file_name = [event '_labels.csv'];
 eeg_file_name = [event '_eeg.csv'];
