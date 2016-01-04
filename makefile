@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-matlab_exe := /Applications/MATLAB_R2014b.app/bin/matlab
+matlab_exe := matlab
 matlab     := $(matlab_exe) -nodesktop -nosplash -nojvm -r
 matlab_jvm := $(matlab_exe) -nodesktop -nosplash -r
 
@@ -11,8 +11,15 @@ eeg2fsv_out			  := $(PROJECT_HOME)/output/eeg/$(patient_id)/adj_pwr/
 reference 			  := $(PROJECT_HOME)/data/reference
 reference_heatmap := $(patient_id)_iEEG_temporal_results_28-Aug-2015.csv
 
+target						:= $(PROJECT_HOME)/target
+version 					:= $(shell git rev-parse --short HEAD)
+package					  := $(target)/eztrack-$(version).tgz
+remote	          := rnorton6@10.162.38.216
+remote_home				:= /home/WIN/rnorton6
+
 clean:
 	find $(PROJECT_HOME)/output -name adj_pwr | xargs rm -rf
+	rm -rf $(target)
 
 test: tests
 
@@ -55,3 +62,20 @@ revert-fsv-output:
 
 test-edf2eeg:
 	cd $(PROJECT_HOME)/tests/edf2eeg && $(matlab) "edf2eeg_test; exit"
+
+$(target):
+	mkdir -p $(target)
+
+$(package): $(target)
+	git archive -o $@ HEAD
+
+build: $(package)
+
+deploy: $(package)
+	scp $(package) $(remote):$(remote_home)
+	ssh $(remote) 'mkdir -p eztrack-$(version) && tar xzvf eztrack-$(version).tgz -C eztrack-$(version) && ln -sfn eztrack-$(version) eztrack'
+	# TODO: Run make in mef_lib_2_1
+	# resume with testing other eztrack commands
+
+ssh:
+	ssh $(remote)

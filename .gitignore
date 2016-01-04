@@ -3,3 +3,4 @@ data/mef/*
 data/reference/*
 data/channel_filter/*
 output/*
+target/*

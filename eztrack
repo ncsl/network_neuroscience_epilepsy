@@ -6,7 +6,7 @@ PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 mef_path=$PROJECT_HOME/../mef_lib_2_1
 
-matlab_exe="/Applications/MATLAB_R2014b.app/bin/matlab"
+matlab_exe="matlab"
 matlab_jvm="$matlab_exe -nodesktop -nosplash -r"
 
 heatmap_output=$PROJECT_HOME/output/heatmap
@@ -62,7 +62,7 @@ mv $PROJECT_HOME/data/mef/$patient_id/*LPT*downsample_window.txt $PROJECT_HOME/d
 # TODO: channel_filter will also output the csv list of labels to use in the analysis, i.e. labels.csv
 #       For now, simply copy a static file.
 mkdir -p $PROJECT_HOME/output/eeg/$patient_id
-cp $PROJECT_HOME/data/reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
+cp $reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
 
 printf "\n== signals2eeg ==\n"
 # TODO: Remove the hard-coded 077 from the file name. Extract the time-slice id from the original file in the signals2eeg script.
