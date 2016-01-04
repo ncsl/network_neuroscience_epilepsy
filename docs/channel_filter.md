@@ -8,7 +8,7 @@ Recall that the original edf files were deleted when they were processed to extr
     PY13N011
     PY14N004
 
-The [eztrack_channel_filter_data spreadsheet](../tools/data/channel_filter/eztrack_channel_filter_data.xlsx) contains the breakdown of the included and excluded channels for these patients. The 'channels from raw data' worksheet contains the list of all channel labels in the .mat files. The 'heatmap-8-28' worksheet contains the reference retrospective study heatmap that I've been using to validate the system. If a channel doesn't appear in this heatmap for a particular patient, it was filtered out either from the original EDF file or from the .mat file and is marked 'true' in the spreadsheet's 'excluded' column.
+The [eztrack_channel_filter_data spreadsheet](../tools/data/channel_filter/eztrack_channel_filter_data.xlsx?raw=true) contains the breakdown of the included and excluded channels for these patients. The 'channels from raw data' worksheet contains the list of all channel labels in the .mat files. The 'heatmap-8-28' worksheet contains the reference retrospective study heatmap that I've been using to validate the system. If a channel doesn't appear in this heatmap for a particular patient, it was filtered out either from the original EDF file or from the .mat file and is marked 'true' in the spreadsheet's 'excluded' column.
 
 The channels in the heatmap are the same as the channels included in the patient_info.mat file for that patient entry, e.g. PY12N008.labels, but there is no record of why these channels were omitted. The channel filter we create should match the filter used in the retrospective study exactly; if it differs, the changes must not substantially change the 'red hot' regions of the resulting heatmap.
 
