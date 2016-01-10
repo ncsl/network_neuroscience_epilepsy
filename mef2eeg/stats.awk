@@ -1,5 +1,3 @@
-#!/usr/bin/env awk -f
-
 {
     if (min == "") { min = max = $1 };
     if ($1 > max)  { max = $1 };

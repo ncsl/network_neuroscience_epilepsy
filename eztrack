@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
 
 PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -58,6 +60,7 @@ printf "\nstats_file saved to: $stats_file\n"
 printf "\n== channel_filter  ==\n"
 # TODO: channel_filter will output a list of files to be used in the analysis.
 #       For now, just use a hard-coded filter of the LPT files.
+mkdir -p $PROJECT_HOME/data/mef/$patient_id/channels
 mv $PROJECT_HOME/data/mef/$patient_id/*LPT*downsample_window.txt $PROJECT_HOME/data/mef/$patient_id/channels/
 # TODO: channel_filter will also output the csv list of labels to use in the analysis, i.e. labels.csv
 #       For now, simply copy a static file.
@@ -66,7 +69,7 @@ cp $reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
 
 printf "\n== signals2eeg ==\n"
 # TODO: Remove the hard-coded 077 from the file name. Extract the time-slice id from the original file in the signals2eeg script.
-paste -d ',' $PROJECT_HOME/data/mef/$patient_id/channels/*.txt > $PROJECT_HOME/data/mef/$patient_id/channels/${patient_id}_077_eeg.csv
+paste -d ',' $PROJECT_HOME/data/mef/$patient_id/channels/*.txt > $PROJECT_HOME/output/eeg/$patient_id/${patient_id}_077_eeg.csv
 
 printf "\n== eeg2fsv ==\n"
 num_channels=`ls $PROJECT_HOME/data/mef/$patient_id/channels/*.txt | wc -l | xargs`
@@ -74,10 +77,11 @@ included_channels="[1:$num_channels]"    # PY12N008: "[1:4 7:89]". Convert the d
 # TODO: These sizes are the results of date_converter in time_filter.
 sizes="[300000]" # PY12N008: "[640000, 672000, 737000, 729000]"
 eeg2fsv_out=$PROJECT_HOME/output/eeg/$patient_id/adj_pwr
-patient_file_path="$HOME/dev/eztrack/output/eeg/$patient_id/"
+patient_file_path="$PROJECT_HOME/output/eeg/$patient_id/"
 
 rm -rf $eeg2fsv_out
 cd $PROJECT_HOME/eeg2fsv && \
+    echo "Invoking matlab with eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes)" && \
     $matlab_jvm "eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes); exit"
 
 # Copy results to output dir used in fsv2heatmap computation.

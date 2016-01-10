@@ -23,7 +23,7 @@ echo $headers > $stats_file
 # Sort these fields to match the sort order in $fields.
 # Keep only the values in these x = y pairs.
 # Transform into CSV, using sed to remove the trailing comma.
-( read_mef_header $mef_file ; mef2eeg/stats $sample_file ) | \
+( read_mef_header $mef_file ; awk -f mef2eeg/stats.awk $sample_file ) | \
 egrep $fields | \
 sort | \
 cut -d " " -f 3 | \
