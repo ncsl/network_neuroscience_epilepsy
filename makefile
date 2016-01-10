@@ -15,7 +15,7 @@ target						:= $(PROJECT_HOME)/target
 version 					:= $(shell git rev-parse --short HEAD)
 package					  := $(target)/eztrack-$(version).tgz
 remote	          := rnorton6@10.162.38.216
-remote_home				:= /home/WIN/rnorton6
+remote_home				:= /home/WIN/rnorton6/dev
 
 clean:
 	find $(PROJECT_HOME)/output -name adj_pwr | xargs rm -rf
@@ -67,15 +67,14 @@ $(target):
 	mkdir -p $(target)
 
 $(package): $(target)
-	git archive -o $@ HEAD
+	tar -cf $@ -T $(PROJECT_HOME)/manifest.txt
 
-build: $(package)
+build: clean $(package)
 
-deploy: $(package)
+deploy: build
 	scp $(package) $(remote):$(remote_home)
-	ssh $(remote) 'mkdir -p eztrack-$(version) && tar xzvf eztrack-$(version).tgz -C eztrack-$(version) && ln -sfn eztrack-$(version) eztrack'
-	# TODO: Run make in mef_lib_2_1
-	# resume with testing other eztrack commands
+	scp $(PROJECT_HOME)/install $(remote):$(remote_home)
+	ssh $(remote) '$(remote_home)/install $(version)'
 
 ssh:
 	ssh $(remote)

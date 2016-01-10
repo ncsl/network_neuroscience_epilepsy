@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
+
+version=$1
+dev=$HOME/dev
+this=$dev/eztrack-$version
+
+# unpack
+mkdir -p $this
+tar xvf $dev/eztrack-$version.tgz -C $this
+
+# link new application version
+ln -sfn $this eztrack
+
+# link enduring 'output' and 'data' directories
+ln -sfn $dev/output $this/output
+ln -sfn $dev/data   $this/data
+
+# build mef lib tools
+cd $this/mef_lib_2_1 && make clean all
+
+# smoke tests
+cd $this
+. .env
+make check-deps
+
+printf "\n=======================\n"
+printf "\nINSTALLATION SUCCESSFUL\nEZTrack updated to $version\n\n"
