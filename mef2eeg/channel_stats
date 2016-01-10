@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# http://redsymbol.net/articles/unofficial-bash-strict-mode/
-set -euo pipefail
-IFS=$'\n\t'
+set -e
 
 full_filename=$(basename "$1")
 extension="${full_filename##*.}"

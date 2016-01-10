@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # http://redsymbol.net/articles/unofficial-bash-strict-mode/
-set -euo pipefail
-IFS=$'\n\t'
+set -e
 
 PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -42,6 +41,7 @@ ls $PROJECT_HOME/data/mef/$patient_id/*downsample.txt | xargs -I% -n 1 -P 8 mef2
 
 printf "\n== channel_stats ==\n"
 stats_file=$PROJECT_HOME/data/mef/$patient_id/channel_stats.csv
+rm -f $stats_file
 # Compute statistics for all channels
 ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2eeg/channel_stats
 # Write the channel stats header by grabbing the first line of the first channel stat file
@@ -75,7 +75,7 @@ patient_file_path="$PROJECT_HOME/output/eeg/$patient_id/"
 rm -rf $eeg2fsv_out
 cd $PROJECT_HOME/eeg2fsv && \
     echo "Invoking matlab with eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes)" && \
-    matlab -nodesktop -nosplash -r "eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes); exit"
+    $matlab_jvm "eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes); exit"
 
 # Copy results to output dir used in fsv2heatmap computation.
 cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
@@ -83,7 +83,7 @@ cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 printf "\n== fsv2heatmap ==\n"
 temporal_out=/tmp/eztrack-temporal
 cd $PROJECT_HOME/fsv2heatmap && \
-    matlab -nodesktop -nosplash -r "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > $temporal_out
+    $matlab_jvm "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > $temporal_out
 
 # TODO: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
