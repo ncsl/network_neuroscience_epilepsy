@@ -11,9 +11,10 @@ this=$dev/eztrack-$version
 # unpack
 mkdir -p $this
 tar xvf $dev/eztrack-$version.tgz -C $this
+rm $dev/eztrack-$version.tgz
 
 # link new application version
-ln -sfn $this eztrack
+ln -sfn $this $dev/eztrack
 
 # link enduring 'output' and 'data' directories
 ln -sfn $dev/output $this/output
@@ -27,5 +28,6 @@ cd $this
 . .env
 make check-deps
 
-printf "\n=======================\n"
-printf "\nINSTALLATION SUCCESSFUL\nEZTrack updated to $version\n\n"
+printf "\n==========================\n"
+printf "\nINSTALLATION SUCCESSFUL\nEZTrack updated to $version\n"
+printf "\n==========================\n\n"
