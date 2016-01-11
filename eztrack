@@ -6,6 +6,7 @@ PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 matlab_jvm="matlab -nodesktop -nosplash -r"
 patient_id=$1
+mef_lib=$PROJECT_HOME/mef_lib_2_1
 
 [[ ! -z "$patient_id" ]] || { echo "Usage: ./eztrack <patient_id (e.g. PY12N008)>" ; exit 1 ; }
 
@@ -31,18 +32,18 @@ printf "\n== mef2eeg ==\n"
 
 printf "\n== mef2ascii ==\n"
 rm -f $mef_data/*.txt
-ls $mef_data/*.mef | xargs -n 1 -P 8 mef2ascii
+ls $mef_data/*.mef | xargs -n 1 -P 8 $mef_lib/mef2ascii
 # TODO: Extract mef headers here for use in time and channel filters
 
 printf "\n== downsample ==\n"
-ls $mef_data/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
+ls $mef_data/*.txt | xargs -n 1 -P 8 $PROJECT_HOME/mef2eeg/downsample
 
 printf "\n== time_filter ==\n"
 # TODO: Take the writeup about date conversion logic from the Trello card and move it to the very first step.
-ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 mef2eeg/time_filter % 452001 300000
+ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 $PROJECT_HOME/mef2eeg/time_filter % 452001 300000
 
 printf "\n== channel_filter  ==\n"
-channel_filter $patient_id $mef_data $segment_id
+$PROJECT_HOME/channel_filter $patient_id $mef_data $segment_id
 
 printf "\n== signals2eeg ==\n"
 # The channel filter defines the signals of interest. Combine these into one file:
