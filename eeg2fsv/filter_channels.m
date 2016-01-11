@@ -7,6 +7,5 @@ function channels = filter_channels(labels, eeg)
 % channels should be a 1 x num_channels cell array containing the labels of the channels to retain.
 channels = cell(1,1);
 
-
 end
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
 PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -12,59 +12,53 @@ patient_id=$1
 [[ ! -z "`which matlab`" ]] || \
     { echo "MATLAB not found on the PATH; please check the Getting Started section in the README" ; exit 1 ; }
 
-reference=$PROJECT_HOME/data/reference
-[[ -d $reference ]] || \
-    { echo "EZTrack reference data not found at $reference; please check the Getting Started section in the README" ; exit 1 ; }
-
 printf "\n== Validating $patient_id.csv  ==\n"
 # "TODO: input validation: Map patient_id to $patient_id.csv saved to $PROJECT_HOME"
 
 printf "\n== Finding MEF files for $patient_id  ==\n"
 # "TODO: mef_finder"
 
+# TODO: We know the corresponding time slice(s) after finding mef's of interest: hard-coded for now
+segment_id=0077
+
 printf "\n== Copying MEF files to local storage  ==\n"
+mef_data=$PROJECT_HOME/data/mef/$patient_id
+mkdir -p $mef_data
+
 # "TODO: mef_copy"
 
 printf "\n== mef2eeg ==\n"
 
 printf "\n== mef2ascii ==\n"
-rm -f $PROJECT_HOME/data/mef/$patient_id/*.txt
-ls $PROJECT_HOME/data/mef/$patient_id/*.mef | xargs -n 1 -P 8 mef2ascii
+rm -f $mef_data/*.txt
+ls $mef_data/*.mef | xargs -n 1 -P 8 mef2ascii
 # TODO: Extract mef headers here for use in time and channel filters
 
 printf "\n== downsample ==\n"
-ls $PROJECT_HOME/data/mef/$patient_id/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
+ls $mef_data/*.txt | xargs -n 1 -P 8 mef2eeg/downsample
 
 printf "\n== time_filter ==\n"
 # TODO: Take the writeup about date conversion logic from the Trello card and move it to the very first step.
-ls $PROJECT_HOME/data/mef/$patient_id/*downsample.txt | xargs -I% -n 1 -P 8 mef2eeg/time_filter % 452001 300000
+ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 mef2eeg/time_filter % 452001 300000
 
 printf "\n== channel_filter  ==\n"
-# TODO: channel_filter will output a list of files to be used in the analysis.
-#       For now, just use a hard-coded filter of the LPT files.
-mkdir -p $PROJECT_HOME/data/mef/$patient_id/channels
-mv $PROJECT_HOME/data/mef/$patient_id/*LPT*downsample_window.txt $PROJECT_HOME/data/mef/$patient_id/channels/
-# TODO: channel_filter will also output the csv list of labels to use in the analysis, i.e. labels.csv
-#       For now, simply copy a static file.
-mkdir -p $PROJECT_HOME/output/eeg/$patient_id
-cp $reference/PY15N012_077_labels.csv $PROJECT_HOME/output/eeg/$patient_id
+channel_filter $patient_id $mef_data $segment_id
 
 printf "\n== signals2eeg ==\n"
-# TODO: Remove the hard-coded 077 from the file name. Extract the time-slice id from the original file in the signals2eeg script.
-paste -d ',' $PROJECT_HOME/data/mef/$patient_id/channels/*.txt > $PROJECT_HOME/output/eeg/$patient_id/${patient_id}_077_eeg.csv
+# The channel filter defines the signals of interest. Combine these into one file:
+paste -d ',' $mef_data/channels/*.txt > $eeg_data/${patient_id}_${segment_id}_eeg.csv
 
 printf "\n== eeg2fsv ==\n"
-num_channels=`ls $PROJECT_HOME/data/mef/$patient_id/channels/*.txt | wc -l | xargs`
+num_channels=`ls $mef_data/channels/*.txt | wc -l | xargs`
 included_channels="[1:$num_channels]"    # PY12N008: "[1:4 7:89]". Convert the data to not require defining these gaps.
 # TODO: These sizes are the results of date_converter in time_filter.
 sizes="[300000]" # PY12N008: "[640000, 672000, 737000, 729000]"
-eeg2fsv_out=$PROJECT_HOME/output/eeg/$patient_id/adj_pwr
-patient_file_path="$PROJECT_HOME/output/eeg/$patient_id/"
+eeg2fsv_out=$eeg_data/adj_pwr
 
 rm -rf $eeg2fsv_out
 cd $PROJECT_HOME/eeg2fsv && \
-    echo "Invoking matlab with eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes)" && \
-    $matlab_jvm "eeg2fsv('$patient_file_path', '$patient_id', $num_channels, $included_channels, $sizes); exit"
+    echo "Invoking matlab with eeg2fsv('$eeg_data', '$patient_id', $num_channels, $included_channels, $sizes)" && \
+    $matlab_jvm "eeg2fsv('$eeg_data', '$patient_id', $num_channels, $included_channels, $sizes); exit"
 
 # Copy results to output dir used in fsv2heatmap computation.
 cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv

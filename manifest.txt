@@ -1,6 +1,7 @@
 .env
 README.md
 docs
+channel_filter
 edf2eeg
 eeg2fsv
 eztrack

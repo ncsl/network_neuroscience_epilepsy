@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -eu
+
+PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+matlab_jvm="matlab -nodesktop -nosplash -r"
+
+# usage: channel_filter PY15N012 ~/dev/eztrack/data/mef/PY15N012 0077
+patient_id=$1
+mef_data=$2
+segment_id=$3
+
+eeg_data=$PROJECT_HOME/output/eeg/$patient_id
+mkdir -p $eeg_data
+
+labels_csv=$eeg_data/${patient_id}_${segment_id}_labels.csv
+
+cd $PROJECT_HOME/eeg2fsv && \
+    $matlab_jvm "write_channels('$mef_data','$labels_csv'); exit"
+
+# Move the channels identified by the filter to a separate directory for processing:
+mkdir -p $mef_data/channels
+
+# Find how many columns are in csv and increment:
+count=`sed 's/[^,]//g' $labels_csv | wc -c`; let "count+=1"
+
+i=1
+while [ "$i" -lt "$count" ]; do
+    current_field=$(cut -d, -f $i $labels_csv)
+    mv $mef_data/${patient_id}_${current_field}_${segment_id}_downsample_window.txt $mef_data/channels/
+    let "i+=1"
+done
+
+printf "Moved $((count-1)) files to $mef_data/channels\n\n"
