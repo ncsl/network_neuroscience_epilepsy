@@ -5,13 +5,11 @@ set -eu
 PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 matlab_jvm="matlab -nodesktop -nosplash -r"
 
-# usage: channel_filter PY15N012 ~/dev/eztrack/data/mef/PY15N012 0077
+# usage: channel_filter PY15N012 ~/dev/eztrack/data/mef/PY15N012 ~/dev/eztrack/output/eeg/PY15N012 0077
 patient_id=$1
 mef_data=$2
-segment_id=$3
-
-eeg_data=$PROJECT_HOME/output/eeg/$patient_id
-mkdir -p $eeg_data
+eeg_data=$3
+segment_id=$4
 
 labels_csv=$eeg_data/${patient_id}_${segment_id}_labels.csv
 

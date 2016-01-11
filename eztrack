@@ -43,7 +43,10 @@ printf "\n== time_filter ==\n"
 ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 $PROJECT_HOME/mef2eeg/time_filter % 452001 300000
 
 printf "\n== channel_filter  ==\n"
-$PROJECT_HOME/channel_filter $patient_id $mef_data $segment_id
+eeg_data=$PROJECT_HOME/output/eeg/$patient_id
+mkdir -p $eeg_data
+
+$PROJECT_HOME/channel_filter $patient_id $mef_data $eeg_data $segment_id
 
 printf "\n== signals2eeg ==\n"
 # The channel filter defines the signals of interest. Combine these into one file:
