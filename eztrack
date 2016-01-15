@@ -70,7 +70,7 @@ cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 printf "\n== fsv2heatmap ==\n"
 temporal_out=/tmp/eztrack-temporal
 cd $PROJECT_HOME/fsv2heatmap && \
-    $matlab_jvm "csv_file = temporal_ieeg_results('$patient_id'); display(csv_file); exit" > $temporal_out
+    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME','$patient_id'); display(csv_file); exit" > $temporal_out
 
 # TODO: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`

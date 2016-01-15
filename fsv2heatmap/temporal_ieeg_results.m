@@ -1,7 +1,6 @@
-function csv_file = temporal_ieeg_results(test_patient_id)
-    % e.g. temporal_ieeg_results('PY12N008')
+function csv_file = temporal_ieeg_results(eztrack_home, test_patient_id)
+    % e.g. temporal_ieeg_results([getenv('HOME') '/dev/eztrack'], 'PY12N008')
 
-    eztrack_home = [getenv('HOME') '/dev/eztrack'];
     fsv_path = [eztrack_home '/output/fsv'];
     figure_path = [eztrack_home '/output/figures/'];
     patient_info = load([eztrack_home '/data/patient_info.mat']);

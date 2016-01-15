@@ -15,9 +15,10 @@ display(sprintf('Reading %s...', eeg_file_name));
 eeg = csv2eeg([home output], eeg_file_name, expected_size, num_channels);
 assert(isequal(expected_size, length(eeg(1,:))), 'number of signals read does not match expected size');
 
-patient_info = load_patient_info();
-
 included_channels = filter_channels(labels, eeg);
+
+eztrack_home = [getenv('HOME') '/dev/eztrack'];
+patient_info = load([eztrack_home '/data/patient_info.mat']);
 
 assert(isequal(included_channels, patient_info.(patient_id).labels.values),...
        'The results of the channel filter should match the channels in patient_info...');
