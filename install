@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
 version=$1
-dev=$HOME/dev
-this=$dev/eztrack-$version
+dest=$2
+
+this=$dest/eztrack-$version
+
+echo "Installing $version to $dest..."
 
 # unpack
 mkdir -p $this
-tar xvf $dev/eztrack-$version.tgz -C $this
-rm $dev/eztrack-$version.tgz
+tar xvf $dest/eztrack-$version.tgz -C $this
+rm $dest/eztrack-$version.tgz
 
 # link new application version
-ln -sfn $this $dev/eztrack
+ln -sfn $this $dest/eztrack
 
 # link enduring 'output' and 'data' directories
-ln -sfn $dev/output $this/output
-ln -sfn $dev/data   $this/data
+ln -sfn $dest/output $this/output
+ln -sfn $dest/data   $this/data
 
 # build mef lib tools
 cd $this/mef_lib_2_1 && make clean all
@@ -26,6 +29,6 @@ cd $this
 . .env
 make check-deps
 
-printf "\n==========================\n"
+printf "\n=============================\n"
 printf "\nINSTALLATION SUCCESSFUL\nEZTrack updated to $version\n"
-printf "\n==========================\n\n"
+printf "\n=============================\n\n"

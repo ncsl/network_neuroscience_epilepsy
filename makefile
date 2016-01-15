@@ -15,7 +15,8 @@ target						:= $(PROJECT_HOME)/target
 version 					:= $(shell git rev-parse --short HEAD)
 package					  := $(target)/eztrack-$(version).tgz
 remote	          := rnorton6@10.162.38.216
-remote_home				:= /home/WIN/rnorton6/dev
+staging_home			:= /home/WIN/rnorton6/dev
+prod_home					:= /opt/eztrack
 
 clean:
 	find $(PROJECT_HOME)/output -name adj_pwr | xargs rm -rf
@@ -63,6 +64,9 @@ revert-fsv-output:
 test-edf2eeg:
 	cd $(PROJECT_HOME)/tests/edf2eeg && $(matlab) "edf2eeg_test; exit"
 
+ssh:
+	ssh $(remote)
+
 $(target):
 	mkdir -p $(target)
 
@@ -71,10 +75,12 @@ $(package): $(target)
 
 build: clean $(package)
 
-deploy: build
-	scp $(package) $(remote):$(remote_home)
-	scp $(PROJECT_HOME)/install $(remote):$(remote_home)
-	ssh $(remote) '$(remote_home)/install $(version)'
+deploy-staging: build
+	scp $(package) $(remote):$(staging_home)
+	scp $(PROJECT_HOME)/install $(remote):$(staging_home)
+	ssh $(remote) '$(staging_home)/install $(version) $(staging_home)'
 
-ssh:
-	ssh $(remote)
+deploy-prod: build
+	scp $(package) $(remote):$(prod_home)
+	scp $(PROJECT_HOME)/install $(remote):$(prod_home)
+	ssh $(remote) '$(prod_home)/install $(version) $(prod_home)'
