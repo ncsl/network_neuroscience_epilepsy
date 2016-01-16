@@ -27,3 +27,5 @@ sort | \
 cut -d " " -f 3 | \
 tr '\n' ',' | sed '$s/,$//' \
 >> $stats_file
+
+echo >> $stats_file
