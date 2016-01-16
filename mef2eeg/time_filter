@@ -13,8 +13,6 @@ dir=$(dirname "$1")
 start=$2
 end=$3
 
-echo "time_filter $full_filename"
-
 tail -n +$start $1 | head -n $3 > $dir/${filename}_window.$extension
 
 # Remove the original file to conserve disk space

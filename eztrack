@@ -39,22 +39,25 @@ number_of_samples=$(( duration_in_micros / (1000000 / frequency) ))
 start_in_millis=$(( start_in_micros / 1000 ))
 echo "Extracting $number_of_samples samples from records, starting at $start_in_millis."
 
-# start mark must be greater than 60: Effectively makes this a constant since we're trimming the record.
+# start mark must be greater than 60, so simply use 61s.
+# This is a constant since we're trimming the signals below in time_filter.
 start_mark=61
 # end_mark must be at least 60s less than the duration in the file.
-end_mark=$(( (duration_in_micros - offset) / 1000000 ))
+# Give the end mark offset a wider margin to avoid 'Matrix dimensions must agree' errors.
+end_mark_offset=$(( offset + 5000000 ))
+end_mark=$(( (duration_in_micros - end_mark_offset) / 1000000 ))
 echo "start_mark: $start_mark"
 echo "end_mark: $end_mark"
 
 printf "\n\t== mef2ascii ==\n"
 rm -f $mef_data/*.txt
-ls $mef_data/*.mef | xargs -n 1 -P 8 $mef_lib/mef2ascii
+ls $mef_data/*.mef | xargs -n 1 -P 8 -t $mef_lib/mef2ascii
 
 printf "\n\t== downsample ==\n"
-ls $mef_data/*.txt | xargs -n 1 -P 8 $PROJECT_HOME/mef2eeg/downsample
+ls $mef_data/*.txt | xargs -n 1 -P 8 -t $PROJECT_HOME/mef2eeg/downsample
 
 printf "\n\t== time_filter ==\n"
-ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 $PROJECT_HOME/mef2eeg/time_filter % $start_in_millis $number_of_samples
+ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 -t $PROJECT_HOME/mef2eeg/time_filter % $start_in_millis $number_of_samples
 
 printf "\n\t== channel_stats ==\n"
 stats_file=$PROJECT_HOME/data/mef/$patient_id/channel_stats_all.csv
@@ -94,7 +97,7 @@ cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 printf "\n== fsv2heatmap ==\n"
 temporal_out=/tmp/eztrack-temporal
 cd $PROJECT_HOME/fsv2heatmap && \
-    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME','$patient_id','$segment_id','$start_mark','$end_mark'); display(csv_file); exit" > $temporal_out
+    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME', '$patient_id', '$segment_id', $start_mark, $end_mark); display(csv_file); exit" > $temporal_out
 
 # HACK: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
