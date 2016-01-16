@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
 full_filename=$(basename "$1")
 extension="${full_filename##*.}"
@@ -21,8 +21,8 @@ echo $headers > $stats_file
 # Sort these fields to match the sort order in $fields.
 # Keep only the values in these x = y pairs.
 # Transform into CSV, using sed to remove the trailing comma.
-( read_mef_header $mef_file ; awk -f mef2eeg/stats.awk $sample_file ) | \
-egrep $fields | \
+( mef_lib_2_1/read_mef_header $mef_file ; awk -f mef2eeg/stats.awk $sample_file ) | \
+egrep "$fields" | \
 sort | \
 cut -d " " -f 3 | \
 tr '\n' ',' | sed '$s/,$//' \

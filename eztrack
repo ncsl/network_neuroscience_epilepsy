@@ -42,6 +42,17 @@ printf "\n== time_filter ==\n"
 # TODO: Take the writeup about date conversion logic from the Trello card and move it to the very first step.
 ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 $PROJECT_HOME/mef2eeg/time_filter % 452001 300000
 
+printf "\n== channel_stats ==\n"
+stats_file=$PROJECT_HOME/data/mef/$patient_id/channel_stats_all.csv
+rm -f $stats_file
+# Compute statistics for all channels
+find $PROJECT_HOME/data/mef/$patient_id/ -name *.mef | xargs -n 1 -P 8 mef2eeg/channel_stats
+# Write the channel stats header by grabbing the first line of the first channel stat file
+find $PROJECT_HOME/data/mef/$patient_id/ -name *stats.csv | head -n 1 | xargs head -n 1 > $stats_file
+# Merge all channel stats into one CSV for analysis
+find $PROJECT_HOME/data/mef/$patient_id/ -name *stats.csv | xargs -n 1 tail -n 1 >> $stats_file
+printf "\nstats_file saved to: $stats_file\n"
+
 printf "\n== channel_filter  ==\n"
 eeg_data=$PROJECT_HOME/output/eeg/$patient_id
 mkdir -p $eeg_data
@@ -72,7 +83,7 @@ temporal_out=/tmp/eztrack-temporal
 cd $PROJECT_HOME/fsv2heatmap && \
     $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME','$patient_id'); display(csv_file); exit" > $temporal_out
 
-# TODO: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
+# HACK: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
 echo $results > /tmp/eztrack.out
 
