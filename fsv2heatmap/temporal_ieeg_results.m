@@ -1,4 +1,4 @@
-function csv_file = temporal_ieeg_results(eztrack_home, test_patient_id)
+function csv_file = temporal_ieeg_results(eztrack_home, test_patient_id, segment_id, start_mark, end_mark)
     % e.g. temporal_ieeg_results([getenv('HOME') '/dev/eztrack'], 'PY12N008')
 
     fsv_path = [eztrack_home '/output/fsv'];
@@ -26,8 +26,8 @@ function csv_file = temporal_ieeg_results(eztrack_home, test_patient_id)
         p.events = struct([]);
         p.events(1).nevents = 1;
         p.events(1).ttl_electrodes = length(labels);
-        p.events(1).start_marks = 100; % TODO: param - must be greater than 60.
-        p.events(1).end_marks = 230;   % TODO: param - must be at least 60s less than the duration in the file.
+        p.events(1).start_marks = start_mark; % TODO: check param - must be greater than 60.
+        p.events(1).end_marks = end_mark;   % TODO: check param - must be at least 60s less than the duration of the file.
         p.events(1).RR_electrodes = [];
         patient_info.(test_patient_id) = p;
     end

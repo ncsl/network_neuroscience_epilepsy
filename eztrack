@@ -4,70 +4,83 @@ set -eu
 
 PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-matlab_jvm="matlab -nodesktop -nosplash -r"
-patient_id=$1
 mef_lib=$PROJECT_HOME/mef_lib_2_1
 
+offset=60000000  # one minute pre and post-ictal period offset in microseconds
+frequency=1000   # number of samples / second in source data
+
+patient_id=$1
 [[ ! -z "$patient_id" ]] || { echo "Usage: ./eztrack <patient_id (e.g. PY12N008)>" ; exit 1 ; }
 
+matlab_jvm="matlab -nodesktop -nosplash -r"
 [[ ! -z "`which matlab`" ]] || \
     { echo "MATLAB not found on the PATH; please check the Getting Started section in the README" ; exit 1 ; }
 
 printf "\n== Validating $patient_id.csv  ==\n"
-# "TODO: input validation: Map patient_id to $patient_id.csv saved to $PROJECT_HOME"
+echo "TODO: compute onset and offset from $patient_id.csv saved to $PROJECT_HOME/data"
+seizure_onset_time=1439842617000000
+seizure_offset_time=1439842917000000
 
 printf "\n== Finding MEF files for $patient_id  ==\n"
-# "TODO: mef_finder"
-
-# TODO: We know the corresponding time slice(s) after finding mef's of interest: hard-coded for now
+echo "TODO: mef_finder"
+# Search the xml files in the segments for $patient_id to find the one containing the onset time.
+# Use the containing folder as the source of our mef_data. Create a new mef_results data to hold the results of our processing,
+# separating input from output.
 segment_id=0077
-
-printf "\n== Copying MEF files to local storage  ==\n"
 mef_data=$PROJECT_HOME/data/mef/$patient_id
-mkdir -p $mef_data
-
-# "TODO: mef_copy"
 
 printf "\n== mef2eeg ==\n"
+# Determine the interval of data to test in the segment.
+recording_start_time=$(find $mef_data -name *.mef | head -n 1 | xargs $mef_lib/read_mef_header | grep start | cut -d ' ' -f 3)
+echo "Recording start time: $recording_start_time"
+start_in_micros=$(( seizure_onset_time - offset - recording_start_time ))
+duration_in_micros=$(( seizure_offset_time + offset - seizure_onset_time ))
+number_of_samples=$(( duration_in_micros / (1000000 / frequency) ))
+start_in_millis=$(( start_in_micros / 1000 ))
+echo "Extracting $number_of_samples samples from records, starting at $start_in_millis."
 
-printf "\n== mef2ascii ==\n"
+# start mark must be greater than 60: Effectively makes this a constant since we're trimming the record.
+start_mark=61
+# end_mark must be at least 60s less than the duration in the file.
+end_mark=$(( (duration_in_micros - offset) / 1000000 ))
+echo "start_mark: $start_mark"
+echo "end_mark: $end_mark"
+
+printf "\n\t== mef2ascii ==\n"
 rm -f $mef_data/*.txt
 ls $mef_data/*.mef | xargs -n 1 -P 8 $mef_lib/mef2ascii
-# TODO: Extract mef headers here for use in time and channel filters
 
-printf "\n== downsample ==\n"
+printf "\n\t== downsample ==\n"
 ls $mef_data/*.txt | xargs -n 1 -P 8 $PROJECT_HOME/mef2eeg/downsample
 
-printf "\n== time_filter ==\n"
-# TODO: Take the writeup about date conversion logic from the Trello card and move it to the very first step.
-ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 $PROJECT_HOME/mef2eeg/time_filter % 452001 300000
+printf "\n\t== time_filter ==\n"
+ls $mef_data/*downsample.txt | xargs -I% -n 1 -P 8 $PROJECT_HOME/mef2eeg/time_filter % $start_in_millis $number_of_samples
 
-printf "\n== channel_stats ==\n"
+printf "\n\t== channel_stats ==\n"
 stats_file=$PROJECT_HOME/data/mef/$patient_id/channel_stats_all.csv
 rm -f $stats_file
 # Compute statistics for all channels
-find $PROJECT_HOME/data/mef/$patient_id/ -name *.mef | xargs -n 1 -P 8 mef2eeg/channel_stats
+find $mef_data -name *.mef | xargs -n 1 -P 8 mef2eeg/channel_stats
 # Write the channel stats header by grabbing the first line of the first channel stat file
-find $PROJECT_HOME/data/mef/$patient_id/ -name *stats.csv | head -n 1 | xargs head -n 1 > $stats_file
+find $mef_data -name *stats.csv | head -n 1 | xargs head -n 1 > $stats_file
 # Merge all channel stats into one CSV for analysis
-find $PROJECT_HOME/data/mef/$patient_id/ -name *stats.csv | xargs -n 1 tail -n 1 >> $stats_file
+find $mef_data -name *stats.csv | xargs -n 1 tail -n 1 >> $stats_file
 printf "\nstats_file saved to: $stats_file\n"
 
-printf "\n== channel_filter  ==\n"
+printf "\n\t== channel_filter  ==\n"
 eeg_data=$PROJECT_HOME/output/eeg/$patient_id
 mkdir -p $eeg_data
 
 $PROJECT_HOME/channel_filter $patient_id $mef_data $eeg_data $segment_id
 
-printf "\n== signals2eeg ==\n"
+printf "\n\t== signals2eeg ==\n"
 # The channel filter defines the signals of interest. Combine these into one file:
 paste -d ',' $mef_data/channels/*.txt > $eeg_data/${patient_id}_${segment_id}_eeg.csv
 
 printf "\n== eeg2fsv ==\n"
 num_channels=`ls $mef_data/channels/*.txt | wc -l | xargs`
 included_channels="[1:$num_channels]"    # PY12N008: "[1:4 7:89]". Convert the data to not require defining these gaps.
-# TODO: These sizes are the results of date_converter in time_filter.
-sizes="[300000]" # PY12N008: "[640000, 672000, 737000, 729000]"
+sizes="[$number_of_samples]" # PY12N008: "[640000, 672000, 737000, 729000]"
 eeg2fsv_out=$eeg_data/adj_pwr
 
 rm -rf $eeg2fsv_out
@@ -81,7 +94,7 @@ cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 printf "\n== fsv2heatmap ==\n"
 temporal_out=/tmp/eztrack-temporal
 cd $PROJECT_HOME/fsv2heatmap && \
-    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME','$patient_id'); display(csv_file); exit" > $temporal_out
+    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME','$patient_id','$segment_id','$start_mark','$end_mark'); display(csv_file); exit" > $temporal_out
 
 # HACK: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
