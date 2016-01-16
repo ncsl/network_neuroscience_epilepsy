@@ -12,7 +12,7 @@ sample_file=$dir/${filename}_downsample_window.txt
 stats_file=$dir/${filename}_stats.csv
 
 # fields in alphabetic order:
-fields="channel_name|max |mean|min |number_of_eztrack_samples|physical_channel_number|range|snr|std|subject_id"
+fields="channel_name|max |mean|min |number_of_eztrack_samples|physical_channel_number|range|recording_start_time|recording_end_time|snr|std|subject_id"
 headers=`echo $fields | sed 's/|/,/g'`
 echo $headers > $stats_file
 
