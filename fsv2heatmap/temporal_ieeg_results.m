@@ -14,7 +14,6 @@ function csv_file = temporal_ieeg_results(eztrack_home, test_patient_id, segment
         temporal_patients{end+1,1} = test_patient_id;
         
         % Test patient labels
-        segment_id = '0077';         % TODO: param
         labels_row = fileread([eztrack_home '/output/eeg/' test_patient_id '/' test_patient_id '_' segment_id '_labels.csv']);
         labels = strread(labels_row,'%s','delimiter',',')';
 

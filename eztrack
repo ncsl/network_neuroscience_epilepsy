@@ -17,9 +17,24 @@ matlab_jvm="matlab -nodesktop -nosplash -r"
     { echo "MATLAB not found on the PATH; please check the Getting Started section in the README" ; exit 1 ; }
 
 printf "\n== Validating $patient_id.csv  ==\n"
-echo "TODO: compute onset and offset from $patient_id.csv saved to $PROJECT_HOME/data"
-seizure_onset_time=1439842617000000
-seizure_offset_time=1439842917000000
+# Events should be marked up by the clinician as follows in, e.g. PY15N012.csv
+#
+#    patient_id,date,onset_time,offset_time
+#    PY15N012,2015-08-17,16:16:57,16:21:57
+
+# Read the csv: Assume only one entry for now, though we could process all to find all segments, start, and end marks.
+IFS=',' read -r -a inputs <<< "$(head -n 2 $PROJECT_HOME/data/patients/$patient_id.csv | tail -n 1)"
+
+dt="${inputs[1]}"
+s_onset="${inputs[2]}"
+s_offset="${inputs[3]}"
+
+# Convert to uUTC:
+seizure_onset_time=$(TZ=America/New_York date --date="$dt $s_onset" +%s%6N)
+seizure_offset_time=$(TZ=America/New_York date --date="$dt $s_offset" +%s%6N)
+
+printf "old seizure_onset_time\n1439842617000000\n${seizure_onset_time}\n"
+printf "old seizure_offset_time\n1439842917000000\n${seizure_offset_time}\n"
 
 printf "\n== Finding MEF files for $patient_id  ==\n"
 echo "TODO: mef_finder"
