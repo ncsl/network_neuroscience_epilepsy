@@ -14,8 +14,11 @@ reference_heatmap := $(patient_id)_iEEG_temporal_results_28-Aug-2015.csv
 target						:= $(PROJECT_HOME)/target
 version 					:= $(shell git rev-parse --short HEAD)
 package					  := $(target)/eztrack-$(version).tgz
-remote	          := rnorton6@10.162.38.216
-staging_home			:= /home/WIN/rnorton6/dev
+port							:= 5527
+scp 							:= scp -P $(port)
+ssh 							:= ssh -p $(port)
+remote	          := $(EZTRACK_USER)@128.220.76.216
+staging_home			:= /home/WIN/$(EZTRACK_USER)/dev
 prod_home					:= /opt/eztrack
 
 clean:
@@ -42,6 +45,10 @@ check-deps: *check-matlab *check-reference-data
 	[[ ! -z "`which $(matlab_exe)`" ]] || \
 		{ echo "MATLAB not found at $(matlab_exe); please check the Getting Started section in the README" ; exit 1 ; }
 
+*check-env:
+	@[[ ! -z "$$EZTRACK_USER" ]] || \
+	{ echo "Missing id to use on EZTrack server, usually your JHED ID. Run 'export EZTRACK_USER=yourusername'" ; exit 1 ; }
+
 test-temporal-ieeg-results:
 	cd $(PROJECT_HOME)/tests/fsv2heatmap && $(matlab_jvm) "temporal_ieeg_results_test; exit"
 
@@ -64,8 +71,8 @@ revert-fsv-output:
 test-edf2eeg:
 	cd $(PROJECT_HOME)/tests/edf2eeg && $(matlab) "edf2eeg_test; exit"
 
-ssh:
-	ssh $(remote)
+ssh: *check-env
+	$(ssh) $(remote)
 
 $(target):
 	mkdir -p $(target)
@@ -75,12 +82,12 @@ $(package): $(target)
 
 build: clean $(package)
 
-deploy-staging: build
-	scp $(package) $(remote):$(staging_home)
-	scp $(PROJECT_HOME)/install $(remote):$(staging_home)
-	ssh $(remote) '$(staging_home)/install $(version) $(staging_home)'
+deploy-staging: *check-env build
+	$(scp) $(package) $(remote):$(staging_home)
+	$(scp) $(PROJECT_HOME)/install $(remote):$(staging_home)
+	$(ssh) $(remote) '$(staging_home)/install $(version) $(staging_home)'
 
-deploy-prod: build
-	scp $(package) $(remote):$(prod_home)
-	scp $(PROJECT_HOME)/install $(remote):$(prod_home)
-	ssh $(remote) '$(prod_home)/install $(version) $(prod_home)'
+deploy-prod: *check-env build
+	$(scp) $(package) $(remote):$(prod_home)
+	$(scp) $(PROJECT_HOME)/install $(remote):$(prod_home)
+	$(ssh) $(remote) '$(prod_home)/install $(version) $(prod_home)'
