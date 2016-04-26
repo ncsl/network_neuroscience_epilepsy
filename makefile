@@ -29,7 +29,7 @@ test: tests
 
 smoke: check-deps test-temporal-ieeg-results
 
-tests: smoke pipeline
+tests: clean smoke pipeline
 
 # NB: Leaving edf2eeg out of the pipeline for performance reasons.
 pipeline: test-eeg2fsv copy-fsv-output test-fsv2heatmap revert-fsv-output
@@ -53,7 +53,7 @@ test-temporal-ieeg-results:
 	cd $(PROJECT_HOME)/tests/fsv2heatmap && $(matlab_jvm) "temporal_ieeg_results_test; exit"
 
 temporal:
-	cd $(PROJECT_HOME)/fsv2heatmap && $(matlab_jvm) "csv_file = temporal_ieeg_results('$(patient_id)'); display(csv_file); exit" > $(temporal_out)
+	cd $(PROJECT_HOME)/fsv2heatmap && $(matlab_jvm) "csv_file = temporal_ieeg_results('$(PROJECT_HOME)', '$(patient_id)'); display(csv_file); exit" > $(temporal_out)
 
 test-fsv2heatmap: temporal
 	diff `grep $(PROJECT_HOME) $(temporal_out)` $(heatmap_output)/$(reference_heatmap)
