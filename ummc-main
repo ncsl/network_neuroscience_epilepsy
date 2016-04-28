@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+set -eu
+
+PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+offset=60000000  # one minute pre and post-ictal period offset in microseconds
+frequency=1000   # number of samples / second in source data
+
+patient_id=$1
+[[ ! -z "$patient_id" ]] || { echo "Usage: ./eztrack <patient_id (e.g. PY12N008)>" ; exit 1 ; }
+
+matlab_jvm="matlab -nodesktop -nosplash -r"
+[[ ! -z "`which matlab`" ]] || \
+    { echo "MATLAB not found on the PATH; please check the Getting Started section in the README" ; exit 1 ; }
+
+printf "\n== Validating $patient_id.csv  ==\n"
+# Events should be marked up by the clinician as follows in, e.g. PY15N012.csv
+#
+#    patient_id,date,onset_time,offset_time
+#    PY15N012,2015-08-17,16:16:57,16:21:57
+
+# Read the csv: Assume only one entry for now, though we could process all to find all segments, start, and end marks.
+IFS=',' read -r -a inputs <<< "$(head -n 2 $PROJECT_HOME/data/patients/$patient_id.csv | tail -n 1)"
+
+dt="${inputs[1]}"
+s_onset="${inputs[2]}"
+s_offset="${inputs[3]}"
+
+# Convert to uUTC:
+# seizure_onset_time=$(TZ=America/New_York date --date="$dt $s_onset" +%s%6N)
+# seizure_offset_time=$(TZ=America/New_York date --date="$dt $s_offset" +%s%6N)
+
+# printf "seizure_onset_time\t${seizure_onset_time}\n"
+# printf "seizure_offset_time\t${seizure_offset_time}\n"
+
+segment_id=001
+edf_data=$PROJECT_HOME/data/edf/${patient_id}.edf
+
+eeg_data=$PROJECT_HOME/output/eeg/$patient_id
+mkdir -p $eeg_data
+
+# start mark must be greater than 60, so simply use 61s.
+start_mark=61
+
+# end_mark + 60 must be less than number_of_samples
+# Give the end mark offset a wider margin to avoid 'Matrix dimensions must agree' errors.
+# TODO: We're missing the recording start time to use in the end mark calculation.
+#       Pull in the MEF time offset code to fix this.
+# Hard-coding this for now as 10 seconds less than desired just to get some output...
+end_mark=148
+
+printf "\n== edf2eeg ==\n"
+#cd $PROJECT_HOME/edf2eeg && $matlab_jvm "edf2eeg('$edf_data', '$eeg_data'); exit"
+
+# number_of_samples + start_mark must be less than the recording duration.
+# In this case, the max is 274
+number_of_samples=212000
+
+printf "\n== eeg2fsv ==\n"
+num_channels=48
+included_channels="[1:48]"    # PY12N008: "[1:4 7:89]". Convert the data to not require defining these gaps.
+sizes="[$number_of_samples]"  # PY12N008: "[640000, 672000, 737000, 729000]"
+eeg2fsv_out=$eeg_data/adj_pwr
+
+rm -rf $eeg2fsv_out
+cd $PROJECT_HOME/eeg2fsv && \
+   echo "Invoking matlab with eeg2fsv('$eeg_data', '$patient_id', $num_channels, $included_channels, $sizes)" && \
+   $matlab_jvm "eeg2fsv('${eeg_data}/', '$patient_id', $num_channels, $included_channels, $sizes); exit"
+
+# Copy results to output dir used in fsv2heatmap computation.
+cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
+
+printf "\n== fsv2heatmap ==\n"
+temporal_out=/tmp/eztrack-temporal
+cd $PROJECT_HOME/fsv2heatmap && \
+    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME', '$patient_id', '$segment_id', $start_mark, $end_mark); display(csv_file); exit" > $temporal_out
+
+# HACK: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
+results=`tail -n 3 $temporal_out | head -n 1`
+echo $results > /tmp/eztrack.out
+
+printf "\nEZTrack is finished processing $patient_id. Results saved to:\n$results\nThis path is also in /tmp/eztrack.out\n"

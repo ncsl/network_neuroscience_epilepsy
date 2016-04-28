@@ -91,3 +91,7 @@ deploy-prod: *check-env build
 	$(scp) $(package) $(remote):$(prod_home)
 	$(scp) $(PROJECT_HOME)/install $(remote):$(prod_home)
 	$(ssh) $(remote) '$(prod_home)/install $(version) $(prod_home)'
+
+trial:
+	cd $(PROJECT_HOME)/edf2eeg && \
+	$(matlab) "edf2eeg('$(PROJECT_HOME)/data/ummc/upload/UMMC005/UMMC005_sz3.edf', '$(PROJECT_HOME)/output/eeg/UMMC005/'); exit"

@@ -74,6 +74,9 @@ points.FR.all_PC  = b(frr,  1:2);
 points.FNR.all_PC = b(fnrr, 1:2);
 
 avg = mean(X);
-points.TEST.all_PC = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1])) * a(:, [1 2]);
+
+diff = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1]));
+
+points.TEST.all_PC = diff * a(:, [1 2]);
 
 end

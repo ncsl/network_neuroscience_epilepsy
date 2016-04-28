@@ -11,7 +11,7 @@ points = struct('SR', tmp, 'SNR', tmp, 'FR', tmp, 'FNR', tmp, 'TEST', tmp);
 for n = 1:length(patient_results)
     patient_id = patient_results{n};
     patient = patient_info.(patient_id);
-    
+
     % Load the file containing information about eigenvalues from crosspowers
     fsv = load(fullfile(fsv_path, sprintf('fsv_pwr%s', patient_id))); %#ok<NASGU>
 
@@ -26,7 +26,10 @@ for n = 1:length(patient_results)
         cent(cent < 1*10^-10) = 0;
         
         % Ensure event happens within boundary of available data.
-        if ~((pre < patient.events.start_marks(k)) && ((patient.events.end_marks(k) + post) < size(cent,2))); continue; end
+        if ~((pre < patient.events.start_marks(k)) && ((patient.events.end_marks(k) + post) < size(cent,2)))
+            fprintf(2, sprintf('WARN: skipping cdfs for %s with event outside of boundary of available data!\n', patient_id));
+            continue; 
+        end
         
         % Extracting seizure duration and the flanks information
         duration      = patient.events.start_marks(k):patient.events.end_marks(k);
