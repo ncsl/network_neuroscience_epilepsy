@@ -53,7 +53,7 @@ test-temporal-ieeg-results:
 	cd $(PROJECT_HOME)/tests/fsv2heatmap && $(matlab_jvm) "temporal_ieeg_results_test; exit"
 
 temporal:
-	cd $(PROJECT_HOME)/fsv2heatmap && $(matlab_jvm) "csv_file = temporal_ieeg_results('$(PROJECT_HOME)', '$(patient_id)', 'segment', 0, 0); display(csv_file); exit" > $(temporal_out)
+	cd $(PROJECT_HOME)/fsv2heatmap && $(matlab_jvm) "csv_file = temporal_ieeg_results('$(PROJECT_HOME)', '$(patient_id)', '$(patient_id)_segment_labels.csv', 0, 0); display(csv_file); exit" > $(temporal_out)
 
 test-fsv2heatmap: temporal
 	diff `grep $(PROJECT_HOME) $(temporal_out)` $(heatmap_output)/$(reference_heatmap)

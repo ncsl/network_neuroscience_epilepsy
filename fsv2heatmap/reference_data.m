@@ -1,4 +1,4 @@
-function [patients_in_region, patient_info] = reference_data(eztrack_home, patients_in_region, test_patient_id, segment_id, start_mark, end_mark)
+function [patients_in_region, patient_info] = reference_data(eztrack_home, patients_in_region, test_patient_id, labels_filename, start_mark, end_mark)
     patient_info = load([eztrack_home '/data/patient_info.mat']);                     
                      
     % Add test patient info to reference data.
@@ -6,7 +6,7 @@ function [patients_in_region, patient_info] = reference_data(eztrack_home, patie
         patients_in_region{end+1,1} = test_patient_id;
         
         % Test patient labels
-        labels_row = fileread([eztrack_home '/output/eeg/' test_patient_id '/' test_patient_id '_' segment_id '_labels.csv']);
+        labels_row = fileread([eztrack_home '/output/eeg/' test_patient_id '/' labels_filename]);
         labels = strread(labels_row,'%s','delimiter',',')';
 
         p = struct([]);

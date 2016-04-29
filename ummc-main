@@ -34,8 +34,7 @@ s_offset="${inputs[3]}"
 # printf "seizure_onset_time\t${seizure_onset_time}\n"
 # printf "seizure_offset_time\t${seizure_offset_time}\n"
 
-segment_id=001
-edf_data=$PROJECT_HOME/data/edf/${patient_id}.edf
+edf_data=$PROJECT_HOME/data/edf/$patient_id/${patient_id}.edf
 
 eeg_data=$PROJECT_HOME/output/eeg/$patient_id
 mkdir -p $eeg_data
@@ -51,7 +50,7 @@ start_mark=61
 end_mark=148
 
 printf "\n== edf2eeg ==\n"
-#cd $PROJECT_HOME/edf2eeg && $matlab_jvm "edf2eeg('$edf_data', '$eeg_data'); exit"
+cd $PROJECT_HOME/edf2eeg && $matlab_jvm "edf2eeg('$edf_data', '$eeg_data'); exit"
 
 # number_of_samples + start_mark must be less than the recording duration.
 # In this case, the max is 274
@@ -74,7 +73,7 @@ cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 printf "\n== fsv2heatmap ==\n"
 temporal_out=/tmp/eztrack-temporal
 cd $PROJECT_HOME/fsv2heatmap && \
-    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME', '$patient_id', '$segment_id', $start_mark, $end_mark); display(csv_file); exit" > $temporal_out
+    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME', '$patient_id', '${patient_id}_labels.csv', $start_mark, $end_mark); display(csv_file); exit" > $temporal_out
 
 # HACK: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`
