@@ -4,6 +4,12 @@ set -eu
 
 PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# Force GNU date syntax via coreutils on OS X
+date=date
+if [[ $OSTYPE == darwin* ]]; then
+  date=gdate
+fi
+
 mef_lib=$PROJECT_HOME/mef_lib_2_1
 
 offset=60000000  # one minute pre and post-ictal period offset in microseconds
@@ -30,8 +36,8 @@ s_onset="${inputs[2]}"
 s_offset="${inputs[3]}"
 
 # Convert to uUTC:
-seizure_onset_time=$(TZ=America/New_York date --date="$dt $s_onset" +%s%6N)
-seizure_offset_time=$(TZ=America/New_York date --date="$dt $s_offset" +%s%6N)
+seizure_onset_time=$(TZ=America/New_York $date --date="$dt $s_onset" +%s%6N)
+seizure_offset_time=$(TZ=America/New_York $date --date="$dt $s_offset" +%s%6N)
 
 printf "old seizure_onset_time\n1439842617000000\n${seizure_onset_time}\n"
 printf "old seizure_offset_time\n1439842917000000\n${seizure_offset_time}\n"

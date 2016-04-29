@@ -4,7 +4,8 @@ docs
 channel_filter
 edf2eeg
 eeg2fsv
-eztrack
+hopkins-main
+ummc-main
 fsv2heatmap
 makefile
 mef2eeg

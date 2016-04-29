@@ -21,15 +21,15 @@ remote	          := $(EZTRACK_USER)@128.220.76.216
 staging_home			:= /home/WIN/$(EZTRACK_USER)/dev
 prod_home					:= /opt/eztrack
 
-clean:
-	find $(PROJECT_HOME)/output -name adj_pwr | xargs rm -rf
-	rm -rf $(target)
-
 test: tests
 
 smoke: check-deps test-temporal-ieeg-results
 
 tests: clean smoke pipeline
+
+clean:
+	find $(PROJECT_HOME)/output -name adj_pwr | xargs rm -rf
+	rm -rf $(target)
 
 # NB: Leaving edf2eeg out of the pipeline for performance reasons.
 pipeline: test-eeg2fsv copy-fsv-output test-fsv2heatmap revert-fsv-output
@@ -53,7 +53,7 @@ test-temporal-ieeg-results:
 	cd $(PROJECT_HOME)/tests/fsv2heatmap && $(matlab_jvm) "temporal_ieeg_results_test; exit"
 
 temporal:
-	cd $(PROJECT_HOME)/fsv2heatmap && $(matlab_jvm) "csv_file = temporal_ieeg_results('$(PROJECT_HOME)', '$(patient_id)'); display(csv_file); exit" > $(temporal_out)
+	cd $(PROJECT_HOME)/fsv2heatmap && $(matlab_jvm) "csv_file = temporal_ieeg_results('$(PROJECT_HOME)', '$(patient_id)', 'segment', 0, 0); display(csv_file); exit" > $(temporal_out)
 
 test-fsv2heatmap: temporal
 	diff `grep $(PROJECT_HOME) $(temporal_out)` $(heatmap_output)/$(reference_heatmap)
