@@ -31,7 +31,7 @@ clean:
 	find $(PROJECT_HOME)/output -name adj_pwr | xargs rm -rf
 	rm -rf $(target)
 
-# NB: Leaving edf2eeg out of the pipeline for performance reasons.
+# NB: Leaving edf2eeg out of the pipeline, since that step takes about 20 minutes.
 pipeline: test-eeg2fsv copy-fsv-output test-fsv2heatmap revert-fsv-output
 
 .SILENT: *check-matlab *check-reference-data
@@ -91,7 +91,3 @@ deploy-prod: *check-env build
 	$(scp) $(package) $(remote):$(prod_home)
 	$(scp) $(PROJECT_HOME)/install $(remote):$(prod_home)
 	$(ssh) $(remote) '$(prod_home)/install $(version) $(prod_home)'
-
-trial:
-	cd $(PROJECT_HOME)/edf2eeg && \
-	$(matlab) "edf2eeg('$(PROJECT_HOME)/data/ummc/upload/UMMC005/UMMC005_sz3.edf', '$(PROJECT_HOME)/output/eeg/UMMC005/'); exit"
