@@ -11,6 +11,12 @@ matlab_jvm="matlab -nodesktop -nosplash -r"
 [[ ! -z "`which matlab`" ]] || \
     { echo "MATLAB not found on the PATH; please check the Getting Started section in the README" ; exit 1 ; }
 
+# Force GNU date syntax via coreutils on OS X
+date=date
+if [[ $OSTYPE == darwin* ]]; then
+  date=gdate
+fi
+
 edf_input=$PROJECT_HOME/data/edf/$patient_id/${patient_id}.edf
 
 eeg_output=$PROJECT_HOME/output/eeg/$patient_id
@@ -29,27 +35,58 @@ printf "\n== Validating $patient_id.csv  ==\n"
 IFS=',' read -r -a inputs <<< "$(head -n 2 $PROJECT_HOME/data/patients/$patient_id.csv | tail -n 1)"
 
 dt="${inputs[1]}"
-s_onset="${inputs[2]}"
-s_offset="${inputs[3]}"
-num_channels="${inputs[4]}"
-included_channels="${inputs[5]}"
+recording_start="${inputs[2]}"
+s_onset="${inputs[3]}"
+s_offset="${inputs[4]}"
+recording_duration="${inputs[5]}"
+num_channels="${inputs[6]}"
+included_channels="${inputs[7]}"
 
 # Convert to uUTC:
-# seizure_onset_time=$(TZ=America/New_York date --date="$dt $s_onset" +%s%6N)
-# seizure_offset_time=$(TZ=America/New_York date --date="$dt $s_offset" +%s%6N)
+recording_start_time=$(TZ=America/New_York $date --date="$dt $recording_start" +%s%6N)
+seizure_onset_time=$(TZ=America/New_York $date --date="$dt $s_onset" +%s%6N)
+seizure_offset_time=$(TZ=America/New_York $date --date="$dt $s_offset" +%s%6N)
 
-# printf "seizure_onset_time\t${seizure_onset_time}\n"
-# printf "seizure_offset_time\t${seizure_offset_time}\n"
+printf "recording_start_time\t${recording_start_time}\n"
+printf "seizure_onset_time\t${seizure_onset_time}\n"
+printf "seizure_offset_time\t${seizure_offset_time}\n"
+
+#### From hopkins date parsing:
+
+# Determine the interval of data to test in the segment.
+start_in_micros=$(( seizure_onset_time - offset - recording_start_time ))
+event_duration_in_micros=$(( seizure_offset_time + offset - seizure_onset_time ))
+number_of_samples=$(( event_duration_in_micros / (1000000 / frequency) ))
+start_in_millis=$(( start_in_micros / 1000 ))
+echo "Extracting $number_of_samples samples from records, starting at $start_in_millis."
 
 # start mark must be greater than 60, so simply use 61s.
+# This is a constant since we're trimming the signals below in time_filter.
 start_mark=61
+# end_mark must be at least 60s less than the duration in the file.
+# Give the end mark offset a wider margin to avoid 'Matrix dimensions must agree' errors.
+end_mark_offset=$(( offset + 10000000 ))
+end_mark=$(( (event_duration_in_micros - end_mark_offset) / 1000000 ))
+printf "start_mark:\t$start_mark\n"
+printf "end_mark:\t$end_mark\n"
+printf "event duration in micros\t${event_duration_in_micros}\n"
+
+echo debugging
+echo "number_of_samples + start_mark must be less than the recording duration."
+echo $((number_of_samples / frequency + start_mark))
+echo $recording_duration
+
+# RESUME HERE: Play with these numbers until I get valid values.
+exit 1
+
+####
 
 # end_mark + 60 must be less than number_of_samples
 # Give the end mark offset a wider margin to avoid 'Matrix dimensions must agree' errors.
 # TODO: We're missing the recording start time to use in the end mark calculation.
 #       Pull in the MEF time offset code to fix this.
 # Hard-coding this for now as 10 seconds less than desired just to get some output...
-end_mark=148
+#end_mark=148
 
 # number_of_samples + start_mark must be less than the recording duration.
 # In this case, the max is 274
