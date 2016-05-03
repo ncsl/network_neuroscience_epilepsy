@@ -63,7 +63,7 @@ temporal_out=/tmp/eztrack-temporal
 #####################
 
 printf "\n== edf2eeg ==\n"
-#cd $PROJECT_HOME/edf2eeg && $matlab_jvm "edf2eeg('$edf_input', '$eeg_output', @rest); exit"
+cd $PROJECT_HOME/edf2eeg && $matlab_jvm "edf2eeg('$edf_input', '$eeg_output', @rest); exit"
 
 printf "\n== eeg2fsv ==\n"
 rm -rf $eeg2fsv_out

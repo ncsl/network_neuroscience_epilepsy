@@ -16,6 +16,7 @@ version 					:= $(shell git rev-parse --short HEAD)
 package					  := $(target)/eztrack-$(version).tgz
 port							:= 5527
 scp 							:= scp -P $(port)
+sftp 							:= sftp -oPort=$(port)
 ssh 							:= ssh -p $(port)
 remote	          := $(EZTRACK_USER)@128.220.76.216
 staging_home			:= /home/WIN/$(EZTRACK_USER)/dev
@@ -73,6 +74,9 @@ test-edf2eeg:
 
 ssh: *check-env
 	$(ssh) $(remote)
+
+sftp: *check-env
+	$(sftp) $(remote)
 
 $(target):
 	mkdir -p $(target)
