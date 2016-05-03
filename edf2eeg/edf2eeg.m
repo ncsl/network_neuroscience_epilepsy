@@ -1,4 +1,4 @@
-function edf2eeg(edf_path, output_path)
+function edf2eeg(edf_path, output_path, trim_fn)
 
 % TODO: Verify that edf_path exists.
 
@@ -17,13 +17,12 @@ warning('off','MATLAB:MKDIR:DirectoryExists');
 mkdir(output_path);
 
 display(sprintf('Writing labels and eeg as csv to %s', output_path));
-labels2csv(labels, [output_path '/' name '_labels.csv']);
+labels2csv(trim_fn(labels), [output_path '/' name '_labels.csv']);
 
 eeg_file = [output_path '/' name '_eeg.csv'];
-dlmwrite(eeg_file, eeg', 'delimiter', ',', 'precision', '%.7f');
+without_event_channel = trim_fn(eeg');
+dlmwrite(eeg_file, without_event_channel, 'delimiter', ',', 'precision', '%.7f');
 
 display(sprintf('Converted edf file in %fs\n', toc));
 
-% EZTrack originally required .mat files in eeg2fsv...
-% save([output_path name '.mat'],'eeg','labels','time','date','-v7.3');
 end
