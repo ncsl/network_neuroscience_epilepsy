@@ -54,7 +54,7 @@ printf "\tstart_mark:\t$start_mark\n"
 
 # TODO: Review whether or not to give the end mark offset a 1s wider margin to avoid 'Matrix dimensions must agree' errors.
 end_mark=$(( (seizure_offset_time - recording_start_time) / 1000000 ))
-echo "end_mark must be at least 60s less than the duration of the file."
+echo "end_mark must be at least 60s less than recording_duration."
 printf "\tend_mark:\t$end_mark\n"
 printf "\trecording_duration:\t$recording_duration\n"
 number_of_samples=$(( recording_duration * frequency ))
@@ -62,7 +62,6 @@ printf "\tnumber_of_samples:\t$number_of_samples\n"
 
 ###### End of input parameter validation #######
 
-# TODO: Read this from output of above.
 sizes="[$number_of_samples]"  # number of samples in each file. For PY12N008: "[640000, 672000, 737000, 729000] corresponding to 640s, 672s, etc. at 1kHz"
 
 eeg_output=$PROJECT_HOME/output/eeg/$patient_id

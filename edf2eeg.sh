@@ -2,8 +2,13 @@
 
 PROJECT_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+usage="Usage: $0 <patient_id (e.g. PY12N008) [rest|butlast]>"
 patient_id=$1
-[[ ! -z "$patient_id" ]] || { echo "Usage: $0 <patient_id (e.g. PY12N008)>" ; exit 1 ; }
+[[ ! -z "$patient_id" ]] || { echo $usage ; exit 1 ; }
+
+# edf2eeg can be run with @rest or @butlast depending on where the annotation channel appears.
+strategy=$2
+[[ ! -z "$strategy" ]] || { echo $usage ; exit 1 ; }
 
 set -eu
 
@@ -17,5 +22,4 @@ eeg_output=$PROJECT_HOME/output/eeg/$patient_id
 mkdir -p $eeg_output
 
 printf "\n== edf2eeg ==\n"
-# edf2eeg can be run with @rest or @butlast depending on where the annotation channel appears.
-cd $PROJECT_HOME/edf2eeg && $matlab_jvm "edf2eeg('$edf_input', '$eeg_output', @butlast); exit"
+cd $PROJECT_HOME/edf2eeg && $matlab_jvm "edf2eeg('$edf_input', '$eeg_output', @$strategy); exit"

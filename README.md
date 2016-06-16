@@ -65,7 +65,7 @@ recording_duration: the length of the file in seconds. Viewable in EDFbrowser.
 
 num_channels: total number of channels contained in the file. Provided by the length of `output/eeg/pt1sz2/pt1sz2_labels.csv`.
 
-included_channels: indexes of the channels to include in the heatmap in MATLAB vector notation. Use [EDFbrowser](www.teuniz.net/edfbrowser/) to verify which signals to include. Channels to filter out include DC, grounds, channels with missing labels, or channels with noise.
+included_channels: indexes of the channels to include in the heatmap in MATLAB vector notation. Use [EDFbrowser](www.teuniz.net/edfbrowser/) to verify which signals to include. Channels to filter out include DC, grounds, channels with missing labels, or channels with noise. "Amplitude -> Fit to Pane" and "Timescale -> 10s/page" are useful settings when viewing channels.
 
 NIH files are in EDF+D vs. EDF+C. Use "Tools->Convert EDF+D to EDF+C" in EDFbrowser to open the files.
 
