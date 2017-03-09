@@ -2,40 +2,20 @@
 
 EZTrack produces electrode weights and heatmap scores from EEG signals in EDF or MEF files.
 
-## Getting Started
 
-`source .env`
+## Usage
 
-`make check-deps`
+### Extract Signals
 
-If this step succeeds, you are ready to run the tests.
+Download the EDF files and save in `data/edf`.
 
-### MATLAB not found
+Run edf2eeg.sh to extract signals and channels from the EDF files.
 
-The path to matlab is stored in a variable called `matlab_exe`.
+For NIH files: `./edf2eeg.sh pt1sz2 butlast`
 
-If the default path doesn't match your path, you can override it.
-Replace the path below with the path to your matlab executable:
+For UMMC files: `./edf2eeg.sh pt1sz2 rest`
 
-`make -e matlab_exe=/Applications/MATLAB_R2014b.app/bin/matlab check-deps`
-
-## Development
-
-After making changes to the code, run the tests to ensure things are still working:
-
-`make test`
-
-Don't forget to source the .env file if you close your terminal: This file sets
-some environment variables that are used by the rest of the build scripts.
-
-## NIH
-
-### Data Preparation
-
-*Download the EDF files from the NIH Secure File Transfer and save in `data/edf`.*
-
-
-*Run edf2eeg.sh to extract signals and channels from the EDF files:* `./edf2eeg.sh pt1sz2`
+The `butlast` argument means to extract all but the last channel of the signals...in the EDF+ file format used by NIH, the last channel contains annotations. The script can also take the argument `rest` to handle EDF formats in which the first channel contains annotations, so only the rest of the channels after the first should be retained.
 
 This will create `output/eeg/pt1sz2/pt1sz2_eeg.csv` and `output/eeg/pt1sz2/pt1sz2_labels.csv`.
 
@@ -72,16 +52,58 @@ NIH files are in EDF+D vs. EDF+C. Use "Tools->Convert EDF+D to EDF+C" in EDFbrow
 
 ### Create the Heatmap
 
-Run `./nih-main pt1sz2`
+Run `./eztrack-main pt1sz2`
 
 Output will be saved to `output/heatmap/pt1sz2_iEEG_temporal_results_<date>.csv`
 
 
 
+## Development Guide
+
+### Clone the repository
+
+```
+git clone git@github.com:testedminds/eztrack.git
+cd eztrack
+```
+
+### Access the Server
+
+* Log in to http://my.jh.edu to ensure your JHED ID and password are correct.
+
+* Set up Google Authenticator to get access to the server. Ask Kyle for an access code, download Google Authenticator, then create a new entry in the app using that code. You will now have a six-digit verification code that will refresh every minute.
+
+* Run `make ssh`. Enter your Google Authenticator code for the Verification Code and use your JHED password for Password.
+
+
+### Change the Code
+
+`source .env`
+
+`make check-deps`
+
+If this step succeeds, you are ready to run the tests.
+
+### Handling "MATLAB not found" errors
+
+The path to matlab is stored in a variable called `matlab_exe`.
+
+If the default path doesn't match your path, you can override it.
+Replace the path below with the path to your matlab executable:
+
+`make -e matlab_exe=/Applications/MATLAB_R2014b.app/bin/matlab check-deps`
+
+## Testing
+
+After making changes to the code, run the tests to ensure things are still working:
+
+`make test`
+
+Don't forget to source the .env file if you close your terminal: This file sets
+some environment variables that are used by the rest of the build scripts.
+
 
 ## Deploying EZTrack Code Changes to the ICM Server
-
-Open Junos Pulse and sign in to the VPN using your JHED ID. If you need to setup your VPN for the first time, visit http://my.jh.edu and https://portalcontent.johnshopkins.edu/JHPulse/faq.html .
 
 `make deploy-prod`
 
@@ -93,7 +115,7 @@ ssh <user>@128.220.76.216 -p 5527
 sftp -oPort=5527 <user>@128.220.76.216
 
 
-### MEF File Server
+### Christophe Jouny's MEF File Server
 
 • MEF file server is mounted at /mnt/smb.
 
@@ -108,4 +130,3 @@ sftp -oPort=5527 <user>@128.220.76.216
 
     rpm -q --whatprovides /etc/redhat-release
         centos-release-7-2.1511.el7.centos.2.10.x86_64
-
