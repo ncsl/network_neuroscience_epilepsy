@@ -1,7 +1,7 @@
 function eeg2fsv(patient_file_path, patient_id, num_channels, included_channels, file_sizes)
 
 sample_to_access = 0;
-frequency = 1000;
+frequency = 1000; % need to change depending on sampling freq. of center (e.g. UMMC = 500 sometimes, NIH=1000)
 
 % Find files to process
 f = dir([patient_file_path '*eeg.csv']);

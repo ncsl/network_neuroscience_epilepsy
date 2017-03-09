@@ -1,3 +1,6 @@
+% output_path = '/Users/adam2392/Documents/eztrack/output/eeg/pt17sz1/';
+% edf_path = '/Users/adam2392/Documents/eztrack/data/edf/pt17sz1.edf';
+
 function edf2eeg(edf_path, output_path, trim_fn)
 
 % TODO: Verify that edf_path exists.
