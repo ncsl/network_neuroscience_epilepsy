@@ -75,8 +75,16 @@ points.FNR.all_PC = b(fnrr, 1:2);
 
 avg = mean(X);
 
-diff = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1]));
-
+try
+    size(points.TEST.cdfs)
+    size(avg)
+    diff = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1]));
+catch
+    size(points.TEST.cdfs)
+    size(avg)
+    
+    error('matrix dimensions must agree')
+end
 points.TEST.all_PC = diff * a(:, [1 2]);
 
 end
