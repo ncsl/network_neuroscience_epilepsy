@@ -1,5 +1,5 @@
-% output_path = '/Users/adam2392/Documents/eztrack/output/eeg/pt17sz1/';
-% edf_path = '/Users/adam2392/Documents/eztrack/data/edf/pt17sz1.edf';
+% output_path = '/Users/adam2392/Documents/eztrack/output/eeg/Pat2sz1p/';
+% edf_path = '/Users/adam2392/Documents/eztrack/data/edf/Pat2sz1p.edf';
 
 function edf2eeg(edf_path, output_path, trim_fn)
 

@@ -146,7 +146,8 @@ hdr.duration   = str2double(fread(fid,8,'*char')');
 % Number of signals
 hdr.ns    = str2double(fread(fid,4,'*char')');
 for ii = 1:hdr.ns
-    hdr.label{ii} = regexprep(fread(fid,16,'*char')','\W','');
+    % changed 3/16/17 - Adam Li: Allows reading in of an appostrophe
+    hdr.label{ii} = regexprep(transpose(fread(fid,16,'*char')),'\W[\'']','');
 end
 
 if isempty(targetSignals)
