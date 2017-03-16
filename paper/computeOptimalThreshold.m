@@ -1,3 +1,5 @@
+close all;
+
 % reads in DOA excel files and computes the optimal threshold per patient
 HOPPATS = {'PY04N007', 'PY04N008', 'PY04N012', 'PY04N013', 'PY04N015', ...
     'PY05N004', 'PY05N005', 'PY11N003', 'PY11N004', 'PY11N006', ...
@@ -15,7 +17,17 @@ else   error('Neither Work nor Home EEG directories exist! Exiting'); end
 resultsFile = fullfile(rootDir, 'iEEG_all_CV_results_22-Jun-2015.mat');
 data = load(resultsFile);
 
+% plotting params
+FONTSIZE = 20;
+
+figDir = './figures/doa/';
+if ~exist(figDir, 'dir')
+    mkdir(figDir);
+end
+
 patients = fieldnames(data);
+
+patThresholds = zeros(length(patients),1);
 for iPat=1:length(patients)
     patient = patients{iPat};
     patData = data.(patient);
@@ -32,17 +44,49 @@ for iPat=1:length(patients)
     
     % based on a certain threshold, compute EEZ for this dataset
     thresholds = linspace(0.1, 0.95, 100); % create range of thresholds to test
-    
+    doas = zeros(length(thresholds), 1);
     % for each threshold, compute doa using jaccard index
     for iThresh=1:length(thresholds)
         threshold = thresholds(iThresh);
         
         % compute EEZ
+        EEZ = elec_labels(find(e_weights > threshold));
         
         % compute Jaccard Index
+        doa = DOA(EEZ, resect_labels, elec_labels, 'jaccard');
         
+        doas(iThresh) = doa;
     end
     
     % compute optimal threshold
-
+    max_index = find(doas == max(doas));
+    
+    % plotting doa vs threshold for this patient
+    figure;
+    titleStr = {[patient, ' EZTrack | ', outcome{:}], ['Degree of Agreement']};
+    plot(thresholds, doas, 'k-'); hold on;
+    plot(thresholds(max_index), doas(max_index), 'r*');
+    axes = gca;
+    XLIM = axes.XLim;
+    YLIM = axes.YLim;
+    axes.FontSize = FONTSIZE;
+    xlabel('Thresholds');
+    ylabel('Jaccard Index');
+    title(titleStr);
+    text(mean(XLIM), mean(YLIM), ['Max DOA at ', num2str(thresholds(max_index))]);
+    
+    % save optimal thresholds
+    if length(max_index) > 1
+        max_index = max_index(1);
+    end
+    patThresholds(iPat) = thresholds(max_index);
+    
+    % save the figure 
+    toSaveFigFile = fullfile(figDir, strcat(patient, 'doavsthreshold'));
+    print(toSaveFigFile, '-dpng', '-r0')
+    
+    close all
 end
+
+figure;
+plot(patThresholds, 'k');
