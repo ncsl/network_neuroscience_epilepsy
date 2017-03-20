@@ -6,7 +6,10 @@ HOPPATS = {'PY04N007', 'PY04N008', 'PY04N012', 'PY04N013', 'PY04N015', ...
     'PY12N005', 'PY12N008', 'PY12N010', 'PY12N012', 'PY13N001', ...
     'PY13N003', 'PY13N004', 'PY13N011', 'PY14N004', 'PY14N005'};
 
-
+SUCCESS = {'JH101', 'JH105', 'JH106', 'JH107', 'pt1', ...
+            'pt2', 'pt3', 'pt8', 'pt10', 'pt11', 'pt13'};
+        
+FAILURE = {'JH102', 'JH103', 'pt6', 'pt7', 'pt12'};
 
 homeDir = '/Users/adam2392/Dropbox/EZTrack/Hopkins patients data/results/';
 workDir = '/home/WIN/ali39/Dropbox/EZTrack/Hopkins patients data/results/';
@@ -30,6 +33,30 @@ patients = fieldnames(data);
 patThresholds = zeros(length(patients),1);
 for iPat=1:length(patients)
     patient = patients{iPat};
+    
+    % set patientID and seizureID
+    patient_id = patient(1:strfind(patient, 'seiz')-1);
+    seizure_id = strcat('_', patient(strfind(patient, 'seiz'):end));
+    seeg = 1;
+    INTERICTAL = 0;
+    if isempty(patient_id)
+        patient_id = patient(1:strfind(patient, 'sz')-1);
+        seizure_id = patient(strfind(patient, 'sz'):end);
+        seeg = 0;
+    end
+    if isempty(patient_id)
+        patient_id = patient(1:strfind(patient, 'aslp')-1);
+        seizure_id = patient(strfind(patient, 'aslp'):end);
+        seeg = 0;
+        INTERICTAL = 1;
+    end
+    if isempty(patient_id)
+        patient_id = patient(1:strfind(patient, 'aw')-1);
+        seizure_id = patient(strfind(patient, 'aw'):end);
+        seeg = 0;
+        INTERICTAL = 1;
+    end
+    
     patData = data.(patient);
     
     % get the weights and the labels

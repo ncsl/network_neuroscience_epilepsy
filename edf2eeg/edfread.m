@@ -192,7 +192,7 @@ for ii = 1:hdr.ns
     reserved    = fread(fid,32,'*char')';
 end
 hdr.label = hdr.label(targetSignals);
-hdr.label = regexprep(hdr.label,'\W','');
+hdr.label = regexprep(hdr.label,'\W[\'']','');
 hdr.units = regexprep(hdr.units,'\W','');
 disp('Step 1 of 2: Reading requested records. (This may take a few minutes.)...');
 if nargout > 1 || assignToVariables
