@@ -81,11 +81,11 @@
 % %% Clear temporary variables
 % clearvars data raw cellVectors;
 %% Import the data
-[~, ~, raw] = xlsread('/Users/adam2392/Dropbox/EZTrack/PAPER/Data/jhu/JH107_iEEG_results.xlsx','Sheet1');
+[~, ~, raw] = xlsread('/home/WIN/ali39/Dropbox/EZTrack/PAPER/Data/ummc/ummc008_iEEG_results.xlsx','Sheet1');
 raw = raw(2:end,:);
 raw(cellfun(@(x) ~isempty(x) && isnumeric(x) && isnan(x),raw)) = {''};
-cellVectors = raw(:,[1,2,4,6,8,10,12,14,16,18]);
-raw = raw(:,[3,5,7,9,11,13,15,17,19,20]);
+cellVectors = raw(:,[1,2,4,6]);
+raw = raw(:,[3,5,7,8]);
 
 %% Create output variable
 data = reshape([raw{:}],size(raw));
@@ -98,35 +98,16 @@ label1 = cellVectors(:,3);
 weight_sz2 = data(:,2);
 label2 = cellVectors(:,4);
 weight_sz3 = data(:,3);
-label3 = cellVectors(:,5);
-weight_sz4 = data(:,4);
-label4 = cellVectors(:,6);
-weight_sz5 = data(:,5);
-label5 = cellVectors(:,7);
-weight_sz6 = data(:,6);
-label6 = cellVectors(:,8);
-weight_sz7 = data(:,7);
-label7 = cellVectors(:,9);
-weight_sz8 = data(:,8);
-label8 = cellVectors(:,10);
-weight_sz9 = data(:,9);
-weight = data(:,10);
+weight = data(:,4);
 
 E_gauss1 = weight_sz1;
 E_gauss2 = weight_sz2;
 E_gauss3 = weight_sz3;
-E_gauss4 = weight_sz4;
-E_gauss5 = weight_sz5;
-E_gauss6 = weight_sz6;
-E_gauss7 = weight_sz7;
-E_gauss8 = weight_sz8;
-E_gauss9 = weight_sz9;
 E_Weights = weight;
 E_labels = label;
 
 % 
-save('jhu107', 'E_gauss1', 'E_gauss2', 'E_gauss3', 'E_gauss4', 'E_gauss5',...
-    'E_gauss6', 'E_gauss7', 'E_gauss8', 'E_gauss9', 'E_Weights', 'E_labels');
+save('ummc008', 'E_gauss1', 'E_gauss2', 'E_gauss3', 'E_Weights', 'E_labels');
 
 %% Clear temporary variables
 clearvars data raw cellVectors R;

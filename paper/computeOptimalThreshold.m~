@@ -6,7 +6,6 @@ HOPPATS = {'PY04N007', 'PY04N008', 'PY04N012', 'PY04N013', 'PY04N015', ...
     'PY12N005', 'PY12N008', 'PY12N010', 'PY12N012', 'PY13N001', ...
     'PY13N003', 'PY13N004', 'PY13N011', 'PY14N004', 'PY14N005'};
 
-%- success patients
 SUCCESS_JHUOLD = {'PY04N008', 'PY04N013', 'PY05N004', 'PY11N006', 'PY12N005', 'PY12N010', ...
     'PY13N003', 'PY13N011', 'PY14N004', 'PY14N005'};
 SUCCESS_JHU = {'JH101', 'JH105', 'JH106', 'JH107'};
@@ -14,17 +13,8 @@ SUCCESS_NIH = {'pt1', ...
             'pt2', 'pt3', 'pt8', 'pt10', 'pt11', 'pt13'};
 SUCCESS_UMMC = {'UMMC002', 'UMMC003', 'UMMC004', 'UMMC005', 'UMMC006', 'UMM008'};
 
-%- failure patients
-FAILURE_JHU = {'JH102', 'JH103'};
-FAILURE_NIH = {'pt6', 'pt7', 'pt12'};
-FAILURE_OLDJHU = {'PY04N007', 'PY04N012', 'PY04N015', 'PY05N005', 'PY11N003', 'PY11N004', ...
-    'PY12N008', 'PY12N012', 'PY13N001', 'PY13N004'};
+FAILURE_JHU = {'JH102', 'JH103'};, 'pt6', 'pt7', 'pt12'};
 
-%- no resection patients
-NR_JHU = {'JH104'};
-NR_UMMC = {'UMMC001', 'UMMC007', 'UMMC009'};
-
-%% Set Working Dirs
 homeDir = '/Users/adam2392/Dropbox/EZTrack/PAPER/Data/';
 workDir = '/home/WIN/ali39/Dropbox/EZTrack/Hopkins patients data/results/';
 if ~isempty(dir(homeDir)), rootDir = homeDir;
