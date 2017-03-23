@@ -9,19 +9,19 @@ HOPPATS = {'PY04N007', 'PY04N008', 'PY04N012', 'PY04N013', 'PY04N015', ...
 %- success patients
 SUCCESS_JHUOLD = {'PY04N008', 'PY04N013', 'PY05N004', 'PY11N006', 'PY12N005', 'PY12N010', ...
     'PY13N003', 'PY13N011', 'PY14N004', 'PY14N005'};
-SUCCESS_JHU = {'JH101', 'JH105', 'JH106', 'JH107'};
+SUCCESS_JHU = {'JHU101', 'JHU105', 'JHU106', 'JHU107'};
 SUCCESS_NIH = {'pt1', ...
             'pt2', 'pt3', 'pt8', 'pt10', 'pt11', 'pt13'};
-SUCCESS_UMMC = {'UMMC002', 'UMMC003', 'UMMC004', 'UMMC005', 'UMMC006', 'UMM008'};
+SUCCESS_UMMC = {'UMMC002', 'UMMC003', 'UMMC004', 'UMMC005', 'UMMC006', 'UMMC008'};
 
 %- failure patients
-FAILURE_JHU = {'JH102', 'JH103'};
+FAILURE_JHU = {'JHU102', 'JHU103'};
 FAILURE_NIH = {'pt6', 'pt7', 'pt12'};
 FAILURE_OLDJHU = {'PY04N007', 'PY04N012', 'PY04N015', 'PY05N005', 'PY11N003', 'PY11N004', ...
     'PY12N008', 'PY12N012', 'PY13N001', 'PY13N004'};
 
 %- no resection patients
-NR_JHU = {'JH104'};
+NR_JHU = {'JHU104'};
 NR_UMMC = {'UMMC001', 'UMMC007', 'UMMC009'};
 
 SUCCESS = cat(2, SUCCESS_JHUOLD, SUCCESS_JHU, SUCCESS_NIH, SUCCESS_UMMC);
@@ -55,6 +55,7 @@ ummcresults = fullfile(rootDir, 'ummc_iEEG_results.mat');
 FONTSIZE = 20;
 
 figDir = './figures/doa/';
+figDir = './figures/summary for each center/';
 if ~exist(figDir, 'dir')
     mkdir(figDir);
 end
@@ -66,6 +67,7 @@ SUCCESS = {SUCCESS_JHUOLD, SUCCESS_JHU, SUCCESS_NIH, SUCCESS_UMMC};
 CENTERS = {'JHU old', 'JHU', 'NIH', 'UMMC'};
 FILES = {resultsFile, jhuresults, nihresults, ummcresults};
 % hold doa for each patient for each threshold
+thresholds = linspace(0.01,0.95, 100);
 patThresholds = zeros(length([SUCCESS{:}]), length(thresholds)); 
 patients_key = {};
 
@@ -102,8 +104,12 @@ for iCenter=1:length(CENTERS)
             INTERICTAL = 1;
         end
 
-        patData = data.(patient);
-    
+        try
+            patData = data.(patient);
+        catch e
+            disp(e);
+            patData = data.(lower(patient));
+        end
         % get the weights and the labels
         e_weights = patData.E_Weights;
 %         outcome = patData.Outcome;
@@ -112,8 +118,11 @@ for iCenter=1:length(CENTERS)
         elec_labels = patData.E_labels;
 
         % CEZ
-        resect_labels = patData.R_E_labels(~cellfun('isempty', patData.R_E_labels));
-    
+        try
+            resect_labels = patData.R_E_labels(~cellfun('isempty', patData.R_E_labels));
+        catch e
+            resect_labels = patData.onset_electrodes;
+        end
         % based on a certain threshold, compute EEZ for this dataset
         thresholds = linspace(0.1, 0.95, 100); % create range of thresholds to test
         doas = zeros(length(thresholds), 1);
@@ -125,7 +134,11 @@ for iCenter=1:length(CENTERS)
             EEZ = elec_labels(find(e_weights > threshold));
 
             % compute Jaccard Index
-            doa = DOA(EEZ, resect_labels, elec_labels, 'jaccard');
+            try
+                doa = DOA(EEZ, resect_labels, elec_labels, 'jaccard');
+            catch e
+                disp(e)
+            end
 
             doas(iThresh) = doa;
         end
