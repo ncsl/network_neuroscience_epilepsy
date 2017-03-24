@@ -184,7 +184,7 @@ patThresholds = zeros(length([SUCCESS{:}]), length(thresholds));
 patients_key = {};
 
 for iCenter=1:length(CENTERS)
-    patients = SUCCESS{iCenter};
+    patients = FAILURE{iCenter};
     file = FILES{iCenter};
     data = load(file);
     
