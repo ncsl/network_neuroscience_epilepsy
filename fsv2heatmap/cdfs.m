@@ -1,7 +1,7 @@
-function points = cdfs(fsv_path, patient_results, patient_info, test_p_id, succ_p_id, fail_p_id)
+function points = cdfs(fsv_path, patient_results, patient_info, test_p_id, succ_p_id, fail_p_id, fs)
 
-pre = 60;              % window (in s) before onset of a seizure
-post = 60;             % window (in s) after end of a seizure
+pre = 60 * fs/1000;              % window (in s) before onset of a seizure
+post = 60 * fs/1000;             % window (in s) after end of a seizure
 
 number_of_points = 0;  % counter for number of points in PC space
 
@@ -27,6 +27,7 @@ for n = 1:length(patient_results)
         
         % Ensure event happens within boundary of available data.
         if ~((pre < patient.events.start_marks(k)) && ((patient.events.end_marks(k) + post) < size(cent,2)))
+            n
             fprintf(2, sprintf('WARN: skipping cdfs for %s with event outside of boundary of available data!\n', patient_id));
             continue; 
         end

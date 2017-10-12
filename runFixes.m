@@ -1,23 +1,130 @@
-<<<<<<< HEAD
-%UMMC001_sz2
+% %UMMC002_sz2
+% patient = 'UMMC002_sz2';
+% fs = 500;
+% dataDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/');
+% metaDir = fullfile('./data/patients');
 % delimiter = ',';
-% M = dlmread('UMMC001_sz2_eeg.csv', delimiter);
-% [m,n] = size(M);
-% 
-% %interpolate to make 1KHz from 500Hz
-% xq = 1:0.5:m;
-% Mi = interp1(1:m, M, xq);
-% %add left flank to make 61 seconds pre seizure onset - just to bekron
-% %safe..have to add 48 seconds or 48000 rows in beginning of EEG
-% % A = Mi(1,:);
-% % B = ones(48000,1);
-% % temp = kron(A,B);
-% % Mi = [temp; Mi];
-% dlmwrite('UMMC001_sz2_eeg.csv',Mi,delimiter)
+% eegfilename = fullfile(dataDir, patient, strcat(patient, '_eeg.csv'));
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*48;
+% addRightFlank = 0;
+% fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+% %UMMC002_sz3
+% patient = 'UMMC002_sz3';
+% fs = 500;
+% dataDir = fullfile('./output/eeg/');
+% metaDir = fullfile('./data/patients');
+% delimiter = ',';
+% eegfilename = fullfile(dataDir, patient, strcat(patient, '_eeg.csv'));
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*44;
+% addRightFlank = 0;
+% fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+% %UMMC003_sz2
+% patient = 'UMMC003_sz2';
+% fs = 250;
+% dataDir = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient);
+% metaDir = fullfile('/Users/adam2392/Documents/eztrack/data/patients');
+% delimiter = ',';
+% eegfilename = strcat(patient, '_eeg.csv');
+% eegDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/', patient);
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*15;
+% addRightFlank = 0;
+% fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
 % clear all
 
-%UMMC004_sz1
-=======
+% % %UMMC004_sz2
+patient = 'UMMC004_sz2';
+fs = 250;
+dataDir = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient);
+metaDir = fullfile('/Users/adam2392/Documents/eztrack/data/patients');
+delimiter = ',';
+eegfilename = strcat(patient, '_eeg.csv');
+eegDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/', patient);
+patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+stepsize = 1;
+addLeftFlank = 0;
+addRightFlank = fs*2;
+fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+% % % %UMMC005_sz2
+% patient = 'UMMC005_sz2';
+% fs = 1000;
+% dataDir = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient);
+% metaDir = fullfile('/Users/adam2392/Documents/eztrack/data/patients');
+% delimiter = ',';
+% eegfilename = strcat(patient, '_eeg.csv');
+% eegDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/', patient);
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*10;
+% addRightFlank = 0;
+% fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+% % % %UMMC006_sz3
+% patient = 'UMMC006_sz3';
+% fs = 250;
+% dataDir = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient);
+% metaDir = fullfile('/Users/adam2392/Documents/eztrack/data/patients');
+% delimiter = ',';
+% eegfilename = strcat(patient, '_eeg.csv');
+% eegDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/', patient);
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*39;
+% addRightFlank = fs*16;
+% fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+% % %UMMC007_sz1
+% patient = 'UMMC007_sz1';
+% fs = 1000;
+% dataDir = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient);
+% metaDir = fullfile('/Users/adam2392/Documents/eztrack/data/patients');
+% delimiter = ',';
+% eegfilename = strcat(patient, '_eeg.csv');
+% eegDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/', patient);
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*1;
+% addRightFlank = fs*1;
+% fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+% % %UMMC007_sz2
+% patient = 'UMMC007_sz2';
+% fs = 1000;
+% dataDir = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient);
+% metaDir = fullfile('/Users/adam2392/Documents/eztrack/data/patients');
+% delimiter = ',';
+% eegfilename = strcat(patient, '_eeg.csv');
+% eegDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/', patient);
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*1;
+% addRightFlank = fs*9;
+% fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+
+% % %UMMC007_sz3
+% patient = 'UMMC007_sz3';
+% fs = 1000;
+% dataDir = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient);
+% metaDir = fullfile('/Users/adam2392/Documents/eztrack/data/patients');
+% delimiter = ',';
+% eegfilename = strcat(patient, '_eeg.csv');
+% eegDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/', patient);
+% patfilename = fullfile(metaDir, strcat(patient, '.csv'));
+% stepsize = 1;
+% addLeftFlank = fs*1;
+% addRightFlank = fs*1;
+% fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs);
+
+
 %% DONE
 % %pt11sz1
 % delimiter = ',';
@@ -29,56 +136,58 @@
 % fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
 
 %pt11sz3
-delimiter = ',';
-eegfilename = './output/eeg/pt11sz3/pt11sz3_eeg.csv';
-patfilename = './data/patients/pt11sz3.csv';
-stepsize = 1;
-addLeftFlank = 0;
-addRightFlank = 3000;
-fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
-
-
-%pt10sz1
 % delimiter = ',';
-% eegfilename = './output/eeg/pt10sz1/pt10sz1_eeg.csv';
-% patfilename = './data/patients/pt10sz1.csv';
+% eegfilename = './output/eeg/pt11sz3/pt11sz3_eeg.csv';
+% patfilename = './data/patients/pt11sz3.csv';
+% stepsize = 1;
+% addLeftFlank = 0;
+% addRightFlank = 3000;
+% fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
+
+
+% %pt10sz1
+% dataDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/');
+% delimiter = ',';
+% eegfilename = fullfile(dataDir, 'pt10sz1/pt10sz1_eeg.csv');
+% patfilename = fullfile(dataDir, 'pt10sz1.csv');
 % stepsize = 1;
 % addLeftFlank = 21000;
 % addRightFlank = 0;
 % fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
-
-%pt10sz2
+% 
+% %pt10sz2
 % delimiter = ',';
-% eegfilename = './output/eeg/pt10sz2/pt10sz2_eeg.csv';
-% patfilename = './data/patients/pt10sz2.csv';
+% eegfilename = fullfile(dataDir, 'pt10sz2/pt10sz2_eeg.csv');
+% patfilename = fullfile(dataDir, 'pt10sz2.csv');
 % stepsize = 1;
 % addLeftFlank = 9000;
 % addRightFlank = 0;
 % fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
 
 
-%pt8sz1
+% % pt8sz1
+% dataDir = fullfile('/Volumes/ADAM LI/eztrack/output/eeg/');
 % delimiter = ',';
-% eegfilename = './output/eeg/pt8sz1/pt8sz1_eeg.csv';
-% patfilename = './data/patients/pt8sz1.csv';
+% eegfilename = fullfile(dataDir, 'pt8sz1/pt8sz1_eeg.csv');
+% patfilename = fullfile(dataDir, 'pt8sz1/pt8sz1.csv');
 % stepsize = 1;
 % addLeftFlank = 21000;
 % addRightFlank = 18000;
 % fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
-
-%pt8sz2
+% 
+% % pt8sz2
 % delimiter = ',';
-% eegfilename = './output/eeg/pt8sz2/pt8sz2_eeg.csv';
-% patfilename = './data/patients/pt8sz2.csv';
+% eegfilename = fullfile(dataDir, 'pt8sz2/pt8sz2_eeg.csv');
+% patfilename = fullfile(dataDir, 'pt8sz2.csv');
 % stepsize = 1;
 % addLeftFlank = 21000;
 % addRightFlank = 10000;
 % fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
-
-%pt8sz3
+% 
+% % pt8sz3
 % delimiter = ',';
-% eegfilename = './output/eeg/pt8sz3/pt8sz3_eeg.csv';
-% patfilename = './data/patients/pt8sz3.csv';
+% eegfilename = fullfile(dataDir, 'pt8sz3/pt8sz3_eeg.csv');
+% patfilename = fullfile(dataDir, 'pt8sz3.csv');
 % stepsize = 1;
 % addLeftFlank = 21000;
 % addRightFlank = 22000;
@@ -287,58 +396,6 @@ fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRig
 % % fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank);
 % 
 % 
-% %UMMC002_sz2
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC002_sz2/UMMC002_sz2_eeg.csv';
-% % stepsize = 0.5;
-% % addFlank = 60000;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-% % 
-% % %UMMC002_sz3
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC002_sz3/UMMC002_sz3_eeg.csv';
-% % stepsize = 0.5;
-% % addFlank = 60000;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-% 
-% %UMMC003_sz1
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC003_sz1/UMMC003_sz1_eeg.csv';
-% % stepsize = 0.25;
-% % addFlank = 0;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-% 
-% 
-% % UMMC005_sz2
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC005_sz2/UMMC005_sz2_eeg.csv';
-% % stepsize = 1;
-% % addFlank = 20000;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-% 
-% % UMMC004_sz1
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC004_sz1/UMMC004_sz1_eeg.csv';
-% % stepsize = 0.25;
-% % addLeftFlank = 0;
-% % addRightFlank = 3000;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addLeftFlank, addRightFlank);
-% 
-% % % UMMC004_sz2
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC004_sz2/UMMC004_sz2_eeg.csv';
-% % stepsize = 1;
-% % addLeftFlank = 0;
-% % addRightFlank = 1000;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addLeftFlank, addRightFlank);
-% % 
-% % % UMMC004_sz3
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC004_sz3/UMMC004_sz3_eeg.csv';
-% % stepsize = 0.25;
-% % addLeftFlank = 0;
-% % addRightFlank = 2000;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addLeftFlank, addRightFlank);
 % 
 % % UMMC009_sz1
 % % delimiter = ',';
@@ -423,249 +480,20 @@ fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRig
 % 
 % 
 % %UMMC004_sz1
->>>>>>> 7e52329b0d2f8576055f2de5d988a798a4a8bf5d
+
 % delimiter = ',';
 % filename = 'UMMC004_sz1_eeg.csv';
 % stepsize = 0.25;
 % addFlank = 0;
 % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-<<<<<<< HEAD
+
 
 %
-delimiter = ',';
-filename = './output/eeg/UMMC005_sz2/UMMC005_sz2_eeg.csv';
-stepsize = 1;
-addFlank = 10000;
-fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
+% delimiter = ',';
+% filename = './output/eeg/UMMC005_sz2/UMMC005_sz2_eeg.csv';
+% stepsize = 1;
+% addFlank = 10000;
+% fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
+% 
+% 
 
-
-%UMMC001_sz3
-delimiter = ',';
-M = dlmread('UMMC001_sz3_eeg.csv', delimiter);
-[m,n] = size(M);
-
-%interpolate to make 1KHz from 500Hz
-xq = 1:0.5:m;
-Mi = interp1(1:m, M, xq);
-%add left flank to make 61 seconds pre seizure onset - just to bekron
-%safe..have to add 48 seconds or 48000 rows in beginning of EEG
-% A = Mi(1,:);
-% B = ones(48000,1);
-% temp = kron(A,B);
-% Mi = [temp; Mi];
-dlmwrite('UMMC001_sz3_eeg.csv',Mi,delimiter)
-clear all
-
-%UMMC002_sz1
-M = dlmread('UMMC002_sz1_eeg.csv', delimiter);
-[m,n] = size(M);
-%interpolate to make 1KHz from 500Hz
-xq = 1:0.5:m;
-Mi = interp1(1:m, M, xq);
-dlmwrite('UMMC002_sz1_eeg.csv',Mi,delimiter)
-clear all
-
-%UMMC002_sz2
-M = dlmread(UMMC002_sz2_eeg.csv, delimiter);
-[m,n] = size(M);
-%interpolate to make 1KHz from 500Hz
-xq = 1:0.5:m;
-Mi = interp1(1:m, M, xq);
-%add left flank to make 61 seconds pre seizure onset - just to bekron
-%safe..have to add 48 seconds or 48000 rows in beginning of EEG
-A = Mi(1,:);
-B = ones(48000,1);
-temp = kron(A,B);
-Mi = [temp; Mi];
-dlmwrite(UMMC002_sz2_eeg.csv,Mi,delimiter)
-clear all
-
-%UMMC002_sz3
-% M = dlmread(UMMC002_sz3_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %interpolate to make 1KHz from 500Hz
-% xq = 1:0.5:m;
-% Mi = interp1(1:m, M, xq);
-% %add left flank to make 61 seconds pre seizure onset - just to bekron
-% %safe..have to add 44 seconds or 44000 rows in beginning of EEG
-% A = Mi(1,:);
-% B = ones(44000,1);
-% temp = kron(A,B);
-% Mi = [temp; Mi];
-% dlmwrite(UMMC002_sz2_eeg.csv,Mi,delimiter)
-% clear all
-% 
-% 
-% %%UMMC003_sz1
-% M = dlmread(UMMC003_sz1_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %interpolate to make 1KHz from 250Hz
-% xq = 1:0.25:m;
-% Mi = interp1(1:m, M, xq);
-% dlmwrite(UMMC003_sz1_eeg.csv,Mi,delimiter)
-% clear all
-% 
-% %%UMMC003_sz2
-% M = dlmread(UMMC003_sz2_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %interpolate to make 1KHz from 250Hz
-% xq = 1:0.25:m;
-% Mi = interp1(1:m, M, xq);
-% %add left flank to make 61 seconds pre seizure onset - just to bekron
-% %safe..have to add 15 seconds or 15000 rows in beginning of EEG
-% A = Mi(1,:);
-% B = ones(15000,1);
-% temp = kron(A,B);
-% Mi = [temp; Mi];
-% dlmwrite(UMMC003_sz2_eeg.csv,Mi,delimiter)
-% clear all
-% 
-% 
-% %%UMMC003_sz3
-% M = dlmread(UMMC003_sz3_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %interpolate to make 1KHz from 250Hz
-% xq = 1:0.25:m;
-% Mi = interp1(1:m, M, xq);
-% dlmwrite(UMMC003_sz3_eeg.csv,Mi,delimiter)
-% clear all
-% 
-% 
-% %%UMMC004_sz1
-% M = dlmread(UMMC004_sz1_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %interpolate to make 1KHz from 250Hz
-% xq = 1:0.25:m;
-% Mi = interp1(1:m, M, xq);
-% dlmwrite(UMMC004_sz1_eeg.csv,Mi,delimiter)
-% clear all
-% 
-% %%UMMC004_sz2
-% M = dlmread(UMMC004_sz2_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %interpolate to make 1KHz from 250Hz
-% xq = 1:0.25:m;
-% Mi = interp1(1:m, M, xq);
-% dlmwrite(UMMC004_sz2_eeg.csv,Mi,delimiter)
-% clear all
-% 
-% %%UMMC004_sz3
-% M = dlmread(UMMC004_sz3_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %interpolate to make 1KHz from 250Hz
-% xq = 1:0.25:m;
-% Mi = interp1(1:m, M, xq);
-% dlmwrite(UMMC004_sz3_eeg.csv,Mi,delimiter)
-% clear all
-% 
-% 
-% %%UMMC005_sz2
-% M = dlmread(UMMC005_sz2_eeg.csv, delimiter);
-% [m,n] = size(M);
-% %add left flank to make 61 seconds pre seizure onset - just to bekron
-% %safe..have to add 10 seconds or 10000 rows in beginning of EEG
-% A = M(1,:);
-% B = ones(10000,1);
-% temp = kron(A,B);
-% M = [temp; M];
-% dlmwrite(UMMC005_sz2_eeg.csv,M,delimiter)
-% clear all
-=======
-% 
-% % UMMC001_sz2 500hz -> 1khz
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC001_sz2/UMMC001_sz2_eeg.csv';
-% % stepsize = 0.5;
-% % addFlank = 0;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-% % 
-% % % UMMC001_sz3 500hz -> 1khz
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC001_sz3/UMMC001_sz3_eeg.csv';
-% % stepsize = 0.5;
-% % addFlank = 0;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-% 
-% %UMMC002_sz1
-% % delimiter = ',';
-% % filename = './output/eeg/UMMC002_sz1/UMMC002_sz1_eeg.csv';
-% % stepsize = 1;
-% % addFlank = 5000;
-% % fix_ummc_eeg(filename, delimiter, stepsize, addFlank);
-% 
-% 
-% % %%UMMC003_sz1
-% % M = dlmread(UMMC003_sz1_eeg.csv, delimiter);
-% % [m,n] = size(M);
-% % %interpolate to make 1KHz from 250Hz
-% % xq = 1:0.25:m;
-% % Mi = interp1(1:m, M, xq);
-% % dlmwrite(UMMC003_sz1_eeg.csv,Mi,delimiter)
-% % clear all
-% % 
-% % %%UMMC003_sz2
-% % M = dlmread(UMMC003_sz2_eeg.csv, delimiter);
-% % [m,n] = size(M);
-% % %interpolate to make 1KHz from 250Hz
-% % xq = 1:0.25:m;
-% % Mi = interp1(1:m, M, xq);
-% % %add left flank to make 61 seconds pre seizure onset - just to bekron
-% % %safe..have to add 15 seconds or 15000 rows in beginning of EEG
-% % A = Mi(1,:);
-% % B = ones(15000,1);
-% % temp = kron(A,B);
-% % Mi = [temp; Mi];
-% % dlmwrite(UMMC003_sz2_eeg.csv,Mi,delimiter)
-% % clear all
-% % 
-% % 
-% % %%UMMC003_sz3
-% % M = dlmread(UMMC003_sz3_eeg.csv, delimiter);
-% % [m,n] = size(M);
-% % %interpolate to make 1KHz from 250Hz
-% % xq = 1:0.25:m;
-% % Mi = interp1(1:m, M, xq);
-% % dlmwrite(UMMC003_sz3_eeg.csv,Mi,delimiter)
-% % clear all
-% % 
-% % 
-% % %%UMMC004_sz1
-% % M = dlmread(UMMC004_sz1_eeg.csv, delimiter);
-% % [m,n] = size(M);
-% % %interpolate to make 1KHz from 250Hz
-% % xq = 1:0.25:m;
-% % Mi = interp1(1:m, M, xq);
-% % dlmwrite(UMMC004_sz1_eeg.csv,Mi,delimiter)
-% % clear all
-% % 
-% % %%UMMC004_sz2
-% % M = dlmread(UMMC004_sz2_eeg.csv, delimiter);
-% % [m,n] = size(M);
-% % %interpolate to make 1KHz from 250Hz
-% % xq = 1:0.25:m;
-% % Mi = interp1(1:m, M, xq);
-% % dlmwrite(UMMC004_sz2_eeg.csv,Mi,delimiter)
-% % clear all
-% % 
-% % %%UMMC004_sz3
-% % M = dlmread(UMMC004_sz3_eeg.csv, delimiter);
-% % [m,n] = size(M);
-% % %interpolate to make 1KHz from 250Hz
-% % xq = 1:0.25:m;
-% % Mi = interp1(1:m, M, xq);
-% % dlmwrite(UMMC004_sz3_eeg.csv,Mi,delimiter)
-% % clear all
-% % 
-% % 
-% % %%UMMC005_sz2
-% % M = dlmread(UMMC005_sz2_eeg.csv, delimiter);
-% % [m,n] = size(M);
-% % %add left flank to make 61 seconds pre seizure onset - just to bekron
-% % %safe..have to add 10 seconds or 10000 rows in beginning of EEG
-% % A = M(1,:);
-% % B = ones(10000,1);
-% % temp = kron(A,B);
-% % M = [temp; M];
-% % dlmwrite(UMMC005_sz2_eeg.csv,M,delimiter)
-% % clear all
->>>>>>> 7e52329b0d2f8576055f2de5d988a798a4a8bf5d

@@ -1,4 +1,4 @@
-function points = pcspace(fsv_path, patient_info, reference_patient_indexes, test_patient_index)
+function points = pcspace(fsv_path, patient_info, reference_patient_indexes, test_patient_index, fs)
 
 %-----------------------------------------------------------------------------------
 %
@@ -45,7 +45,7 @@ for n = 1:num_pat
     end
 end
 
-points = cdfs(fsv_path, patient_results, patient_info, test_p_id, succ_p_id, fail_p_id);
+points = cdfs(fsv_path, patient_results, patient_info, test_p_id, succ_p_id, fail_p_id, fs);
 
 total_number_signals = [size(points.SR.cdfs, 1), size(points.SNR.cdfs, 1), size(points.FR.cdfs, 1), size(points.FNR.cdfs, 1)];
 
@@ -80,8 +80,8 @@ try
     size(avg)
     diff = (points.TEST.cdfs - repmat(avg, [size(points.TEST.cdfs, 1), 1]));
 catch
-    size(points.TEST.cdfs)
-    size(avg)
+    fprintf(size(points.TEST.cdfs));
+    fprintf(size(avg));
     
     error('matrix dimensions must agree')
 end

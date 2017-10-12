@@ -2,8 +2,55 @@
 
 EZTrack produces electrode weights and heatmap scores from EEG signals in EDF or MEF files.
 
+## Usage (By: Adam Li)
+### Extract Signals From EDF Files
+Given EDF files from the 4 different centers in this study (Cleveland Clinic, NIH, Johns Hopkins Hospital, University of Maryland Medical Clinic), you will save them in `data/edf` directory.
 
-## Usage
+1. Run edf2eeg.sh to extract the signals and channels from the EDF files.
+For UMMC files: `./edf2eeg.sh pt1sz2 rest`
+For all else, use `butlast`
+
+This will create `output/eeg/pt1sz2/pt1sz2_eeg.csv` and `output/eeg/pt1sz2/pt1sz2_labels.csv`.
+
+```
+patient_id,date,recording_start,onset_time,offset_time,recording_duration,num_channels,included_channels
+pt1sz2,4/19/16,19:35:19,19:36:44,19:38:01,269,98,[1:36 42 43 46:54 56:69 72:95]
+```
+
+The fields have the following meaning:
+
+patient_id: matches the file name
+
+date: recording start date in m/dd/yy format. Viewable in EDFbrowser.
+
+recording_start: recording start time in hh:mm:ss format. Viewable in EDFbrowser.
+
+onset_time: clinical onset time in hh:mm:ss format. Provided by clinician.
+
+offset_time: clinical offset time in hh:mm:ss format. Provided by clinician.
+
+recording_duration: the length of the file in seconds. Viewable in EDFbrowser.
+
+num_channels: total number of channels contained in the file. Provided by the length of `output/eeg/pt1sz2/pt1sz2_labels.csv`.
+
+included_channels: indexes of the channels to include in the heatmap in MATLAB vector notation. Use [EDFbrowser](www.teuniz.net/edfbrowser/) to verify which signals to include. Channels to filter out include DC, grounds, channels with missing labels, or channels with noise. "Amplitude -> Fit to Pane" and "Timescale -> 10s/page" are useful settings when viewing channels.
+
+NIH files are in EDF+D vs. EDF+C. Use "Tools->Convert EDF+D to EDF+C" in EDFbrowser to open the files.
+
+### Create the Heatmap
+Run `./eztrack-main pt1sz2`
+
+Output will be saved to `output/heatmap/pt1sz2_iEEG_temporal_results_<date>.csv`
+
+Make sure `iEEG_temporal_CV_results...csv` file is in `output/heatmap` directory. This is the data that was used to generate the PCA space that all other datasets were compared on.
+
+### Analysis of Results
+In directory `Paper Code`, there will be code to reproduce and statistically analyze the computed results.
+
+
+-------------------------------------------------------------------------------
+
+## Usage (Bobby)
 
 ### Extract Signals
 

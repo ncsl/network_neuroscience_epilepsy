@@ -5,38 +5,15 @@
 % - stepsize: the size to interpolate by (e.g. 0.5 for going from
 % 500Hz->1000 Hz
 % - addFlank: boolean to add flank or not
-<<<<<<< HEAD
-function fix_ummc_eeg(filename, delimiter, stepsize, addFlank)
-    M = dlmread(filename, delimiter);
-=======
-function fix_ummc_eeg(eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank)
+function fix_ummc_eeg(dataDir, eegDir, eegfilename, patfilename, delimiter, stepsize, addLeftFlank, addRightFlank, fs)
     %%- MODIFY EEG FILES
-    M = dlmread(eegfilename, delimiter);
->>>>>>> 7e52329b0d2f8576055f2de5d988a798a4a8bf5d
+    M = dlmread(fullfile(eegDir, eegfilename), delimiter);
+
     [m,n] = size(M); % m = time points, n = # channels
     
     % interpolate to 1000Hz
     xq = 1:stepsize:m;
     Mi = interp1(1:m, M, xq);
-<<<<<<< HEAD
-    
-    %append to beginning
-         if addFlank > 0
-        A = Mi(1,:);
-        B = ones(addFlank,1);
-        temp = kron(A,B);
-        Mi = [temp; Mi];
-end
-        % append to the end
-        A = Mi(end,:);
-        B = ones(addFlank, 1);
-        temp = kron(A, B);
-        Mi = [Mi; temp];
-    end
-    
-    dlmwrite(filename, Mi, delimiter);
-=======
-    size(Mi)
     if addLeftFlank > 0
         A = Mi(1,:);
         B = ones(addLeftFlank,1);
@@ -56,7 +33,7 @@ end
         Mi = [Mi; temp];
     end
     size(Mi)
-    dlmwrite(eegfilename, Mi, delimiter);
+    dlmwrite(fullfile(dataDir, eegfilename), Mi, 'delimiter', delimiter, 'precision', '%.7f');
     disp('Done eeg file');
     
     %%- modify patient file
@@ -91,17 +68,16 @@ end
     included_channels = dataArray{:, 8};
     
     if (addLeftFlank > 0)
-        onset_time = onset_time + seconds(addLeftFlank/1000);
-        offset_time = offset_time + seconds(addLeftFlank/1000);
-        recording_duration = recording_duration + (addLeftFlank/1000);
+        onset_time = onset_time + seconds(addLeftFlank/fs);
+        offset_time = offset_time + seconds(addLeftFlank/fs);
+        recording_duration = recording_duration + (addLeftFlank/fs);
     end
     if (addRightFlank > 0)
-        recording_duration = recording_duration + (addRightFlank/1000);
+        recording_duration = recording_duration + (addRightFlank/fs);
     end
     
     % just do a display to let you know what to change things to
     disp('New onset_time is: '); onset_time
     disp('New offset_time is: '); offset_time
     disp('New recording_duration is: '); recording_duration
->>>>>>> 7e52329b0d2f8576055f2de5d988a798a4a8bf5d
 end

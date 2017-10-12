@@ -31,34 +31,53 @@ printf "\n== Validating $patient_id.csv  ==\n"
 # Read the csv: Assume only one entry for now, though we could process all to find all segments, start, and end marks.
 IFS=',' read -r -a inputs <<< "$(head -n 2 $PROJECT_HOME/data/patients/$patient_id.csv | tail -n 1)"
 
+# dt="${inputs[1]}"
+# recording_start="${inputs[2]}"
+# s_onset="${inputs[3]}"
+# s_offset="${inputs[4]}"
+# recording_duration="${inputs[5]}"
+# num_channels="${inputs[6]}"
+# included_channels="${inputs[7]}"
+
+# Convert dates to uUTC:
+# recording_start_time=$(TZ=America/New_York $date --date="$dt $recording_start" +%s%6N)
+# seizure_onset_time=$(TZ=America/New_York $date --date="$dt $s_onset" +%s%6N)
+# seizure_offset_time=$(TZ=America/New_York $date --date="$dt $s_offset" +%s%6N)
+
+# printf "recording_start_time\t${recording_start_time}\n"
+# printf "seizure_onset_time\t${seizure_onset_time}\n"
+# printf "seizure_offset_time\t${seizure_offset_time}\n\n"
+
+# start_mark=$(( (seizure_onset_time - recording_start_time) / 1000000 ))
+# echo "start mark must be greater than 60:"
+# printf "\tstart_mark:\t$start_mark\n"
+
+# # TODO: Review whether or not to give the end mark offset a 1s wider margin to avoid 'Matrix dimensions must agree' errors.
+# end_mark=$(( (seizure_offset_time - recording_start_time) / 1000000 ))
+# echo "end_mark must be at least 60s less than recording_duration."
+# printf "\tend_mark:\t$end_mark\n"
+# printf "\trecording_duration:\t$recording_duration\n"
+# number_of_samples=$(( recording_duration * frequency ))
+# printf "\tnumber_of_samples:\t$number_of_samples\n"
+
+# For EZT data:
 dt="${inputs[1]}"
 recording_start="${inputs[2]}"
-s_onset="${inputs[3]}"
-s_offset="${inputs[4]}"
-recording_duration="${inputs[5]}"
+start_mark="${inputs[3]}"
+end_mark="${inputs[4]}"
+number_of_samples="${inputs[5]}"
 num_channels="${inputs[6]}"
 included_channels="${inputs[7]}"
 
-# Convert dates to uUTC:
-recording_start_time=$(TZ=America/New_York $date --date="$dt $recording_start" +%s%6N)
-seizure_onset_time=$(TZ=America/New_York $date --date="$dt $s_onset" +%s%6N)
-seizure_offset_time=$(TZ=America/New_York $date --date="$dt $s_offset" +%s%6N)
-
-printf "recording_start_time\t${recording_start_time}\n"
-printf "seizure_onset_time\t${seizure_onset_time}\n"
-printf "seizure_offset_time\t${seizure_offset_time}\n\n"
-
-start_mark=$(( (seizure_onset_time - recording_start_time) / 1000000 ))
+start_mark=$(( start_mark / 1000 ))
 echo "start mark must be greater than 60:"
 printf "\tstart_mark:\t$start_mark\n"
 
-# TODO: Review whether or not to give the end mark offset a 1s wider margin to avoid 'Matrix dimensions must agree' errors.
-end_mark=$(( (seizure_offset_time - recording_start_time) / 1000000 ))
+end_mark=$(( end_mark / 1000 ))
 echo "end_mark must be at least 60s less than recording_duration."
 printf "\tend_mark:\t$end_mark\n"
+recording_duration=$(( number_of_samples / 1000 ))
 printf "\trecording_duration:\t$recording_duration\n"
-number_of_samples=$(( recording_duration * frequency ))
-printf "\tnumber_of_samples:\t$number_of_samples\n"
 
 ###### End of input parameter validation #######
 
@@ -70,11 +89,13 @@ eeg2fsv_out=$eeg_output/adj_pwr
 
 temporal_out=/tmp/eztrack-temporal
 
+############################## Run EEG to Frequency Singular Values ##############################
+# comment out if already ran to save time!
 printf "\n== eeg2fsv ==\n"
 rm -rf $eeg2fsv_out
 cd $PROJECT_HOME/eeg2fsv && \
-   echo "Invoking matlab with eeg2fsv('$eeg_output', '$patient_id', $num_channels, $included_channels, $sizes)" && \
-   $matlab_jvm "eeg2fsv('${eeg_output}/', '$patient_id', $num_channels, $included_channels, $sizes); exit"
+   echo "Invoking matlab with eeg2fsv('$eeg_output', '$patient_id', $num_channels, $included_channels, $sizes, $frequency)" && \
+   $matlab_jvm "eeg2fsv('${eeg_output}/', '$patient_id', $num_channels, $included_channels, $sizes, $frequency); exit"
 
 # Copy results to output dir used in fsv2heatmap computation.
 cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
@@ -83,11 +104,12 @@ cp $eeg2fsv_out/svd_vectors/fsv_pwr$patient_id.mat $PROJECT_HOME/output/fsv
 cp $eeg_output/${patient_id}_labels.csv $eeg_output/${patient_id}_all_labels.csv
 
 # Copy the list of labels that will actually be used in the analysis.
-cp $PROJECT_HOME/data/patients/${patient_id}_channels.csv $eeg_output/${patient_id}_labels.csv
+# cp $PROJECT_HOME/data/patients/${patient_id}_channels.csv $eeg_output/${patient_id}_labels.csv
 
+############################## Create Heatmap from FSV ##############################
 printf "\n== fsv2heatmap ==\n"
 cd $PROJECT_HOME/fsv2heatmap && \
-    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME', '$patient_id', '${patient_id}_labels.csv', $start_mark, $end_mark); display(csv_file); exit" > $temporal_out
+    $matlab_jvm "csv_file = temporal_ieeg_results('$PROJECT_HOME', '$patient_id', '${patient_id}_labels.csv', $included_channels, $start_mark, $end_mark, $frequency); display(csv_file); exit" > $temporal_out
 
 # HACK: Have fsv2heatmap save this output path to a different file to avoid relying on position with tail.
 results=`tail -n 3 $temporal_out | head -n 1`

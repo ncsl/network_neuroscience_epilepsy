@@ -56,9 +56,20 @@ function power_coherence(pathval, filename, num_values, num_channels, fs, sample
 %--------------------------------------------------------------------------
 % validate inputs
 %--------------------------------------------------------------------------
-if (nargin < 5)
-    error('Error: no enough input');
+if nargin==0
+    patient_id='UMMC004_sz2';
+    pathval = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient_id);
+    f = dir(fullfile(pathval, '*eeg.csv'));
+    filename = f(1).name;
+    num_values = 98000;
+    num_channels = 128;
+    fs = 250;
+    sample_to_access = 0;
 end
+
+% if (nargin < 5)
+%     error('Error: no enough input');
+% end
 
 if (isempty(pathval) || ~ischar(pathval) || ~isdir(pathval))
     error('Error: path is not a valid directory');
@@ -115,7 +126,8 @@ elseif (fs==200)
     dennotch = [1 0.598862049930572 0.937958302720205];
     numnotch = [0.968979151360102 0.598862049930572 0.968979151360103];
 else
-    error('Error: notch filter not available');
+    fprintf('Not using original notch filter');
+%     error('Error: notch filter not available');
 end
 
 % max number of samples per channel to be extracted
@@ -157,6 +169,9 @@ while (sample_to_access < limit)
     %         samples of data before the required samples
     if lastwindow
         tmpwindow = 400;
+        if fs == 250
+            tmpwindow = 200;
+        end
     else 
         tmpwindow = 0;
     end
@@ -165,7 +180,12 @@ while (sample_to_access < limit)
     %         #i in the extracted matrix is filled by data samples from the
     %         recording channel #i.
     tmpdata = eeg(:, (lastwindow - tmpwindow) + 1:lastwindow + nsamples );
-    tmpdata = filtfilt(numnotch,dennotch,tmpdata');
+    
+    if fs == 1000
+        tmpdata = filtfilt(numnotch,dennotch,tmpdata');
+    else
+        tmpdata = buttfilt(tmpdata,[59.5 60.5], fs,'stop',1)';
+    end
     data = tmpdata(tmpwindow + 1:end,:);
     
     % step 2: pre-process the data. For each channel, subtract the mean

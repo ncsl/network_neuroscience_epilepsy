@@ -1,5 +1,7 @@
-function points = fsv2pcspace(reference_patients, test_patient_id, patient_info, fsv_path)
+function points = fsv2pcspace(reference_patients, test_patient_id, patient_info, fsv_path, fs)
 
+
+% get all the patient ids currently in the patient info struct
 all_patient_ids = fieldnames(patient_info);
 
 % Get the index vector into the patient data that matches the list of patients.
@@ -11,7 +13,7 @@ test_patient_index = find(cellfun(cellfind(test_patient_id), all_patient_ids), 1
 
 % step 2: passing the training set for PC analysis and projecting test set
 %         on the 2D space defined by training set
-points = pcspace(fsv_path, patient_info, reference_patient_indexes, test_patient_index);   
+points = pcspace(fsv_path, patient_info, reference_patient_indexes, test_patient_index, fs);   
 
 end
 

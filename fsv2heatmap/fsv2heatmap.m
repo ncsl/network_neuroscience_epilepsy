@@ -1,7 +1,8 @@
-function csv_file = fsv2heatmap(eztrack_home, patients_in_region, patient_info, patient_type, test_patient_id)
-
+function csv_file = fsv2heatmap(eztrack_home, patients_in_region, patient_info, patient_type, test_patient_id, fs)
+    
+    % path to save output computation
     fsv_path = [eztrack_home '/output/fsv'];
-    points = fsv2pcspace(patients_in_region, test_patient_id, patient_info, fsv_path);
+    points = fsv2pcspace(patients_in_region, test_patient_id, patient_info, fsv_path, fs);
 
     figure_path = [eztrack_home '/output/figures/'];
     plot_pcspace(points, figure_path);

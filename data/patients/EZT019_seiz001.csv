@@ -1,0 +1,2 @@
+patient_id,date,recording_start,onset_mark,offset_mark,num_samples,num_channels,included_channels
+EZT019_seiz001,6/19/15,14:17:32,120001,210000,330000,79,[1:79]
