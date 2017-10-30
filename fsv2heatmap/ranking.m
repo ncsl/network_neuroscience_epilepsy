@@ -27,8 +27,10 @@ function a = ranking(x, mode)
 [s, i] = sort(x, mode);
 a = zeros(size(s));
 
-for m = 1:size(a, 1)
-   for n = 1:size(a, 2),  a(m, n) = find(i(:,n) == m ); end
+for m = 1:size(a, 1) % loop through channels
+   for n = 1:size(a, 2),  % loop through windows
+       a(m, n) = find(i(:,n) == m ); 
+   end
 end
 
 end

@@ -5,3 +5,5 @@ data/channel_filter/*
 output/*
 target/*
 from\ server/*
+data/
+*.hdf

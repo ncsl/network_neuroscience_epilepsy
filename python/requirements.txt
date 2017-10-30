@@ -1,0 +1,9 @@
+h5py==2.7.1
+numpy==1.13.3
+pandas==0.20.3
+pyEDFlib==0.1.10
+python-dateutil==2.6.1
+pytz==2017.2
+PyYAML==3.12
+scipy==0.19.1
+six==1.11.0

@@ -1,10 +1,10 @@
 function eeg2fsv(patient_file_path, patient_id, num_channels, ...
     included_channels, file_sizes, sample_rate)
 if nargin==0
-    patient_id='EZT007_seiz001';
-    patient_file_path = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient_id);
-    num_channels=94;
-    included_channels=[1:94];
+    patient_id='EZT019_seiz001';
+    patient_file_path = fullfile('/Users/adam2392/Documents/eztrack/output/eeg/', patient_id, '/');
+    num_channels=79;
+    included_channels=[1:79];
     sample_rate = 1000; % need to change depending on sampling freq. of center (e.g. UMMC = 500 sometimes, NIH=1000)
     file_sizes=258000;
 end
@@ -29,7 +29,7 @@ end
 delete(gcp('nocreate'));
 
 % 2. Compute ranked-Eigenvector Centrality (rEVC) sequence
-for i = 1:length(patient_file_names)
+for i = 1:1%length(patient_file_names)
     svd_decomposition([patient_file_path 'adj_pwr'], patient_file_names{i}, num_channels, included_channels);
 end
 

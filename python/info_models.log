@@ -1,0 +1,1443 @@
+2017-10-23 12:25:22,650 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:25:46,215 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:25:46,233 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:25:46,236 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:25:46,242 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:26:00,678 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:26:00,681 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:26:00,683 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:26:00,685 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:26:00,823 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:26:32,566 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:26:32,568 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:26:32,570 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:26:32,572 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:26:32,703 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:31:47,143 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:31:47,145 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:31:47,147 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:31:47,149 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:31:47,309 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:31:57,905 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:31:57,907 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:31:57,910 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:31:57,912 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:31:58,040 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:32:28,206 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:32:28,209 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:32:28,211 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:32:28,214 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:32:28,347 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:32:58,768 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:32:58,770 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:32:58,772 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:32:58,775 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:32:58,910 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:33:37,184 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:33:37,186 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:33:37,188 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:33:37,192 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:33:37,337 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:34:26,986 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:34:26,989 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:34:26,991 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:34:26,993 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:34:27,141 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:36:33,000 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:36:33,003 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:36:33,005 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:36:33,007 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:36:33,134 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:37:29,330 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:37:29,333 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:37:29,334 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:37:29,336 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:37:29,459 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:37:34,895 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-23 12:59:06,347 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 12:59:06,356 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 12:59:06,359 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 12:59:06,362 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 12:59:06,623 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 12:59:12,151 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-23 13:08:46,061 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:08:46,064 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:08:46,066 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:08:46,070 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:08:46,199 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:08:46,199 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:10:06,097 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:10:06,099 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:10:06,102 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:10:06,105 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:10:06,227 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:10:06,227 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:10:24,061 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:10:24,064 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:10:24,066 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:10:24,069 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:10:24,198 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:10:24,198 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:11:05,128 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:11:05,130 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:11:05,132 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:11:05,134 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:11:05,256 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:11:05,256 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:13:17,114 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:13:17,116 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:13:17,118 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:13:17,120 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:13:17,247 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:13:17,247 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:14:59,784 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:14:59,786 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:14:59,788 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:14:59,791 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:14:59,915 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:14:59,916 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:15:20,053 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:15:20,055 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:15:20,057 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:15:20,061 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:15:20,184 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:15:20,185 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:15:53,258 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:15:53,260 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:15:53,262 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:15:53,264 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:15:53,390 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:15:53,391 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:17:14,584 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:17:14,587 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:17:14,589 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:17:14,592 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:17:14,722 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:17:26,153 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:17:26,156 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:17:26,158 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:17:26,161 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:17:26,287 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:17:26,287 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:17:55,270 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:17:55,272 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:17:55,274 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:17:55,277 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:17:55,397 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:17:55,398 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:18:19,451 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:18:19,454 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:18:19,456 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:18:19,459 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:18:19,582 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:18:19,583 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:19:50,156 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:19:50,158 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:19:50,160 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:19:50,163 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:19:50,294 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:19:50,295 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:21:54,820 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:21:54,822 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:21:54,824 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:21:54,827 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:21:54,950 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:21:54,950 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 13:22:17,447 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 13:22:17,449 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 13:22:17,452 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 13:22:17,454 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 13:22:17,579 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 13:22:17,579 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:04:09,895 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:04:09,906 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:04:09,909 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:04:09,912 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:04:10,052 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:04:10,053 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:04:49,846 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:04:49,848 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:04:49,849 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:04:49,853 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:04:49,973 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:04:49,973 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:05:18,292 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:05:18,295 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:05:18,297 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:05:18,301 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:05:18,432 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:05:18,432 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:05:33,183 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:05:33,185 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:05:33,187 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:05:33,191 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:05:33,310 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:05:33,310 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:06:31,933 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:06:31,935 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:06:31,937 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:06:31,940 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:06:32,067 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:06:32,067 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:12:34,138 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:12:34,140 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:12:34,142 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:12:34,145 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:12:34,269 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:12:34,269 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:13:02,184 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:13:02,186 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:13:02,188 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:13:02,191 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:13:02,312 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:13:02,312 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:13:20,652 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:13:20,654 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:13:20,656 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:13:20,658 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:13:20,771 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:13:20,771 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:13:58,651 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:13:58,653 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:13:58,655 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:13:58,658 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:13:58,778 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:13:58,778 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:16:33,749 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:16:33,751 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:16:33,753 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:16:33,756 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:16:33,881 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:16:33,881 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:17:10,266 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:17:10,268 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:17:10,270 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:17:10,273 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:17:10,397 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:17:10,398 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:18:03,413 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:18:03,416 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:18:03,418 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:18:03,421 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:18:03,545 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:18:03,545 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:18:14,636 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:18:14,638 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:18:14,640 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:18:14,643 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:18:14,778 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:18:14,778 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:19:36,165 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:19:36,167 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:19:36,169 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:19:36,172 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:19:36,291 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:19:36,291 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:31:26,416 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:31:26,418 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:31:26,420 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:31:26,424 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:31:26,547 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:31:26,547 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:31:51,580 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:31:51,583 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:31:51,585 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:31:51,588 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:31:51,717 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:31:51,718 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:32:03,900 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:32:03,902 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:32:03,904 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:32:03,908 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:32:04,030 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:32:04,030 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:32:18,833 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:32:18,835 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:32:18,839 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:32:18,844 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:32:18,975 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:32:18,975 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:32:32,786 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:32:32,789 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:32:32,792 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:32:32,796 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:32:32,926 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:32:32,927 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 15:33:29,466 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 15:33:29,469 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 15:33:29,471 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 15:33:29,474 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 15:33:29,600 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 15:33:29,600 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 16:53:04,673 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 16:53:04,683 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 16:53:04,686 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 16:53:04,690 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 16:53:04,948 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 16:53:04,949 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 16:57:01,053 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 16:57:01,055 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 16:57:01,057 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 16:57:01,060 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 16:57:01,177 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 16:57:01,177 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 16:59:59,552 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 16:59:59,555 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 16:59:59,558 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 16:59:59,561 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 16:59:59,683 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 16:59:59,683 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:01:02,050 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:01:02,052 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:01:02,055 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:01:02,057 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:01:02,187 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:01:02,188 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:03:53,186 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:03:53,188 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:03:53,191 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:03:53,194 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:03:53,317 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:03:53,318 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:09:50,539 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:09:50,541 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:09:50,544 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:09:50,547 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:09:50,676 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:09:50,677 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:10:27,227 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:10:27,229 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:10:27,231 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:10:27,234 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:10:27,363 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:10:27,363 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:11:00,432 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:11:00,435 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:11:00,437 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:11:00,440 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:11:00,564 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:11:00,565 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:14:14,777 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:14:14,779 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:14:14,782 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:14:14,785 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:14:14,913 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:14:14,914 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:16:29,741 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:16:29,743 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:16:29,746 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:16:29,749 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:16:29,874 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:16:29,875 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:16:48,650 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:16:48,652 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:16:48,654 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:16:48,657 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:16:48,781 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:16:48,782 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:19:02,892 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:19:02,894 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:19:02,898 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:19:02,902 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:19:03,031 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:19:03,031 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:20:33,597 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:20:33,599 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:20:33,601 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:20:33,604 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:20:33,737 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:20:33,738 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:21:40,566 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:21:40,568 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:21:40,570 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:21:40,574 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:21:40,702 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:21:40,702 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:21:41,617 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 17:30:56,276 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 17:30:56,279 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 17:30:56,281 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 17:30:56,284 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 17:30:56,419 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 17:30:56,419 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 17:30:57,405 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:33:19,884 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:33:19,895 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:33:19,898 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:33:19,903 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:33:20,161 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:33:20,161 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:33:21,089 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:33:26,905 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:33:26,908 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:33:26,910 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:33:26,914 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:33:27,038 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:33:27,038 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:33:27,948 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:33:46,421 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:33:46,423 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:33:46,425 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:33:46,427 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:33:46,557 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:33:46,557 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:33:47,453 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:33:57,239 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:33:57,241 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:33:57,243 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:33:57,246 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:33:57,361 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:33:57,361 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:33:58,254 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:34:44,049 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:34:44,051 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:34:44,053 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:34:44,056 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:34:44,178 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:34:44,179 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:34:45,117 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:44:33,998 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:44:34,000 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:44:34,002 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:44:34,005 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:44:34,117 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:44:34,117 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:44:35,003 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:46:49,589 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:46:49,591 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:46:49,593 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:46:49,595 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:46:49,716 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:46:49,717 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:46:50,610 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 19:49:34,183 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 19:49:34,185 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 19:49:34,187 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 19:49:34,190 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 19:49:34,305 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 19:49:34,306 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 19:49:35,207 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:14:41,501 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:14:41,511 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:14:41,514 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:14:41,518 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:14:41,776 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:14:41,776 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:14:42,799 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:16:32,575 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:16:32,577 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:16:32,579 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:16:32,582 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:16:32,706 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:16:32,706 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:16:33,786 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:17:51,030 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:17:51,032 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:17:51,034 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:17:51,038 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:17:51,160 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:17:51,161 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:17:52,064 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:21:36,823 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:21:36,825 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:21:36,827 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:21:36,831 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:21:36,965 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:21:36,965 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:21:37,930 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:22:26,594 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:22:26,596 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:22:26,598 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:22:26,601 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:22:26,728 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:22:26,728 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:22:27,710 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:24:59,138 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:24:59,140 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:24:59,142 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:24:59,145 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:24:59,267 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:24:59,267 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:25:00,258 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:26:20,241 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:26:20,243 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:26:20,246 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:26:20,248 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:26:20,376 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:26:20,377 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:26:21,366 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:26:54,028 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:26:54,031 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:26:54,034 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:26:54,037 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:26:54,159 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:26:54,159 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:26:55,057 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:29:21,655 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:29:21,657 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:29:21,660 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:29:21,662 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:29:21,785 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:29:21,786 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:29:43,990 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:29:43,992 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:29:43,995 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:29:43,997 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:29:44,124 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:29:44,124 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:29:45,041 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:29:56,054 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:29:56,057 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:29:56,059 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:29:56,061 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:29:56,185 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:29:56,186 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:29:57,093 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:40:51,541 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:40:51,543 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:40:51,546 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:40:51,550 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:40:51,753 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:40:51,754 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:40:52,811 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:40:53,714 - eztrack.models.powercoherence - INFO - Evaluating cross power in [30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
+ 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79
+ 80 81 82 83 84 85 86 87 88 89 90] frequency band
+2017-10-23 22:41:16,831 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:41:16,835 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:41:16,837 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:41:16,840 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:41:16,970 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:41:16,970 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:41:17,871 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:41:18,750 - eztrack.models.powercoherence - INFO - Evaluating cross power in [30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
+ 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79
+ 80 81 82 83 84 85 86 87 88 89 90] frequency band
+2017-10-23 22:43:38,749 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:43:38,751 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:43:38,753 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:43:38,757 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:43:38,884 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:43:38,884 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:43:39,831 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:43:40,714 - eztrack.models.powercoherence - INFO - Evaluating cross power in [30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
+ 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79
+ 80 81 82 83 84 85 86 87 88 89 90] frequency band
+2017-10-23 22:49:08,808 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:49:08,810 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:49:08,812 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:49:08,816 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:49:08,943 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:49:08,943 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:49:10,008 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:49:10,941 - eztrack.models.powercoherence - INFO - Evaluating cross power in [30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
+ 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79
+ 80 81 82 83 84 85 86 87 88 89 90] frequency band
+2017-10-23 22:49:59,968 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:49:59,970 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:49:59,972 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:49:59,976 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:50:00,152 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:50:00,153 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:50:01,168 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:50:02,064 - eztrack.models.powercoherence - INFO - Evaluating cross power in [30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
+ 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79
+ 80 81 82 83 84 85 86 87 88 89 90] frequency band
+2017-10-23 22:51:38,767 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:51:38,770 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:51:38,773 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:51:38,776 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:51:38,899 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:51:38,899 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:51:39,823 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:51:40,724 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 31 frequency band
+2017-10-23 22:52:45,309 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 22:52:45,311 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 22:52:45,313 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 22:52:45,317 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 22:52:45,440 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 22:52:45,440 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 22:52:46,382 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 22:52:47,276 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 31 frequency band
+2017-10-23 23:08:59,412 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-23 23:08:59,414 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-23 23:08:59,416 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-23 23:08:59,420 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-23 23:08:59,560 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-23 23:08:59,560 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-23 23:08:59,570 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-23 23:09:00,557 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 31 frequency band
+2017-10-26 23:04:15,935 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:04:15,981 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:04:15,987 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:04:15,999 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:04:16,489 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:04:17,663 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:04:17,708 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:04:19,707 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 31 frequency band
+2017-10-26 23:04:45,147 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:04:45,171 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:04:45,180 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:04:45,224 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:04:45,619 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:04:46,775 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:04:46,804 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:04:49,876 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 31 frequency band
+2017-10-26 23:05:48,351 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:05:48,366 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:05:48,374 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:05:48,388 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:05:48,815 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:05:50,009 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:05:50,041 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:05:53,119 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 31 frequency band
+2017-10-26 23:09:52,721 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:09:52,746 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:09:52,752 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:09:52,762 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:09:53,119 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:09:54,154 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:09:54,202 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:11:47,004 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:11:47,018 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:11:47,024 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:11:47,034 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:11:47,445 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:11:48,379 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:11:48,405 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:11:51,074 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:13:32,519 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:13:32,562 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:13:32,575 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:13:32,593 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:13:32,968 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:13:33,498 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:13:33,551 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:13:36,073 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:14:17,742 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:14:17,756 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:14:17,763 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:14:17,775 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:14:18,113 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:14:19,038 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:14:19,067 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:14:21,403 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:14:38,151 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:14:38,186 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:14:38,194 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:14:38,254 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:14:38,908 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:14:39,947 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:14:39,979 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:14:42,694 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:21:25,732 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:21:25,823 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:21:25,834 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:21:25,859 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:21:26,519 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:21:27,258 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:21:27,294 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:21:29,897 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:26:30,826 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:26:30,850 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:26:30,858 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:26:30,873 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:26:31,236 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:26:31,981 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:26:32,001 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:26:33,801 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:27:32,215 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:27:32,277 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:27:32,285 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:27:32,299 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:27:32,695 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:27:33,227 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:27:33,245 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:27:34,704 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:30:35,429 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:30:35,439 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:30:35,441 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:30:35,447 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:30:35,706 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:30:35,998 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:30:36,007 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:30:36,631 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:40:06,436 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:40:06,438 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:40:06,442 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:40:06,447 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:40:06,569 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:40:06,879 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:40:06,888 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:40:07,530 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:40:41,969 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:40:41,971 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:40:41,974 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:40:41,978 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:40:42,098 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:40:42,398 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:40:42,407 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:40:43,055 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-26 23:42:57,471 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-26 23:42:57,473 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-26 23:42:57,475 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-26 23:42:57,477 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-26 23:42:57,595 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-26 23:42:57,916 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-26 23:42:57,925 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-26 23:42:58,567 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 00:10:09,200 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 00:10:09,203 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 00:10:09,205 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 00:10:09,208 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 00:10:09,322 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 00:10:09,631 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 00:10:09,639 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 00:10:10,306 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 12:52:04,782 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 12:52:04,796 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 12:52:04,799 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 12:52:04,803 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 12:52:05,061 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 12:52:05,361 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 12:53:04,417 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 12:53:04,419 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 12:53:04,421 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 12:53:04,424 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 12:53:04,535 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 12:53:04,825 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 12:53:43,540 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 12:53:43,542 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 12:53:43,544 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 12:53:43,547 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 12:53:43,660 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 12:53:43,958 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 12:53:43,959 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 12:54:03,301 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 12:54:03,303 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 12:54:03,305 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 12:54:03,308 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 12:54:03,426 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 12:54:03,724 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 12:54:03,724 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 12:54:57,271 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 12:54:57,273 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 12:54:57,275 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 12:54:57,278 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 12:54:57,394 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 12:54:57,697 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 12:54:57,698 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 12:57:28,454 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 12:57:28,456 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 12:57:28,458 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 12:57:28,461 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 12:57:28,597 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 12:57:28,964 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 12:57:28,964 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 12:57:28,975 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:29,677 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:30,327 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:30,993 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:31,637 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:32,280 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 12:57:44,680 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 12:57:44,682 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 12:57:44,684 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 12:57:44,686 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 12:57:44,800 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 12:57:45,096 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 12:57:45,096 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 12:57:45,104 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:45,754 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:46,356 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:46,984 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:47,585 - eztrack.models.powercoherence - INFO - Computing cross power!
+2017-10-27 12:57:48,180 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:09:19,951 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:09:19,954 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:09:19,956 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:09:19,959 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:09:20,077 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:09:20,388 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:09:20,389 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:09:20,389 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:09:57,848 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:09:57,850 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:09:57,854 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:09:57,859 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:09:57,978 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:09:58,289 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:09:58,289 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:09:58,290 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:09:58,977 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:09:59,616 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:10:00,248 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:10:00,875 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:10:01,499 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:10:28,260 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:10:28,262 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:10:28,265 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:10:28,270 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:10:28,393 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:10:28,695 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:10:28,695 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:10:28,695 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:10:29,405 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:10:30,008 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:10:30,621 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:10:31,237 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:10:31,848 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:14:29,566 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:14:29,569 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:14:29,571 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:14:29,574 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:14:29,700 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:14:30,013 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:14:30,013 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:14:30,013 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:14:30,702 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:14:31,333 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:14:31,970 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:14:32,606 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:14:33,263 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:16:30,691 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:16:30,693 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:16:30,695 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:16:30,698 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:16:30,814 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:16:31,128 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:16:31,128 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:16:31,129 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:16:31,805 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:16:32,448 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:16:33,092 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:16:33,736 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:16:34,357 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:19:42,688 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:19:42,690 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:19:42,692 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:19:42,695 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:19:42,815 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:19:43,134 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:19:43,135 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:19:43,135 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:19:43,844 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:19:44,511 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:19:45,173 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:19:45,836 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:19:46,494 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:22:20,631 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:22:20,633 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:22:20,635 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:22:20,639 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:22:20,752 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:22:21,056 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:22:21,056 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:22:21,057 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:22:21,752 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:22:22,383 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:22:23,014 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:22:23,641 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:22:24,270 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:24:48,956 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:24:48,958 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:24:48,960 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:24:48,963 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:24:49,082 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:24:49,385 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:24:49,385 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:24:49,385 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:24:50,059 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:24:50,691 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:24:51,342 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:24:52,006 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:24:52,667 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 13:28:49,369 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:28:49,371 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:28:49,374 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:28:49,377 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:28:49,493 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:28:49,797 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:28:49,797 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:28:49,798 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:28:50,478 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:28:51,118 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:28:51,768 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:28:52,410 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:28:53,060 - eztrack.models.powercoherence - INFO - Computing cross power for 5 window!
+2017-10-27 13:28:53,706 - eztrack.models.powercoherence - INFO - Computing cross power for 6 window!
+2017-10-27 13:28:54,343 - eztrack.models.powercoherence - INFO - Computing cross power for 7 window!
+2017-10-27 13:28:54,991 - eztrack.models.powercoherence - INFO - Computing cross power for 8 window!
+2017-10-27 13:28:55,614 - eztrack.models.powercoherence - INFO - Computing cross power for 9 window!
+2017-10-27 13:28:56,252 - eztrack.models.powercoherence - INFO - Computing cross power for 10 window!
+2017-10-27 13:28:56,884 - eztrack.models.powercoherence - INFO - Computing cross power for 11 window!
+2017-10-27 13:28:57,519 - eztrack.models.powercoherence - INFO - Computing cross power for 12 window!
+2017-10-27 13:28:58,160 - eztrack.models.powercoherence - INFO - Computing cross power for 13 window!
+2017-10-27 13:28:58,804 - eztrack.models.powercoherence - INFO - Computing cross power for 14 window!
+2017-10-27 13:28:59,456 - eztrack.models.powercoherence - INFO - Computing cross power for 15 window!
+2017-10-27 13:29:00,085 - eztrack.models.powercoherence - INFO - Computing cross power for 16 window!
+2017-10-27 13:29:00,726 - eztrack.models.powercoherence - INFO - Computing cross power for 17 window!
+2017-10-27 13:29:01,366 - eztrack.models.powercoherence - INFO - Computing cross power for 18 window!
+2017-10-27 13:29:02,008 - eztrack.models.powercoherence - INFO - Computing cross power for 19 window!
+2017-10-27 13:29:02,640 - eztrack.models.powercoherence - INFO - Computing cross power for 20 window!
+2017-10-27 13:29:03,275 - eztrack.models.powercoherence - INFO - Computing cross power for 21 window!
+2017-10-27 13:29:03,914 - eztrack.models.powercoherence - INFO - Computing cross power for 22 window!
+2017-10-27 13:29:04,554 - eztrack.models.powercoherence - INFO - Computing cross power for 23 window!
+2017-10-27 13:29:05,194 - eztrack.models.powercoherence - INFO - Computing cross power for 24 window!
+2017-10-27 13:29:05,840 - eztrack.models.powercoherence - INFO - Computing cross power for 25 window!
+2017-10-27 13:29:06,475 - eztrack.models.powercoherence - INFO - Computing cross power for 26 window!
+2017-10-27 13:29:07,118 - eztrack.models.powercoherence - INFO - Computing cross power for 27 window!
+2017-10-27 13:29:07,748 - eztrack.models.powercoherence - INFO - Computing cross power for 28 window!
+2017-10-27 13:29:08,392 - eztrack.models.powercoherence - INFO - Computing cross power for 29 window!
+2017-10-27 13:29:09,052 - eztrack.models.powercoherence - INFO - Computing cross power for 30 window!
+2017-10-27 13:29:09,699 - eztrack.models.powercoherence - INFO - Computing cross power for 31 window!
+2017-10-27 13:29:56,820 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:29:56,822 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:29:56,824 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:29:56,827 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:29:56,943 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:29:57,252 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:29:57,253 - eztrack.models.powercoherence - INFO - Evaluating cross power for 267 windows
+2017-10-27 13:29:57,253 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:29:57,253 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:29:57,951 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:29:58,608 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:29:59,257 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:29:59,896 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:30:00,547 - eztrack.models.powercoherence - INFO - Computing cross power for 5 window!
+2017-10-27 13:30:01,189 - eztrack.models.powercoherence - INFO - Computing cross power for 6 window!
+2017-10-27 13:30:01,835 - eztrack.models.powercoherence - INFO - Computing cross power for 7 window!
+2017-10-27 13:30:02,477 - eztrack.models.powercoherence - INFO - Computing cross power for 8 window!
+2017-10-27 13:30:03,121 - eztrack.models.powercoherence - INFO - Computing cross power for 9 window!
+2017-10-27 13:30:03,770 - eztrack.models.powercoherence - INFO - Computing cross power for 10 window!
+2017-10-27 13:30:04,414 - eztrack.models.powercoherence - INFO - Computing cross power for 11 window!
+2017-10-27 13:30:05,069 - eztrack.models.powercoherence - INFO - Computing cross power for 12 window!
+2017-10-27 13:30:05,719 - eztrack.models.powercoherence - INFO - Computing cross power for 13 window!
+2017-10-27 13:30:06,345 - eztrack.models.powercoherence - INFO - Computing cross power for 14 window!
+2017-10-27 13:30:06,986 - eztrack.models.powercoherence - INFO - Computing cross power for 15 window!
+2017-10-27 13:30:07,635 - eztrack.models.powercoherence - INFO - Computing cross power for 16 window!
+2017-10-27 13:30:08,300 - eztrack.models.powercoherence - INFO - Computing cross power for 17 window!
+2017-10-27 13:30:08,944 - eztrack.models.powercoherence - INFO - Computing cross power for 18 window!
+2017-10-27 13:30:09,582 - eztrack.models.powercoherence - INFO - Computing cross power for 19 window!
+2017-10-27 13:30:10,224 - eztrack.models.powercoherence - INFO - Computing cross power for 20 window!
+2017-10-27 13:30:10,863 - eztrack.models.powercoherence - INFO - Computing cross power for 21 window!
+2017-10-27 13:30:11,493 - eztrack.models.powercoherence - INFO - Computing cross power for 22 window!
+2017-10-27 13:30:12,133 - eztrack.models.powercoherence - INFO - Computing cross power for 23 window!
+2017-10-27 13:30:12,769 - eztrack.models.powercoherence - INFO - Computing cross power for 24 window!
+2017-10-27 13:30:13,387 - eztrack.models.powercoherence - INFO - Computing cross power for 25 window!
+2017-10-27 13:30:14,016 - eztrack.models.powercoherence - INFO - Computing cross power for 26 window!
+2017-10-27 13:30:14,649 - eztrack.models.powercoherence - INFO - Computing cross power for 27 window!
+2017-10-27 13:30:15,264 - eztrack.models.powercoherence - INFO - Computing cross power for 28 window!
+2017-10-27 13:30:15,885 - eztrack.models.powercoherence - INFO - Computing cross power for 29 window!
+2017-10-27 13:30:16,503 - eztrack.models.powercoherence - INFO - Computing cross power for 30 window!
+2017-10-27 13:30:17,143 - eztrack.models.powercoherence - INFO - Computing cross power for 31 window!
+2017-10-27 13:31:26,412 - eztrack.models.powercoherence - INFO - Computing cross power for 32 window!
+2017-10-27 13:32:52,411 - eztrack.models.powercoherence - INFO - Computing cross power for 33 window!
+2017-10-27 13:32:53,259 - eztrack.models.powercoherence - INFO - Computing cross power for 34 window!
+2017-10-27 13:32:54,067 - eztrack.models.powercoherence - INFO - Computing cross power for 35 window!
+2017-10-27 13:32:54,919 - eztrack.models.powercoherence - INFO - Computing cross power for 36 window!
+2017-10-27 13:32:55,711 - eztrack.models.powercoherence - INFO - Computing cross power for 37 window!
+2017-10-27 13:32:56,533 - eztrack.models.powercoherence - INFO - Computing cross power for 38 window!
+2017-10-27 13:32:57,312 - eztrack.models.powercoherence - INFO - Computing cross power for 39 window!
+2017-10-27 13:32:58,072 - eztrack.models.powercoherence - INFO - Computing cross power for 40 window!
+2017-10-27 13:32:58,851 - eztrack.models.powercoherence - INFO - Computing cross power for 41 window!
+2017-10-27 13:32:59,647 - eztrack.models.powercoherence - INFO - Computing cross power for 42 window!
+2017-10-27 13:33:00,439 - eztrack.models.powercoherence - INFO - Computing cross power for 43 window!
+2017-10-27 13:33:01,223 - eztrack.models.powercoherence - INFO - Computing cross power for 44 window!
+2017-10-27 13:33:01,992 - eztrack.models.powercoherence - INFO - Computing cross power for 45 window!
+2017-10-27 13:33:02,775 - eztrack.models.powercoherence - INFO - Computing cross power for 46 window!
+2017-10-27 13:33:03,564 - eztrack.models.powercoherence - INFO - Computing cross power for 47 window!
+2017-10-27 13:33:04,400 - eztrack.models.powercoherence - INFO - Computing cross power for 48 window!
+2017-10-27 13:33:05,173 - eztrack.models.powercoherence - INFO - Computing cross power for 49 window!
+2017-10-27 13:33:05,954 - eztrack.models.powercoherence - INFO - Computing cross power for 50 window!
+2017-10-27 13:33:06,736 - eztrack.models.powercoherence - INFO - Computing cross power for 51 window!
+2017-10-27 13:33:07,531 - eztrack.models.powercoherence - INFO - Computing cross power for 52 window!
+2017-10-27 13:33:08,300 - eztrack.models.powercoherence - INFO - Computing cross power for 53 window!
+2017-10-27 13:33:09,056 - eztrack.models.powercoherence - INFO - Computing cross power for 54 window!
+2017-10-27 13:33:09,824 - eztrack.models.powercoherence - INFO - Computing cross power for 55 window!
+2017-10-27 13:33:10,573 - eztrack.models.powercoherence - INFO - Computing cross power for 56 window!
+2017-10-27 13:33:11,315 - eztrack.models.powercoherence - INFO - Computing cross power for 57 window!
+2017-10-27 13:33:12,068 - eztrack.models.powercoherence - INFO - Computing cross power for 58 window!
+2017-10-27 13:33:12,822 - eztrack.models.powercoherence - INFO - Computing cross power for 59 window!
+2017-10-27 13:33:13,568 - eztrack.models.powercoherence - INFO - Computing cross power for 60 window!
+2017-10-27 13:33:14,306 - eztrack.models.powercoherence - INFO - Computing cross power for 61 window!
+2017-10-27 13:33:15,046 - eztrack.models.powercoherence - INFO - Computing cross power for 62 window!
+2017-10-27 13:33:15,804 - eztrack.models.powercoherence - INFO - Computing cross power for 63 window!
+2017-10-27 13:33:16,555 - eztrack.models.powercoherence - INFO - Computing cross power for 64 window!
+2017-10-27 13:34:23,455 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:34:23,457 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:34:23,459 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:34:23,462 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:34:23,591 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:34:28,225 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-27 13:34:48,580 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:34:48,582 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:34:48,584 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:34:48,587 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:34:48,706 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:34:53,460 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-27 13:34:54,027 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:34:54,027 - eztrack.models.powercoherence - INFO - Evaluating cross power for 267 windows
+2017-10-27 13:34:54,027 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:34:54,028 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:35:55,902 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 13:35:55,904 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 13:35:55,905 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 13:35:55,908 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 13:35:56,027 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 13:36:00,863 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-27 13:36:01,447 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 13:36:01,448 - eztrack.models.powercoherence - INFO - Evaluating cross power for 267 windows
+2017-10-27 13:36:01,448 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 13:36:01,448 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 13:36:02,122 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 13:36:02,755 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 13:36:03,377 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 13:36:03,999 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 13:36:04,606 - eztrack.models.powercoherence - INFO - Computing cross power for 5 window!
+2017-10-27 13:36:05,217 - eztrack.models.powercoherence - INFO - Computing cross power for 6 window!
+2017-10-27 13:36:05,832 - eztrack.models.powercoherence - INFO - Computing cross power for 7 window!
+2017-10-27 13:36:06,448 - eztrack.models.powercoherence - INFO - Computing cross power for 8 window!
+2017-10-27 13:36:07,051 - eztrack.models.powercoherence - INFO - Computing cross power for 9 window!
+2017-10-27 13:36:07,653 - eztrack.models.powercoherence - INFO - Computing cross power for 10 window!
+2017-10-27 13:36:08,265 - eztrack.models.powercoherence - INFO - Computing cross power for 11 window!
+2017-10-27 13:36:08,880 - eztrack.models.powercoherence - INFO - Computing cross power for 12 window!
+2017-10-27 13:36:09,497 - eztrack.models.powercoherence - INFO - Computing cross power for 13 window!
+2017-10-27 13:36:10,113 - eztrack.models.powercoherence - INFO - Computing cross power for 14 window!
+2017-10-27 13:36:10,734 - eztrack.models.powercoherence - INFO - Computing cross power for 15 window!
+2017-10-27 13:36:11,354 - eztrack.models.powercoherence - INFO - Computing cross power for 16 window!
+2017-10-27 13:36:12,009 - eztrack.models.powercoherence - INFO - Computing cross power for 17 window!
+2017-10-27 13:36:12,612 - eztrack.models.powercoherence - INFO - Computing cross power for 18 window!
+2017-10-27 13:36:13,231 - eztrack.models.powercoherence - INFO - Computing cross power for 19 window!
+2017-10-27 13:36:13,854 - eztrack.models.powercoherence - INFO - Computing cross power for 20 window!
+2017-10-27 13:36:14,478 - eztrack.models.powercoherence - INFO - Computing cross power for 21 window!
+2017-10-27 13:36:15,119 - eztrack.models.powercoherence - INFO - Computing cross power for 22 window!
+2017-10-27 13:36:15,737 - eztrack.models.powercoherence - INFO - Computing cross power for 23 window!
+2017-10-27 13:36:16,354 - eztrack.models.powercoherence - INFO - Computing cross power for 24 window!
+2017-10-27 13:36:16,975 - eztrack.models.powercoherence - INFO - Computing cross power for 25 window!
+2017-10-27 13:36:17,593 - eztrack.models.powercoherence - INFO - Computing cross power for 26 window!
+2017-10-27 13:36:18,220 - eztrack.models.powercoherence - INFO - Computing cross power for 27 window!
+2017-10-27 13:36:18,842 - eztrack.models.powercoherence - INFO - Computing cross power for 28 window!
+2017-10-27 13:36:19,472 - eztrack.models.powercoherence - INFO - Computing cross power for 29 window!
+2017-10-27 13:36:20,111 - eztrack.models.powercoherence - INFO - Computing cross power for 30 window!
+2017-10-27 13:36:20,738 - eztrack.models.powercoherence - INFO - Computing cross power for 31 window!
+2017-10-27 13:37:30,013 - eztrack.models.powercoherence - INFO - Computing cross power for 32 window!
+2017-10-27 13:38:48,231 - eztrack.models.powercoherence - INFO - Computing cross power for 33 window!
+2017-10-27 13:38:49,050 - eztrack.models.powercoherence - INFO - Computing cross power for 34 window!
+2017-10-27 13:38:49,858 - eztrack.models.powercoherence - INFO - Computing cross power for 35 window!
+2017-10-27 13:38:50,646 - eztrack.models.powercoherence - INFO - Computing cross power for 36 window!
+2017-10-27 13:38:51,399 - eztrack.models.powercoherence - INFO - Computing cross power for 37 window!
+2017-10-27 13:38:52,144 - eztrack.models.powercoherence - INFO - Computing cross power for 38 window!
+2017-10-27 13:38:52,867 - eztrack.models.powercoherence - INFO - Computing cross power for 39 window!
+2017-10-27 13:38:53,579 - eztrack.models.powercoherence - INFO - Computing cross power for 40 window!
+2017-10-27 13:38:54,292 - eztrack.models.powercoherence - INFO - Computing cross power for 41 window!
+2017-10-27 13:38:54,997 - eztrack.models.powercoherence - INFO - Computing cross power for 42 window!
+2017-10-27 13:38:55,719 - eztrack.models.powercoherence - INFO - Computing cross power for 43 window!
+2017-10-27 13:38:56,506 - eztrack.models.powercoherence - INFO - Computing cross power for 44 window!
+2017-10-27 13:38:57,233 - eztrack.models.powercoherence - INFO - Computing cross power for 45 window!
+2017-10-27 13:38:57,965 - eztrack.models.powercoherence - INFO - Computing cross power for 46 window!
+2017-10-27 13:38:58,685 - eztrack.models.powercoherence - INFO - Computing cross power for 47 window!
+2017-10-27 13:38:59,386 - eztrack.models.powercoherence - INFO - Computing cross power for 48 window!
+2017-10-27 13:39:00,082 - eztrack.models.powercoherence - INFO - Computing cross power for 49 window!
+2017-10-27 13:39:00,774 - eztrack.models.powercoherence - INFO - Computing cross power for 50 window!
+2017-10-27 13:39:01,453 - eztrack.models.powercoherence - INFO - Computing cross power for 51 window!
+2017-10-27 13:39:02,139 - eztrack.models.powercoherence - INFO - Computing cross power for 52 window!
+2017-10-27 13:39:02,816 - eztrack.models.powercoherence - INFO - Computing cross power for 53 window!
+2017-10-27 13:39:03,481 - eztrack.models.powercoherence - INFO - Computing cross power for 54 window!
+2017-10-27 13:39:04,149 - eztrack.models.powercoherence - INFO - Computing cross power for 55 window!
+2017-10-27 13:39:04,809 - eztrack.models.powercoherence - INFO - Computing cross power for 56 window!
+2017-10-27 13:39:05,455 - eztrack.models.powercoherence - INFO - Computing cross power for 57 window!
+2017-10-27 13:39:06,110 - eztrack.models.powercoherence - INFO - Computing cross power for 58 window!
+2017-10-27 13:39:06,763 - eztrack.models.powercoherence - INFO - Computing cross power for 59 window!
+2017-10-27 13:39:07,418 - eztrack.models.powercoherence - INFO - Computing cross power for 60 window!
+2017-10-27 13:39:08,080 - eztrack.models.powercoherence - INFO - Computing cross power for 61 window!
+2017-10-27 13:39:08,729 - eztrack.models.powercoherence - INFO - Computing cross power for 62 window!
+2017-10-27 13:39:09,381 - eztrack.models.powercoherence - INFO - Computing cross power for 63 window!
+2017-10-27 13:39:10,037 - eztrack.models.powercoherence - INFO - Computing cross power for 64 window!
+2017-10-27 13:39:10,055 - eztrack.models.powercoherence - INFO - Computing cross power for 65 window!
+2017-10-27 13:39:10,067 - eztrack.models.powercoherence - INFO - Computing cross power for 66 window!
+2017-10-27 13:39:10,730 - eztrack.models.powercoherence - INFO - Computing cross power for 67 window!
+2017-10-27 13:39:11,388 - eztrack.models.powercoherence - INFO - Computing cross power for 68 window!
+2017-10-27 13:39:12,037 - eztrack.models.powercoherence - INFO - Computing cross power for 69 window!
+2017-10-27 13:39:12,691 - eztrack.models.powercoherence - INFO - Computing cross power for 70 window!
+2017-10-27 13:39:13,338 - eztrack.models.powercoherence - INFO - Computing cross power for 71 window!
+2017-10-27 13:39:13,985 - eztrack.models.powercoherence - INFO - Computing cross power for 72 window!
+2017-10-27 13:39:14,634 - eztrack.models.powercoherence - INFO - Computing cross power for 73 window!
+2017-10-27 13:39:15,281 - eztrack.models.powercoherence - INFO - Computing cross power for 74 window!
+2017-10-27 13:39:15,931 - eztrack.models.powercoherence - INFO - Computing cross power for 75 window!
+2017-10-27 13:39:16,573 - eztrack.models.powercoherence - INFO - Computing cross power for 76 window!
+2017-10-27 13:39:17,225 - eztrack.models.powercoherence - INFO - Computing cross power for 77 window!
+2017-10-27 13:39:17,882 - eztrack.models.powercoherence - INFO - Computing cross power for 78 window!
+2017-10-27 13:39:18,530 - eztrack.models.powercoherence - INFO - Computing cross power for 79 window!
+2017-10-27 13:39:19,186 - eztrack.models.powercoherence - INFO - Computing cross power for 80 window!
+2017-10-27 13:39:19,831 - eztrack.models.powercoherence - INFO - Computing cross power for 81 window!
+2017-10-27 13:39:20,484 - eztrack.models.powercoherence - INFO - Computing cross power for 82 window!
+2017-10-27 13:39:21,165 - eztrack.models.powercoherence - INFO - Computing cross power for 83 window!
+2017-10-27 13:39:21,813 - eztrack.models.powercoherence - INFO - Computing cross power for 84 window!
+2017-10-27 13:39:22,457 - eztrack.models.powercoherence - INFO - Computing cross power for 85 window!
+2017-10-27 13:39:23,124 - eztrack.models.powercoherence - INFO - Computing cross power for 86 window!
+2017-10-27 13:39:23,808 - eztrack.models.powercoherence - INFO - Computing cross power for 87 window!
+2017-10-27 13:39:24,542 - eztrack.models.powercoherence - INFO - Computing cross power for 88 window!
+2017-10-27 13:39:25,258 - eztrack.models.powercoherence - INFO - Computing cross power for 89 window!
+2017-10-27 13:39:25,960 - eztrack.models.powercoherence - INFO - Computing cross power for 90 window!
+2017-10-27 13:39:26,663 - eztrack.models.powercoherence - INFO - Computing cross power for 91 window!
+2017-10-27 13:39:27,368 - eztrack.models.powercoherence - INFO - Computing cross power for 92 window!
+2017-10-27 13:39:28,084 - eztrack.models.powercoherence - INFO - Computing cross power for 93 window!
+2017-10-27 13:39:28,790 - eztrack.models.powercoherence - INFO - Computing cross power for 94 window!
+2017-10-27 13:39:29,477 - eztrack.models.powercoherence - INFO - Computing cross power for 95 window!
+2017-10-27 13:39:30,175 - eztrack.models.powercoherence - INFO - Computing cross power for 96 window!
+2017-10-27 13:40:54,020 - eztrack.models.powercoherence - INFO - Computing cross power for 97 window!
+2017-10-27 13:42:14,526 - eztrack.models.powercoherence - INFO - Computing cross power for 98 window!
+2017-10-27 13:43:35,292 - eztrack.models.powercoherence - INFO - Computing cross power for 99 window!
+2017-10-27 13:43:36,048 - eztrack.models.powercoherence - INFO - Computing cross power for 100 window!
+2017-10-27 13:43:36,789 - eztrack.models.powercoherence - INFO - Computing cross power for 101 window!
+2017-10-27 13:43:37,537 - eztrack.models.powercoherence - INFO - Computing cross power for 102 window!
+2017-10-27 13:43:38,280 - eztrack.models.powercoherence - INFO - Computing cross power for 103 window!
+2017-10-27 13:43:39,018 - eztrack.models.powercoherence - INFO - Computing cross power for 104 window!
+2017-10-27 13:43:39,761 - eztrack.models.powercoherence - INFO - Computing cross power for 105 window!
+2017-10-27 13:43:40,502 - eztrack.models.powercoherence - INFO - Computing cross power for 106 window!
+2017-10-27 13:43:41,249 - eztrack.models.powercoherence - INFO - Computing cross power for 107 window!
+2017-10-27 13:43:41,988 - eztrack.models.powercoherence - INFO - Computing cross power for 108 window!
+2017-10-27 13:43:42,732 - eztrack.models.powercoherence - INFO - Computing cross power for 109 window!
+2017-10-27 13:43:43,479 - eztrack.models.powercoherence - INFO - Computing cross power for 110 window!
+2017-10-27 13:43:44,219 - eztrack.models.powercoherence - INFO - Computing cross power for 111 window!
+2017-10-27 13:43:44,971 - eztrack.models.powercoherence - INFO - Computing cross power for 112 window!
+2017-10-27 13:43:45,728 - eztrack.models.powercoherence - INFO - Computing cross power for 113 window!
+2017-10-27 13:43:46,493 - eztrack.models.powercoherence - INFO - Computing cross power for 114 window!
+2017-10-27 13:43:47,257 - eztrack.models.powercoherence - INFO - Computing cross power for 115 window!
+2017-10-27 13:43:48,013 - eztrack.models.powercoherence - INFO - Computing cross power for 116 window!
+2017-10-27 13:43:48,751 - eztrack.models.powercoherence - INFO - Computing cross power for 117 window!
+2017-10-27 13:43:49,503 - eztrack.models.powercoherence - INFO - Computing cross power for 118 window!
+2017-10-27 13:43:50,236 - eztrack.models.powercoherence - INFO - Computing cross power for 119 window!
+2017-10-27 13:43:50,982 - eztrack.models.powercoherence - INFO - Computing cross power for 120 window!
+2017-10-27 13:43:51,725 - eztrack.models.powercoherence - INFO - Computing cross power for 121 window!
+2017-10-27 13:43:52,461 - eztrack.models.powercoherence - INFO - Computing cross power for 122 window!
+2017-10-27 13:43:53,203 - eztrack.models.powercoherence - INFO - Computing cross power for 123 window!
+2017-10-27 13:43:53,938 - eztrack.models.powercoherence - INFO - Computing cross power for 124 window!
+2017-10-27 13:43:54,680 - eztrack.models.powercoherence - INFO - Computing cross power for 125 window!
+2017-10-27 13:43:55,428 - eztrack.models.powercoherence - INFO - Computing cross power for 126 window!
+2017-10-27 13:43:56,162 - eztrack.models.powercoherence - INFO - Computing cross power for 127 window!
+2017-10-27 13:43:56,887 - eztrack.models.powercoherence - INFO - Computing cross power for 128 window!
+2017-10-27 13:43:57,629 - eztrack.models.powercoherence - INFO - Computing cross power for 129 window!
+2017-10-27 13:43:57,646 - eztrack.models.powercoherence - INFO - Computing cross power for 130 window!
+2017-10-27 13:43:57,660 - eztrack.models.powercoherence - INFO - Computing cross power for 131 window!
+2017-10-27 13:43:57,675 - eztrack.models.powercoherence - INFO - Computing cross power for 132 window!
+2017-10-27 13:43:58,426 - eztrack.models.powercoherence - INFO - Computing cross power for 133 window!
+2017-10-27 13:43:59,175 - eztrack.models.powercoherence - INFO - Computing cross power for 134 window!
+2017-10-27 13:43:59,910 - eztrack.models.powercoherence - INFO - Computing cross power for 135 window!
+2017-10-27 13:44:00,647 - eztrack.models.powercoherence - INFO - Computing cross power for 136 window!
+2017-10-27 13:44:01,363 - eztrack.models.powercoherence - INFO - Computing cross power for 137 window!
+2017-10-27 13:44:02,082 - eztrack.models.powercoherence - INFO - Computing cross power for 138 window!
+2017-10-27 13:44:02,801 - eztrack.models.powercoherence - INFO - Computing cross power for 139 window!
+2017-10-27 13:44:03,555 - eztrack.models.powercoherence - INFO - Computing cross power for 140 window!
+2017-10-27 13:44:04,289 - eztrack.models.powercoherence - INFO - Computing cross power for 141 window!
+2017-10-27 13:44:05,026 - eztrack.models.powercoherence - INFO - Computing cross power for 142 window!
+2017-10-27 13:44:05,773 - eztrack.models.powercoherence - INFO - Computing cross power for 143 window!
+2017-10-27 13:44:06,502 - eztrack.models.powercoherence - INFO - Computing cross power for 144 window!
+2017-10-27 13:44:07,250 - eztrack.models.powercoherence - INFO - Computing cross power for 145 window!
+2017-10-27 13:44:07,986 - eztrack.models.powercoherence - INFO - Computing cross power for 146 window!
+2017-10-27 13:44:08,726 - eztrack.models.powercoherence - INFO - Computing cross power for 147 window!
+2017-10-27 13:44:09,469 - eztrack.models.powercoherence - INFO - Computing cross power for 148 window!
+2017-10-27 13:44:10,210 - eztrack.models.powercoherence - INFO - Computing cross power for 149 window!
+2017-10-27 13:44:10,950 - eztrack.models.powercoherence - INFO - Computing cross power for 150 window!
+2017-10-27 13:44:11,693 - eztrack.models.powercoherence - INFO - Computing cross power for 151 window!
+2017-10-27 13:44:12,431 - eztrack.models.powercoherence - INFO - Computing cross power for 152 window!
+2017-10-27 13:44:13,185 - eztrack.models.powercoherence - INFO - Computing cross power for 153 window!
+2017-10-27 13:44:13,920 - eztrack.models.powercoherence - INFO - Computing cross power for 154 window!
+2017-10-27 13:44:14,649 - eztrack.models.powercoherence - INFO - Computing cross power for 155 window!
+2017-10-27 13:44:15,392 - eztrack.models.powercoherence - INFO - Computing cross power for 156 window!
+2017-10-27 13:44:16,126 - eztrack.models.powercoherence - INFO - Computing cross power for 157 window!
+2017-10-27 13:44:16,860 - eztrack.models.powercoherence - INFO - Computing cross power for 158 window!
+2017-10-27 13:44:17,623 - eztrack.models.powercoherence - INFO - Computing cross power for 159 window!
+2017-10-27 13:44:18,359 - eztrack.models.powercoherence - INFO - Computing cross power for 160 window!
+2017-10-27 13:44:19,102 - eztrack.models.powercoherence - INFO - Computing cross power for 161 window!
+2017-10-27 13:44:19,850 - eztrack.models.powercoherence - INFO - Computing cross power for 162 window!
+2017-10-27 13:45:37,402 - eztrack.models.powercoherence - INFO - Computing cross power for 163 window!
+2017-10-27 13:46:49,933 - eztrack.models.powercoherence - INFO - Computing cross power for 164 window!
+2017-10-27 13:46:50,620 - eztrack.models.powercoherence - INFO - Computing cross power for 165 window!
+2017-10-27 13:46:51,299 - eztrack.models.powercoherence - INFO - Computing cross power for 166 window!
+2017-10-27 13:46:51,975 - eztrack.models.powercoherence - INFO - Computing cross power for 167 window!
+2017-10-27 13:46:52,650 - eztrack.models.powercoherence - INFO - Computing cross power for 168 window!
+2017-10-27 13:46:53,333 - eztrack.models.powercoherence - INFO - Computing cross power for 169 window!
+2017-10-27 13:46:54,013 - eztrack.models.powercoherence - INFO - Computing cross power for 170 window!
+2017-10-27 13:46:54,682 - eztrack.models.powercoherence - INFO - Computing cross power for 171 window!
+2017-10-27 13:46:55,362 - eztrack.models.powercoherence - INFO - Computing cross power for 172 window!
+2017-10-27 13:46:56,035 - eztrack.models.powercoherence - INFO - Computing cross power for 173 window!
+2017-10-27 13:46:56,711 - eztrack.models.powercoherence - INFO - Computing cross power for 174 window!
+2017-10-27 13:46:57,378 - eztrack.models.powercoherence - INFO - Computing cross power for 175 window!
+2017-10-27 13:46:58,051 - eztrack.models.powercoherence - INFO - Computing cross power for 176 window!
+2017-10-27 13:46:58,719 - eztrack.models.powercoherence - INFO - Computing cross power for 177 window!
+2017-10-27 13:46:59,408 - eztrack.models.powercoherence - INFO - Computing cross power for 178 window!
+2017-10-27 13:47:00,077 - eztrack.models.powercoherence - INFO - Computing cross power for 179 window!
+2017-10-27 13:47:00,751 - eztrack.models.powercoherence - INFO - Computing cross power for 180 window!
+2017-10-27 13:47:01,434 - eztrack.models.powercoherence - INFO - Computing cross power for 181 window!
+2017-10-27 13:47:02,107 - eztrack.models.powercoherence - INFO - Computing cross power for 182 window!
+2017-10-27 13:47:02,787 - eztrack.models.powercoherence - INFO - Computing cross power for 183 window!
+2017-10-27 13:47:03,475 - eztrack.models.powercoherence - INFO - Computing cross power for 184 window!
+2017-10-27 13:47:04,145 - eztrack.models.powercoherence - INFO - Computing cross power for 185 window!
+2017-10-27 13:47:04,811 - eztrack.models.powercoherence - INFO - Computing cross power for 186 window!
+2017-10-27 13:47:05,482 - eztrack.models.powercoherence - INFO - Computing cross power for 187 window!
+2017-10-27 13:47:06,150 - eztrack.models.powercoherence - INFO - Computing cross power for 188 window!
+2017-10-27 13:47:06,823 - eztrack.models.powercoherence - INFO - Computing cross power for 189 window!
+2017-10-27 13:47:07,492 - eztrack.models.powercoherence - INFO - Computing cross power for 190 window!
+2017-10-27 13:47:08,160 - eztrack.models.powercoherence - INFO - Computing cross power for 191 window!
+2017-10-27 13:47:08,841 - eztrack.models.powercoherence - INFO - Computing cross power for 192 window!
+2017-10-27 13:47:09,513 - eztrack.models.powercoherence - INFO - Computing cross power for 193 window!
+2017-10-27 13:47:10,182 - eztrack.models.powercoherence - INFO - Computing cross power for 194 window!
+2017-10-27 13:47:10,853 - eztrack.models.powercoherence - INFO - Computing cross power for 195 window!
+2017-10-27 13:47:10,868 - eztrack.models.powercoherence - INFO - Computing cross power for 196 window!
+2017-10-27 13:47:10,882 - eztrack.models.powercoherence - INFO - Computing cross power for 197 window!
+2017-10-27 13:47:11,542 - eztrack.models.powercoherence - INFO - Computing cross power for 198 window!
+2017-10-27 13:47:12,191 - eztrack.models.powercoherence - INFO - Computing cross power for 199 window!
+2017-10-27 13:47:12,846 - eztrack.models.powercoherence - INFO - Computing cross power for 200 window!
+2017-10-27 13:47:13,507 - eztrack.models.powercoherence - INFO - Computing cross power for 201 window!
+2017-10-27 13:47:14,163 - eztrack.models.powercoherence - INFO - Computing cross power for 202 window!
+2017-10-27 13:47:14,817 - eztrack.models.powercoherence - INFO - Computing cross power for 203 window!
+2017-10-27 13:47:15,496 - eztrack.models.powercoherence - INFO - Computing cross power for 204 window!
+2017-10-27 13:47:16,169 - eztrack.models.powercoherence - INFO - Computing cross power for 205 window!
+2017-10-27 13:47:16,837 - eztrack.models.powercoherence - INFO - Computing cross power for 206 window!
+2017-10-27 13:47:17,508 - eztrack.models.powercoherence - INFO - Computing cross power for 207 window!
+2017-10-27 13:47:18,176 - eztrack.models.powercoherence - INFO - Computing cross power for 208 window!
+2017-10-27 13:47:18,856 - eztrack.models.powercoherence - INFO - Computing cross power for 209 window!
+2017-10-27 13:47:19,526 - eztrack.models.powercoherence - INFO - Computing cross power for 210 window!
+2017-10-27 13:47:20,204 - eztrack.models.powercoherence - INFO - Computing cross power for 211 window!
+2017-10-27 13:47:20,868 - eztrack.models.powercoherence - INFO - Computing cross power for 212 window!
+2017-10-27 13:47:21,536 - eztrack.models.powercoherence - INFO - Computing cross power for 213 window!
+2017-10-27 13:47:22,207 - eztrack.models.powercoherence - INFO - Computing cross power for 214 window!
+2017-10-27 13:47:22,893 - eztrack.models.powercoherence - INFO - Computing cross power for 215 window!
+2017-10-27 13:47:23,566 - eztrack.models.powercoherence - INFO - Computing cross power for 216 window!
+2017-10-27 13:47:24,241 - eztrack.models.powercoherence - INFO - Computing cross power for 217 window!
+2017-10-27 13:47:24,918 - eztrack.models.powercoherence - INFO - Computing cross power for 218 window!
+2017-10-27 13:47:25,590 - eztrack.models.powercoherence - INFO - Computing cross power for 219 window!
+2017-10-27 13:47:26,270 - eztrack.models.powercoherence - INFO - Computing cross power for 220 window!
+2017-10-27 13:47:26,940 - eztrack.models.powercoherence - INFO - Computing cross power for 221 window!
+2017-10-27 13:47:27,613 - eztrack.models.powercoherence - INFO - Computing cross power for 222 window!
+2017-10-27 13:47:28,295 - eztrack.models.powercoherence - INFO - Computing cross power for 223 window!
+2017-10-27 13:47:28,967 - eztrack.models.powercoherence - INFO - Computing cross power for 224 window!
+2017-10-27 13:47:29,645 - eztrack.models.powercoherence - INFO - Computing cross power for 225 window!
+2017-10-27 13:47:30,327 - eztrack.models.powercoherence - INFO - Computing cross power for 226 window!
+2017-10-27 13:47:31,009 - eztrack.models.powercoherence - INFO - Computing cross power for 227 window!
+2017-10-27 13:48:44,432 - eztrack.models.powercoherence - INFO - Computing cross power for 228 window!
+2017-10-27 13:49:56,794 - eztrack.models.powercoherence - INFO - Computing cross power for 229 window!
+2017-10-27 13:51:08,828 - eztrack.models.powercoherence - INFO - Computing cross power for 230 window!
+2017-10-27 13:51:09,519 - eztrack.models.powercoherence - INFO - Computing cross power for 231 window!
+2017-10-27 13:51:10,200 - eztrack.models.powercoherence - INFO - Computing cross power for 232 window!
+2017-10-27 13:51:10,873 - eztrack.models.powercoherence - INFO - Computing cross power for 233 window!
+2017-10-27 13:51:11,553 - eztrack.models.powercoherence - INFO - Computing cross power for 234 window!
+2017-10-27 13:51:12,225 - eztrack.models.powercoherence - INFO - Computing cross power for 235 window!
+2017-10-27 13:51:12,896 - eztrack.models.powercoherence - INFO - Computing cross power for 236 window!
+2017-10-27 13:51:13,560 - eztrack.models.powercoherence - INFO - Computing cross power for 237 window!
+2017-10-27 13:51:14,211 - eztrack.models.powercoherence - INFO - Computing cross power for 238 window!
+2017-10-27 13:51:14,866 - eztrack.models.powercoherence - INFO - Computing cross power for 239 window!
+2017-10-27 13:51:15,553 - eztrack.models.powercoherence - INFO - Computing cross power for 240 window!
+2017-10-27 13:51:16,209 - eztrack.models.powercoherence - INFO - Computing cross power for 241 window!
+2017-10-27 13:51:16,871 - eztrack.models.powercoherence - INFO - Computing cross power for 242 window!
+2017-10-27 13:51:17,533 - eztrack.models.powercoherence - INFO - Computing cross power for 243 window!
+2017-10-27 13:51:18,197 - eztrack.models.powercoherence - INFO - Computing cross power for 244 window!
+2017-10-27 13:51:18,853 - eztrack.models.powercoherence - INFO - Computing cross power for 245 window!
+2017-10-27 13:51:19,522 - eztrack.models.powercoherence - INFO - Computing cross power for 246 window!
+2017-10-27 13:51:20,181 - eztrack.models.powercoherence - INFO - Computing cross power for 247 window!
+2017-10-27 13:51:20,845 - eztrack.models.powercoherence - INFO - Computing cross power for 248 window!
+2017-10-27 13:51:21,522 - eztrack.models.powercoherence - INFO - Computing cross power for 249 window!
+2017-10-27 13:51:22,192 - eztrack.models.powercoherence - INFO - Computing cross power for 250 window!
+2017-10-27 13:51:22,860 - eztrack.models.powercoherence - INFO - Computing cross power for 251 window!
+2017-10-27 13:51:23,539 - eztrack.models.powercoherence - INFO - Computing cross power for 252 window!
+2017-10-27 13:51:24,219 - eztrack.models.powercoherence - INFO - Computing cross power for 253 window!
+2017-10-27 13:51:24,898 - eztrack.models.powercoherence - INFO - Computing cross power for 254 window!
+2017-10-27 13:51:25,573 - eztrack.models.powercoherence - INFO - Computing cross power for 255 window!
+2017-10-27 13:51:26,250 - eztrack.models.powercoherence - INFO - Computing cross power for 256 window!
+2017-10-27 13:51:26,928 - eztrack.models.powercoherence - INFO - Computing cross power for 257 window!
+2017-10-27 13:51:27,610 - eztrack.models.powercoherence - INFO - Computing cross power for 258 window!
+2017-10-27 13:51:28,285 - eztrack.models.powercoherence - INFO - Computing cross power for 259 window!
+2017-10-27 13:51:28,957 - eztrack.models.powercoherence - INFO - Computing cross power for 260 window!
+2017-10-27 13:51:28,974 - eztrack.models.powercoherence - INFO - Computing cross power for 261 window!
+2017-10-27 13:51:28,989 - eztrack.models.powercoherence - INFO - Computing cross power for 262 window!
+2017-10-27 13:51:29,004 - eztrack.models.powercoherence - INFO - Computing cross power for 263 window!
+2017-10-27 13:51:29,692 - eztrack.models.powercoherence - INFO - Computing cross power for 264 window!
+2017-10-27 13:51:30,370 - eztrack.models.powercoherence - INFO - Computing cross power for 265 window!
+2017-10-27 13:51:31,047 - eztrack.models.powercoherence - INFO - Computing cross power for 266 window!
+2017-10-27 13:51:31,722 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 16:01:09,254 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:01:09,269 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:01:09,272 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:01:09,276 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:03:08,687 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:03:08,689 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:03:08,691 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:03:08,694 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:03:08,754 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:03:34,870 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:03:34,873 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:03:34,875 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:03:34,879 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:03:34,900 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:03:51,191 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:03:51,193 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:03:51,195 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:03:51,198 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:03:51,218 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:03:58,362 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:03:58,364 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:03:58,365 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:03:58,368 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:03:58,389 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:15:03,429 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:15:03,431 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:15:03,433 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:15:03,437 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:15:03,458 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:15:16,296 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:15:16,299 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:15:16,301 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:15:16,305 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:15:16,328 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:17:13,591 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:17:13,593 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:17:13,595 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:17:13,598 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:17:13,616 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:17:28,164 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:17:28,166 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:17:28,168 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:17:28,171 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:17:28,189 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:19:46,948 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:19:46,950 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:19:46,952 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:19:46,955 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:19:47,212 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:19:51,790 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-27 16:19:52,342 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 16:19:52,343 - eztrack.models.powercoherence - INFO - Evaluating cross power for 10 windows
+2017-10-27 16:19:52,343 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 16:19:52,343 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 16:19:53,017 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 16:19:53,652 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 16:19:54,292 - eztrack.models.powercoherence - INFO - Computing cross power for 3 window!
+2017-10-27 16:19:54,937 - eztrack.models.powercoherence - INFO - Computing cross power for 4 window!
+2017-10-27 16:19:55,568 - eztrack.models.powercoherence - INFO - Computing cross power for 5 window!
+2017-10-27 16:19:56,187 - eztrack.models.powercoherence - INFO - Computing cross power for 6 window!
+2017-10-27 16:19:56,807 - eztrack.models.powercoherence - INFO - Computing cross power for 7 window!
+2017-10-27 16:19:57,421 - eztrack.models.powercoherence - INFO - Computing cross power for 8 window!
+2017-10-27 16:19:58,034 - eztrack.models.powercoherence - INFO - Computing cross power for 9 window!
+2017-10-27 16:19:58,637 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 16:20:31,049 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:20:31,052 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:20:31,054 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:20:31,057 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:20:31,175 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:20:35,894 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-27 16:20:36,462 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 16:20:36,462 - eztrack.models.powercoherence - INFO - Evaluating cross power for 3 windows
+2017-10-27 16:20:36,463 - eztrack.models.powercoherence - INFO - Evaluating cross power in 30 90 frequency band
+2017-10-27 16:20:36,463 - eztrack.models.powercoherence - INFO - Computing cross power for 0 window!
+2017-10-27 16:20:37,107 - eztrack.models.powercoherence - INFO - Computing cross power for 1 window!
+2017-10-27 16:20:37,715 - eztrack.models.powercoherence - INFO - Computing cross power for 2 window!
+2017-10-27 16:20:38,344 - eztrack.models.powercoherence - INFO - Finished cross power in 30 90 frequency band
+2017-10-27 16:33:09,495 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:33:09,497 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:33:09,499 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:33:09,502 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:33:09,618 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:33:14,286 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-27 16:33:14,833 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 16:34:00,214 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:34:00,216 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:34:00,218 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:34:00,221 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:34:00,346 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:34:04,885 - eztrack.util.util - INFO - Finished filtering with notch filter
+2017-10-27 16:34:05,415 - eztrack.models.powercoherence - INFO - Initialized Coherence model!
+2017-10-27 16:35:14,734 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:35:14,737 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:35:14,738 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:35:14,741 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:35:14,857 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:35:28,759 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:35:28,761 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:35:28,763 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:35:28,766 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:35:28,786 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:35:58,057 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:35:58,059 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:35:58,061 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:35:58,065 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:35:58,084 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:36:52,393 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:36:52,396 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:36:52,398 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:36:52,400 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:36:52,421 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:36:52,540 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:37:18,373 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:37:18,376 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:37:18,378 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:37:18,381 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:37:18,401 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:37:18,524 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:37:25,148 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:37:25,150 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:37:25,152 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:37:25,155 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:37:25,175 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:37:25,301 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:38:27,803 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:38:27,805 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:38:27,807 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:38:27,811 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:38:27,831 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:38:27,947 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:38:53,210 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:38:53,212 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:38:53,214 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:38:53,217 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:38:53,237 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:38:53,352 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:39:23,444 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:39:23,446 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:39:23,448 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:39:23,451 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:39:23,469 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:39:23,596 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:39:40,153 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:39:40,155 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:39:40,157 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:39:40,160 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:39:40,182 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:39:40,306 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:39:56,783 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:39:56,785 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:39:56,787 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:39:56,790 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:39:56,812 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:39:56,930 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:43:29,218 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:43:29,222 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:43:29,225 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:43:29,230 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:43:29,251 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:43:29,370 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:46:09,324 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:46:09,326 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:46:09,327 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:46:09,330 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:46:09,352 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:46:09,469 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:47:40,735 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:47:40,737 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:47:40,739 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:47:40,742 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:47:40,762 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:47:40,889 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:48:14,116 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:48:14,118 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:48:14,119 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:48:14,122 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:48:14,144 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:48:14,258 - eztrack.util.util - INFO - Loaded raw data!
+2017-10-27 16:49:28,168 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-10-27 16:49:28,170 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-10-27 16:49:28,172 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-10-27 16:49:28,175 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-10-27 16:49:28,195 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-10-27 16:49:28,315 - eztrack.util.util - INFO - Loaded raw data!

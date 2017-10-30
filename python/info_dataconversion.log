@@ -1,0 +1,45 @@
+2017-10-23 12:01:32,379 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:01:32,379 - eztrack.dataconversion.dataconversion - ERROR - File is not in edf format: ../data/edf/pt1sz2
+2017-10-23 12:01:32,384 - eztrack.dataconversion.dataconversion - ERROR - Failed to read edf file
+Traceback (most recent call last):
+  File "/Users/adam2392/Documents/eztrack/python/eztrack/dataconversion/dataconversion.py", line 133, in edfrawtonumpy
+    edffile = pyedflib.EdfReader(self.edffile)
+  File "pyedflib/_extensions/_pyedflib.pyx", line 114, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib/_extensions/_pyedflib.pyx", line 152, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib/_extensions/_pyedflib.pyx", line 124, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+IOError: can not open file, no such file or directory
+2017-10-23 12:02:17,258 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:02:17,258 - eztrack.dataconversion.dataconversion - ERROR - File is not in edf format: ../data/edf/pt1sz2
+2017-10-23 12:02:17,258 - eztrack.dataconversion.dataconversion - ERROR - Failed to read edf file
+Traceback (most recent call last):
+  File "/Users/adam2392/Documents/eztrack/python/eztrack/dataconversion/dataconversion.py", line 133, in edfrawtonumpy
+    edffile = pyedflib.EdfReader(self.edffile)
+  File "pyedflib/_extensions/_pyedflib.pyx", line 114, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib/_extensions/_pyedflib.pyx", line 152, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib/_extensions/_pyedflib.pyx", line 124, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+IOError: can not open file, no such file or directory
+2017-10-23 12:02:35,666 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:02:35,666 - eztrack.dataconversion.dataconversion - ERROR - File is not in edf format: ../data/edf/pt1sz2_0001
+2017-10-23 12:02:35,667 - eztrack.dataconversion.dataconversion - ERROR - Failed to read edf file
+Traceback (most recent call last):
+  File "/Users/adam2392/Documents/eztrack/python/eztrack/dataconversion/dataconversion.py", line 133, in edfrawtonumpy
+    edffile = pyedflib.EdfReader(self.edffile)
+  File "pyedflib/_extensions/_pyedflib.pyx", line 114, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib/_extensions/_pyedflib.pyx", line 152, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib/_extensions/_pyedflib.pyx", line 124, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+IOError: can not open file, no such file or directory
+2017-10-23 12:04:30,431 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:05:58,095 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:06:56,503 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:07:50,682 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:07:55,228 - eztrack.dataconversion.dataconversion - INFO - Closing edf file! Raw data should be saved as numpy at ../output/numpy/pt1sz2/_rawnpy.npy
+2017-10-23 12:08:15,871 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:08:20,315 - eztrack.dataconversion.dataconversion - INFO - Closing edf file! Raw data should be saved as numpy at ../output/numpy/pt1sz2/_rawnpy.npy
+2017-10-23 12:08:20,413 - eztrack.dataconversion.dataconversion - INFO - Closing edf file! Headers meta data should be saved as csv at ../output/numpy/pt1sz2/pt1sz2pt1sz2_headers.csv
+2017-10-23 12:08:20,413 - eztrack.dataconversion.dataconversion - INFO - Channel meta data should be saved as csv at ../output/numpy/pt1sz2/pt1sz2pt1sz2_chans.csv
+2017-10-23 12:08:20,413 - eztrack.dataconversion.dataconversion - INFO - Annotations meta data should be saved as csv at ../output/numpy/pt1sz2/pt1sz2pt1sz2_annotations.csv
+2017-10-23 12:24:53,763 - eztrack.dataconversion.dataconversion - INFO - Initialized EDFConverter object.
+2017-10-23 12:24:58,280 - eztrack.dataconversion.dataconversion - INFO - Closing edf file! Raw data should be saved as numpy at ../data/numpy/pt1sz2/pt1sz2_rawnpy.npy
+2017-10-23 12:24:58,321 - eztrack.dataconversion.dataconversion - INFO - Closing edf file! Headers meta data should be saved as csv at ../data/numpy/pt1sz2/pt1sz2_headers.csv
+2017-10-23 12:24:58,321 - eztrack.dataconversion.dataconversion - INFO - Channel meta data should be saved as csv at ../data/numpy/pt1sz2/pt1sz2_chans.csv
+2017-10-23 12:24:58,321 - eztrack.dataconversion.dataconversion - INFO - Annotations meta data should be saved as csv at ../data/numpy/pt1sz2/pt1sz2_annotations.csv

@@ -205,10 +205,10 @@ while (sample_to_access < limit)
         % ... extract the current sub-section
         datasec = data((i-1) * stepsize+1:min((i-1) * stepsize+fs, size(data,1)),:);
         
-        if (sum(sum(abs(datasec))) == 0)
-            % ... avoid computation if the data are all zeros
-            continue;
-        end
+%         if (sum(sum(abs(datasec))) == 0)
+%             % ... avoid computation if the data are all zeros
+%             continue;
+%         end
             
         % ... compute the fft. Note: size(X) = (fs/2) x #-of-channels
         X = fft(repmat(convwin(1:min(fs, size(datasec,1))), 1, num_channels) .* datasec, fs); 

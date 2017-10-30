@@ -1,0 +1,27 @@
+2017-10-23 12:01:32,379 - eztrack.dataconversion.dataconversion - ERROR - File is not in edf format: ../data/edf/pt1sz2
+2017-10-23 12:01:32,384 - eztrack.dataconversion.dataconversion - ERROR - Failed to read edf file
+Traceback (most recent call last):
+  File "/Users/adam2392/Documents/eztrack/python/eztrack/dataconversion/dataconversion.py", line 133, in edfrawtonumpy
+    edffile = pyedflib.EdfReader(self.edffile)
+  File "pyedflib/_extensions/_pyedflib.pyx", line 114, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib/_extensions/_pyedflib.pyx", line 152, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib/_extensions/_pyedflib.pyx", line 124, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+IOError: can not open file, no such file or directory
+2017-10-23 12:02:17,258 - eztrack.dataconversion.dataconversion - ERROR - File is not in edf format: ../data/edf/pt1sz2
+2017-10-23 12:02:17,258 - eztrack.dataconversion.dataconversion - ERROR - Failed to read edf file
+Traceback (most recent call last):
+  File "/Users/adam2392/Documents/eztrack/python/eztrack/dataconversion/dataconversion.py", line 133, in edfrawtonumpy
+    edffile = pyedflib.EdfReader(self.edffile)
+  File "pyedflib/_extensions/_pyedflib.pyx", line 114, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib/_extensions/_pyedflib.pyx", line 152, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib/_extensions/_pyedflib.pyx", line 124, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+IOError: can not open file, no such file or directory
+2017-10-23 12:02:35,666 - eztrack.dataconversion.dataconversion - ERROR - File is not in edf format: ../data/edf/pt1sz2_0001
+2017-10-23 12:02:35,667 - eztrack.dataconversion.dataconversion - ERROR - Failed to read edf file
+Traceback (most recent call last):
+  File "/Users/adam2392/Documents/eztrack/python/eztrack/dataconversion/dataconversion.py", line 133, in edfrawtonumpy
+    edffile = pyedflib.EdfReader(self.edffile)
+  File "pyedflib/_extensions/_pyedflib.pyx", line 114, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib/_extensions/_pyedflib.pyx", line 152, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib/_extensions/_pyedflib.pyx", line 124, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+IOError: can not open file, no such file or directory
