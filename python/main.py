@@ -1,5 +1,7 @@
 from eztrack import *
 
+from sklearn.decomposition import PCA
+
 # To run conversion of data from .edf files to numpy and csv files
 def run_convert(patient, datadir, outputdir):
     edffilepath = os.path.join(datadir, 'edf', patient + '_0001.edf')
@@ -145,43 +147,20 @@ def run_pca(patient, datadir, outputdir):
     # initialize PCA model
     pcamodel = PCAModel(winsize=winsize, stepsize=stepsize, \
         samplerate=patieeg.samplefreq.values, freqbands=freqband)
-
-    # rank the EVC
-    rankedevcmat = pcamodel.rank_centrality(evcmat)
-
-    numpyfile = os.path.join(datadir, 'numpy', patient) + '/' + patient+'_rawnpy.npy'
-    # load raw data
-    rawdata = patieeg.loadrawdata(numpyfile)
-    rawdata = rawdata[included_indices,:]
-    _, numsamps = rawdata.shape
-    winsamps = pcamodel.winsize * pcamodel.samplerate
-    stepsamps = pcamodel.stepsize * pcamodel.samplerate
-    timepoints = pcamodel.return_timepoints(numsamps, winsamps, stepsamps)
-
-
-    onsetms = int(patieeg.onset_time.values[0]*patieeg.samplefreq.values)
-    offsetms = int(patieeg.offset_time.values[0]*patieeg.samplefreq.values)
-    seizonmark, seizoffmark = pcamodel.return_seizmarks(timepoints, onsetms, offsetms, patieeg.samplefreq.values)
-
-    # normalize in time the seizure time
-    pre_rankedevcmat = rankedevcmat[:, 0:seizonmark]
-    post_rankedevcmat = rankedevcmat[:, seizoffmark:]
-    seiz_rankedevcmat = rankedevcmat[:, seizonmark:seizoffmark]
-    seiz_rankedevcmat = pcamodel.normalize_time(seiz_rankedevcmat, maxduration=500)
-
-    rankedvcmat = np.concatenate((pre_rankedevcmat, seiz_rankedevcmat, post_rankedevcmat), axis=1)
-    
-    # # normalize in channels
-    rankedevcmat = pcamodel.normalize_chans(rankedevcmat)
-
-    # normalize area, so each row of ranked centrality integrates to 1
-    area_mat = pcamodel.normalize_area(rankedevcmat)
+    area_mat = pcamodel.run_pca(evcmat)
 
     print area_mat.shape
-    print evcmat.shape
-    print rankedevcmat.shape
-
     print "Finished normalizing ranked EVC!"
+
+    ## next needs to run PCA to convert rankedEVC of channels -> PCA space
+    ## and store score 
+
+    pca = PCA(n_components=2)
+    pcamat = pca.fit_transform(area_mat.T)
+    # x,y = transf[:,0], transf[:,1]
+
+
+
 if __name__ == "__main__":
     print "running eztrack!"
     patient='pt1sz2'

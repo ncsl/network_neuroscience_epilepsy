@@ -1441,3 +1441,9 @@
 2017-10-27 16:49:28,175 - eztrack.util.util - INFO - Ran setup of annotations data!
 2017-10-27 16:49:28,195 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
 2017-10-27 16:49:28,315 - eztrack.util.util - INFO - Loaded raw data!
+2017-11-01 22:27:04,687 - eztrack.util.util - INFO - Initialized Patient IEEG object. Should run channels, metadata and annotations next!
+2017-11-01 22:27:04,697 - eztrack.util.util - INFO - Ran setup of channels data!
+2017-11-01 22:27:04,700 - eztrack.util.util - INFO - Ran setup of meta data!
+2017-11-01 22:27:04,704 - eztrack.util.util - INFO - Ran setup of annotations data!
+2017-11-01 22:27:04,767 - eztrack.models.powercoherence - INFO - Initialized PCAmodel!
+2017-11-01 22:27:05,100 - eztrack.util.util - INFO - Loaded raw data!

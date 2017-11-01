@@ -292,9 +292,45 @@ class PCAModel(Model):
         self.logger.info('Initialized PCAmodel!')
 
     def run_pca(self, evcmat):
-        pass
+         # rank the EVC
+        rankedevcmat = self.rank_centrality(evcmat)
+
+        numpyfile = os.path.join(datadir, 'numpy', patient) + '/' + patient+'_rawnpy.npy'
+        # load raw data
+        rawdata = patieeg.loadrawdata(numpyfile)
+        rawdata = rawdata[included_indices,:]
+        _, numsamps = rawdata.shape
+        winsamps = self.winsize * self.samplerate
+        stepsamps = self.stepsize * self.samplerate
+        timepoints = self.return_timepoints(numsamps, winsamps, stepsamps)
+
+
+        onsetms = int(patieeg.onset_time.values[0]*patieeg.samplefreq.values)
+        offsetms = int(patieeg.offset_time.values[0]*patieeg.samplefreq.values)
+        seizonmark, seizoffmark = self.return_seizmarks(timepoints, onsetms, offsetms, patieeg.samplefreq.values)
+
+        # normalize in time the seizure time
+        pre_rankedevcmat = rankedevcmat[:, 0:seizonmark]
+        post_rankedevcmat = rankedevcmat[:, seizoffmark:]
+        seiz_rankedevcmat = rankedevcmat[:, seizonmark:seizoffmark]
+        seiz_rankedevcmat = self.normalize_time(seiz_rankedevcmat, maxduration=500)
+
+        rankedvcmat = np.concatenate((pre_rankedevcmat, seiz_rankedevcmat, post_rankedevcmat), axis=1)
+        
+        # # normalize in channels
+        rankedevcmat = self.normalize_chans(rankedevcmat)
+
+        # normalize area, so each row of ranked centrality integrates to 1
+        area_mat = self.normalize_area(rankedevcmat)
+
+        # return the final rankedEVC that is normalized in time, channels and integrates to 1
+        return area_mat
 
     def rank_centrality(self, evcmat):
+        '''
+        For a CxT EVC matrix, rank each column, so that instead of floats, there are
+        a set of numbers {1,...C} for each column.
+        '''
         # get dimensions of data
         numchans, numwins = evcmat.shape
 
@@ -307,8 +343,13 @@ class PCAModel(Model):
         return rankevcmat
 
     def create_cdfint(self, numchans, area):
+        '''
+        
+        '''
+        # create a linearly spaced cumulative distribution function
         cdf = np.arange(0.1, 1, 0.1)
 
+        # create discrete intervals that channels are matched to
         intervals = np.zeros((numchans, len(cdf)))
         for i in range(0, numchans):
             for j in range(0, len(cdf)):
@@ -317,6 +358,9 @@ class PCAModel(Model):
         return intervals
 
     def normalize_area(self, rankedevcmat):
+        '''
+        Normalize all rows, so that they integrate to 1
+        '''
         integration = cumtrapz(rankedevcmat, axis=1)
 
         # get the cumulative integration for each row/channel
@@ -328,6 +372,12 @@ class PCAModel(Model):
         return integration
 
     def normalize_time(self, rankedevcmat, maxduration=500):
+        '''
+        For the ranked EVC matrix (C x W) channels x windows, normalize all signals, 
+        so that there are even number of windows in the seizure event (500 seconds)
+
+        Only call with normalize_time(rankedevcmat[:, onset:offset])
+        '''
         # get length of each steps in seconds
         stepsize = self.stepsize
 
@@ -346,6 +396,10 @@ class PCAModel(Model):
         return norm_rankcent
 
     def normalize_chans(self, rankedevcmat):
+        '''
+        For the ranked EVC matrix (C x W) channels x windows, normalize each channel
+        Each signal will be divided by the total number of channels
+        '''
         numchans, _ = rankedevcmat.shape
         rankedevcmat = rankedevcmat / numchans
 
