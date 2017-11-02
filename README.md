@@ -37,7 +37,7 @@ Some possible extensions for this work include looking at other frequency bands,
 
 This work can be compared with other linear models.
 
-\hline
+-------------------------------------------------------------------------------
 
 ## Usage (By: Adam Li)
 ### Extract Signals From EDF Files
