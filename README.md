@@ -2,6 +2,43 @@
 
 EZTrack produces electrode weights and heatmap scores from EEG signals in EDF or MEF files.
 
+## Python 2.7 Code Run 
+### Date: 11/2/2017
+### Author: Adam Li
+I provide an untested (although individual parts are tested) version of code for the paper in Python 2.7. This is a much more object oriented approach to the code provided in the paper as everything is segmented into its individual parts.
+
+The following modules are provided:
+### 1. Data Conversion
+I define a class EDFConverter, which will read in EDF files (if they are incorrectly formatted, try converting EDF+D -> EDF+C within edfbrowser). It has capabability to then process the data into individual files that store different parts of the data:
+
+i) rawdata: stored in a .npy file, which is the CxT channels time series data
+ii) channels data: stored in a .csv file that stores information about the channels, and each channel label
+iii) annotations data: stored in a .csv file that stores annotations on the edf file for this recording segment. Can include onset/offset times if there is a seizure present.
+iv) headers data: stores in a .csv file for any other meta data within the edf file. For example, birth date, gender, equipment, sampling rate, etc. can be stored here.
+
+### 2. Signal Processing
+I define some useful functions for filtering the data. Here I write two functions for notch filtering. The main one I use in my research is the butterworth filter of order 1. This can be adapted to add more filtering functions.
+
+### 3. Models
+This is the meat of the entire paper. It contains the models used.
+
+Currently, these are the models within this section:
+i) powercoherence: this module defines a parent class 'Model', which provides some basic functions and members for the other classes to use. Then the PowerCoherenceModel is used to provide the user interfacing with the rawdata and computation of the coherence model for certain frequency bands (default is 'gamma'). It computes the crosspower and defines the coherence of each window/step size provided, and then computes and saves the SVD left eigenvector matrix. The EVCModel is used to compute the ranked EVC and perform various normalizations. 
+
+Afterwards, the EVCModel can be decomposed using PCA.
+
+ii) gaussianmodels: this module defines the gaussian weighting function used to analyze and estimate 'EZ' likelihood from PCA analysis of the ranked EVC. It defines a GaussianWeightModel to interface and define the gaussian weighting function. It also defines a TrainingModel to perform Leave-One-Out training on a set of patients, and their rankedEVC computations to define the (x,y) coordinates of the origin of the Gaussian weighting function in PCA space. 
+
+### 4. Utility 
+This defines a module to interface with the datasets and metadata provided through DataConversion. Various useful functions are to extract data and umbrella all the relevant data under 1 object.
+
+## Possible Extensions:
+Some possible extensions for this work include looking at other frequency bands, moving into 3D PCA space, or defining a different Gaussian weighting function.
+
+This work can be compared with other linear models.
+
+\hline
+
 ## Usage (By: Adam Li)
 ### Extract Signals From EDF Files
 Given EDF files from the 4 different centers in this study (Cleveland Clinic, NIH, Johns Hopkins Hospital, University of Maryland Medical Clinic), you will save them in `data/edf` directory.

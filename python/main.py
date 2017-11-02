@@ -145,9 +145,9 @@ def run_pca(patient, datadir, outputdir):
     evcmat = svdu[:,:,0].squeeze().T
 
     # initialize PCA model
-    pcamodel = PCAModel(winsize=winsize, stepsize=stepsize, \
+    evcmodel = EVCModel(winsize=winsize, stepsize=stepsize, \
         samplerate=patieeg.samplefreq.values, freqbands=freqband)
-    area_mat = pcamodel.run_pca(evcmat)
+    area_mat = evcmodel.run_evc(evcmat)
 
     print area_mat.shape
     print "Finished normalizing ranked EVC!"

@@ -277,7 +277,7 @@ class CoherenceModel(Model):
 
         return cross_power
 
-class PCAModel(Model):
+class EVCModel(Model):
     def __init__(self, winsize=2.5, stepsize=1., samplerate=1000, freqbands='all', logger=None, default_path='logging_mvarmodels.yaml'):
         # super(MVARModel, self).__init__(winsize, stepsize)
         Model.__init__(self, winsize, stepsize)
@@ -291,7 +291,7 @@ class PCAModel(Model):
         self.logger = logger or logging.getLogger(__name__)
         self.logger.info('Initialized PCAmodel!')
 
-    def run_pca(self, evcmat):
+    def run_evc(self, evcmat):
          # rank the EVC
         rankedevcmat = self.rank_centrality(evcmat)
 
